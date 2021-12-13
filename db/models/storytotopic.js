@@ -1,11 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const StorytoTopic = sequelize.define('StorytoTopic', {
+  const storyToTopic = sequelize.define('storyToTopic', {
     storyId: DataTypes.INTEGER,
     categoryId: DataTypes.INTEGER
   }, {});
-  StorytoTopic.associate = function(models) {
+  storyToTopic.associate = function(models) {
     // associations can be defined here
   };
-  return StorytoTopic;
+  return storyToTopic;
 };
