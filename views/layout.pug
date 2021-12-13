@@ -2,13 +2,13 @@ doctype html
 html
   head
       block head
-        title="Express Starter App"
+        title=title
         link(rel='stylesheet' href='/stylesheets/reset.css')
   body
     .nav
       ul
         li.navButton
-          a(href="./login") log in
+          a(href="/users/login") log in
         li.navButton
-          a(href="./rgister") register
+          a(href="/users/signup") sign up
     block content

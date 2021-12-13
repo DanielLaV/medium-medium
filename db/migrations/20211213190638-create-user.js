@@ -13,6 +13,11 @@ module.exports = {
         unique: true,
         allowNull: false,
       },
+      email: {
+        type: Sequelize.STRING(100),
+        unique: true,
+        allowNull: false,
+      },
       passwordHash: {
         type: Sequelize.STRING.BINARY,
         allowNull: false,
