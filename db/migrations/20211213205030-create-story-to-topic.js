@@ -1,30 +1,32 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('storyToTopics', {
+    return queryInterface.createTable("storyToTopics", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       storyId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { Models: "User" },
       },
-      categoryId: {
-        type: Sequelize.INTEGER
+      topicId: {
+        type: Sequelize.INTEGER,
+        references: { Models: "Topic" },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('storyToTopics');
-  }
+    return queryInterface.dropTable("storyToTopics");
+  },
 };

@@ -11,10 +11,12 @@ module.exports = {
       followingUserId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: { Models: "User" },
       },
-      followeUserId: {
+      followerUserId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: { Models: "User" },
       },
       createdAt: {
         allowNull: false,
