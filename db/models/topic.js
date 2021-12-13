@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Topic = sequelize.define(
     "Topic",
     {
-      id: DataTypes.INTEGER,
+      // id: DataTypes.INTEGER,
       name: { type: DataTypes.STRING(100), allowNull: false, unique: true },
     },
     {}
