@@ -6,15 +6,17 @@ module.exports = (sequelize, DataTypes) => {
       id: { type: DataTypes.INTEGER, allowNull: false },
       username: { type: DataTypes.STRING(50), allowNull: false, unique: true },
       passwordHash: { type: DataTypes.STRING.BINARY, allowNull: false },
-      firstName: { type: DataTypes.STRING, allowNull: false },
-      lastName: { type: DataTypes.STRING, allowNull: false },
+      firstName: { type: DataTypes.STRING(50), allowNull: false },
+      lastName: { type: DataTypes.STRING(50), allowNull: false },
       about: { type: DataTypes.TEXT, allowNull: false },
       profileImage: { type: DataTypes.STRING, allowNull: false },
     },
     {}
   );
   User.associate = function (models) {
-    // associations can be defined here
+    User.hasMany(models.Comment, { foreignKey: "userId" });
+    User.hasMany(models.Story, { foreignKey: "storyId" });
+    User.hasMany(models.Like, { foreignKey: "userId" });
   };
   return User;
 };

@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Relationship.associate = function (models) {
-    // associations can be defined here
+    //many to many?
   };
   return Relationship;
 };
