@@ -3,37 +3,47 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert(
-      "Topics",
+      "storyToTopics",
       [
         {
-          id: 1,
-          name: `Mediumship`,
+          storyId: 1,
+          topicId: 5,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          id: 2,
-          name: `Psychics`,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        { id: 3, name: `ESP`, createdAt: new Date(), updatedAt: new Date() },
-        {
-          id: 4,
-          name: `Long Island Medium`,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        { id: 5, name: `Advice`, createdAt: new Date(), updatedAt: new Date() },
-        {
-          id: 6,
-          name: `That's So Raven`,
+          storyId: 1,
+          topicId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          id: 7,
-          name: `Psychic Pokemon`,
+          storyId: 2,
+          topicId: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          storyId: 3,
+          topicId: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          storyId: 4,
+          topicId: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          storyId: 5,
+          topicId: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          storyId: 2,
+          topicId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -43,6 +53,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete("Topics", null, {});
+    return queryInterface.bulkDelete("storyToTopics", null, {});
   },
 };

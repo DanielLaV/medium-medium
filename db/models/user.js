@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       // id: { type: DataTypes.INTEGER, allowNull: false },
       username: { type: DataTypes.STRING(50), allowNull: false, unique: true },
-      passwordHash: { type: DataTypes.STRING.BINARY, allowNull: false },
+      passwordHash: { type: DataTypes.STRING, allowNull: false },
       firstName: { type: DataTypes.STRING, allowNull: false },
       lastName: { type: DataTypes.STRING, allowNull: false },
       about: { type: DataTypes.TEXT },
@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Comment, { foreignKey: "userId" });
     User.hasMany(models.Story, { foreignKey: "storyId" });
     User.hasMany(models.Like, { foreignKey: "userId" });
-    User.hasMany(models.Relationship, { as: 'FollowerLinks', foreignKey: 'followerUserId'});
-    User.hasMany(models.Relationship, { as: 'FollowingLinks', foreignKey: 'followingUserId'});
+    User.hasMany(models.Relationship, { as: 'FollowerLinks', foreignKey: 'followerUserId' });
+    User.hasMany(models.Relationship, { as: 'FollowingLinks', foreignKey: 'followingUserId' });
   };
   return User;
 };

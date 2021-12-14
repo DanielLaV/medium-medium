@@ -19,7 +19,7 @@ module.exports = {
         allowNull: false,
       },
       passwordHash: {
-        type: Sequelize.STRING.BINARY,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       firstName: {
