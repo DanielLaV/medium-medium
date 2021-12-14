@@ -2,7 +2,51 @@ doctype html
 html
   head
       block head
-        title="Express Starter App"
+        title=title
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/forms.css')
+        script(src="/javascripts/forms.js" type="module")
   body
-    block content
+    .nav
+      button#loginButton Log In
+      button#signupButton Sign UP
+
+    .login
+      .container
+        .constents
+          h2.heading Welcome Back.
+          form(action="/users/login" method="POST")
+            .data
+              input(type='hidden' name='_csrf' value=csrfToken)
+              label(for="email") Email
+              input(type="email" required="required" name="email")
+              label(for="password") Password
+              input(type="password" required="required" name="password")
+              button(type="submit") Log In
+              p.signupLink don't have an account?
+                a(href="#") Sign Up
+
+    .signup
+      .container
+        .contents
+          h1 Sign Up
+          form(action="/users/signup" method="POST")
+            .data
+              input(type='hidden' name='_csrf' value=csrfToken)
+              label(for="firstName") First Name
+              input(type="text" required="required" name="firstName")
+              label(for="lastName") Last Name
+              input(type="text" required="required" name="lastName")
+              label(for="username") User Name
+              input(type="text" required="required" name="username")
+              label(for="email") Email
+              input(type="email" required="required" name="email")
+              label(for="password") Password
+              input(type="password" required="required" name="password")
+              label(for="confirmPassword") Confirm Password
+              input(type="password" required="required" name="confirmPassword")
+              .buttons
+                  input(type="submit" value="Submit")
+                  input(type="reset" value="Clear")
+
+block content
