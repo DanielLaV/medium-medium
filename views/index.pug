@@ -9,3 +9,7 @@ append head
 block content
   h1 Medium Medium
   .recentStories
+    ul
+      for story in storyList
+        li=story.title
+        li=story.content
