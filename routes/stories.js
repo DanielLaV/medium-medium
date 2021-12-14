@@ -4,25 +4,13 @@ const router = express.Router();
 const db = require("../db/models");
 const { csrfProtection, asyncHandler } = require('../utils');
 
-
-router.get("/", csrfProtection, async (req, res, next) => {
-    const stories = await db.Story.findAll(
-        { order: createdAt },
-        { limit: 5 }
-    )
-    console.log(stories)
-    res.render("stories", { stories, csrfToken: req.csrfToken() })
-})
-
 router.get("/new", csrfProtection, (req, res, next) => {
     res.render("stories-new", { csrfToken: req.csrfToken() })
 })
 
-router.post("/new", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
-    //destructure fields
-    //add to db
-    res.render("stories-new")
-
+router.post("/new", csrfProtection, asyncHandler(async (req, res, next) => {
+    const { title, content } = req.body
+    res.redirect("added to DB (not really though)")
 }))
 
 
