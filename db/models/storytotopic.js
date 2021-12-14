@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const storyToTopic = sequelize.define(
     "storyToTopic",
     {
-      storyId: DataTypes.INTEGER,
-      topicId: DataTypes.INTEGER,
+      storyId: { type: DataTypes.INTEGER, allowNull: false },
+      topicId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {}
   );
