@@ -2,17 +2,24 @@
     box-sizing: border-box;
 }
 
-/* ---------------------------------------------------------------------- */
-/* Login Form */
-/* ---------------------------------------------------------------------- */
-
 .login{ display: none; }
 
 .login.open{
     display: flex;
 }
 
-.login .container{
+.signup{ display: none; }
+
+.signup.open{
+    display: flex;
+}
+
+.signup.open body{
+    background-color: rgba(19,21,21, 0.5);
+    z-index: 5;
+}
+
+.container{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -20,19 +27,20 @@
     background-color: rgba(122,128,152,0.95);
     color: white;
     box-shadow: 0 0 10px rgba(152,147,218, 0.5);
-    width: 400px;
-    height: 300px;
-    border-radius: 5%;
+    width: 50%;
+    height: 100%;
+    z-index: 10;
 }
 
-.login .heading{
+.heading{
     text-align: center;
     font-size: 40px;
     font-weight: 50;
     margin-top: 20px;
+    color: white;
 }
 
-.login .data{
+.data{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,27 +82,4 @@
     text-align: center;
     padding-bottom: 10px;
     text-decoration: none;
-}
-
-/* ---------------------------------------------------------------------- */
-/* Sign Up Form */
-/* ---------------------------------------------------------------------- */
-
-.signup{ display: none; }
-
-.signup.open{
-    display: flex;
-}
-
-.signup .container{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(122,128,152,0.95);
-    color: white;
-    box-shadow: 0 0 10px rgba(152,147,218, 0.5);
-    width: 400px;
-    height: 300px;
-    border-radius: 5%;
 }

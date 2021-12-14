@@ -6,8 +6,8 @@ router.use(csrfProtection);
 
 
 /* GET home page. */
-router.get('/', (req, res) => {
-  res.render('index', { title: 'a/A Express Skeleton Home' });
+router.get('/', csrfProtection, (req, res) => {
+  res.render('index', { title: 'a/A Express Skeleton Home', csrfToken: req.csrfToken() });
 });
 
 module.exports = router;

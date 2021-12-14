@@ -28,6 +28,7 @@ login.addEventListener("click", e => {
 
 
 signupButton.addEventListener("click", e => {
+    closeLogin();
     e.stopPropagation();
     signup.classList.add('open')
 })
