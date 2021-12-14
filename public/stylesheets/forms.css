@@ -1,0 +1,100 @@
+*{
+    box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Login Form */
+/* ---------------------------------------------------------------------- */
+
+.login{ display: none; }
+
+.login.open{
+    display: flex;
+}
+
+.login .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(122,128,152,0.95);
+    color: white;
+    box-shadow: 0 0 10px rgba(152,147,218, 0.5);
+    width: 400px;
+    height: 300px;
+    border-radius: 5%;
+}
+
+.login .heading{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 50;
+    margin-top: 20px;
+}
+
+.login .data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.login .data input{
+    height: 35px;
+    width: auto;
+    border: lightgray;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.login .data input:focus{
+    outline: rgba(19,21,21, 0.5);
+    /* border: solid 1px rgb(19,21,21,0.5); */
+}
+
+.login .data label{
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.login .data button{
+    height: 35px;
+    margin-top: 15px;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 5%;
+}
+
+.login .data button:hover{
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(19,21,21, 0.5);}
+
+.login .data .signupLink{
+    text-align: center;
+    padding-bottom: 10px;
+    text-decoration: none;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Sign Up Form */
+/* ---------------------------------------------------------------------- */
+
+.signup{ display: none; }
+
+.signup.open{
+    display: flex;
+}
+
+.signup .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(122,128,152,0.95);
+    color: white;
+    box-shadow: 0 0 10px rgba(152,147,218, 0.5);
+    width: 400px;
+    height: 300px;
+    border-radius: 5%;
+}
