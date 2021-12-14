@@ -8,7 +8,8 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const { sessionSecret } = require('./config')
+const { sessionSecret } = require('./config');
+const { restoreUser } = require('./auth');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(sessionSecret));
 app.use(session({ name: 'medium.sid', secret: sessionSecret, resave: false, saveUninitialized: false }))
+app.use(restoreUser);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // set up session middleware

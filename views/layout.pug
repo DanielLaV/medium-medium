@@ -8,8 +8,12 @@ html
         script(src="/javascripts/forms.js" type="module")
   body
     .nav
-      button#loginButton Log In
-      button#signupButton Sign UP
+      if locals.authenticated
+        p Welcome #{user.firstName}
+        button#logoutButton Log Out
+      else
+        button#loginButton Log In
+        button#signupButton Sign Up
 
     .login
       .container
