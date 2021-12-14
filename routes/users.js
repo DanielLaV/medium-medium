@@ -56,19 +56,16 @@ const userValidator = [
 ]
 
 /* GET users listing. */
-router.get('/', asyncHandler(async (req, res, next) => {
-  res.send('respond with a resource');
+
+router.get('/login', csrfProtection, asyncHandler(async (req, res, next) => {
+  res.render('login', { csrfToken: req.csrfToken()});
 }));
 
-router.get('/login', asyncHandler(async (req, res, next) => {
-  res.render('login');
-}));
-
-router.get('/signup', asyncHandler(async (req, res, next) => {
+router.get('/signup', csrfProtection, asyncHandler(async (req, res, next) => {
   res.render('signup', { csrfToken: req.csrfToken()} );
 }));
 
-router.post('/signup', csrfProtection, userValidator, asyncHandler(async (req, res, next) => {
+router.post('/signup', csrfProtection, userValidator, asyncHandler(async (req, res) => {
   const { username, password, firstName, lastName, email } = req.body;
   console.log(req.body);
   const validatorErrors = validationResult(req)
@@ -77,6 +74,7 @@ router.post('/signup', csrfProtection, userValidator, asyncHandler(async (req, r
     await db.User.create( { username, firstName, lastName, email, passwordHash } );
     console.log('if')
     res.redirect('/');
+    return;
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
     console.log("-----------------------------------" ,validatorErrors);
@@ -94,10 +92,20 @@ router.post('/signup', csrfProtection, userValidator, asyncHandler(async (req, r
 
 }));
 
-router.post('/login', csrfProtection, asyncHandler( (req, res) => {
-  const { username, password } = req.body
-  console.log(`sending ${username} and ${password}`)
-  res.redirect("/")
+router.post('/login', csrfProtection, asyncHandler( async (req, res) => {
+  const { email, password } = req.body
+  // console.log('---------------', email);
+  const user = await db.User.findOne({ where: { email }})
+  // console.log('---------------', user);
+  if (user) {
+    if (await bcrypt.compare(password, user.passwordHash.toString())){
+      console.log('password compare');
+      res.redirect("/");
+    } else {
+      //generate error
+    }
+  }
+  console.log(`sending ${email} and ${password}`)
 }));
 
 
