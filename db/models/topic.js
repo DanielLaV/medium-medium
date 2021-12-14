@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
   );
   Topic.associate = function (models) {
     const columnMapping = {
-      through: 'storyToTopics',
+      through: 'storyToTopic',
       otherKey: 'storyId',
       foreignKey: 'topicId'
-  }
-  Topic.belongsToMany(models.Story, columnMapping)
+    }
+    Topic.belongsToMany(models.Story, columnMapping)
   };
   return Topic;
 };
