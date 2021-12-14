@@ -1,0 +1,15 @@
+extends layout.pug
+
+block content
+    form(action="/stories/new" method="POST")
+        .data
+            input(type='hidden' name='_csrf' value=csrfToken)
+
+            .buttons
+                input(type="submit" value="Submit")
+                input(href="/stories" type="reset" value="Cancel")
+
+            label(for="title") Title
+            input(type="text" required="required" name="title")
+            label(for="content") Content
+            textarea(name="content", cols="30", rows="40")
