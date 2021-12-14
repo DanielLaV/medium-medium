@@ -6,7 +6,6 @@ module.exports = {
       "Likes",
       [
         {
-          id: 1,
           storyId: 1,
           commentId: null,
           userId: 1,
@@ -14,7 +13,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 2,
           storyId: 2,
           commentId: null,
           userId: 1,
@@ -22,7 +20,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 3,
           storyId: 4,
           commentId: null,
           userId: 1,
@@ -30,7 +27,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 4,
           storyId: 3,
           commentId: null,
           userId: 1,
@@ -38,7 +34,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 5,
           storyId: 5,
           commentId: null,
           userId: 1,
@@ -46,7 +41,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 6,
           storyId: 5,
           commentId: null,
           userId: 2,
@@ -54,7 +48,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 7,
           storyId: 5,
           commentId: null,
           userId: 3,
@@ -62,7 +55,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 8,
           storyId: 5,
           commentId: null,
           userId: 4,
@@ -70,7 +62,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 9,
           storyId: 3,
           commentId: null,
           userId: 5,
@@ -78,7 +69,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 10,
           storyId: 3,
           commentId: null,
           userId: 4,
@@ -86,7 +76,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          id: 11,
           storyId: 2,
           commentId: null,
           userId: 3,
