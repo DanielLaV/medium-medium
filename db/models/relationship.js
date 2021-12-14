@@ -9,7 +9,14 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Relationship.associate = function (models) {
-    //many to many?
+    Relationship.belongsTo(models.User, {
+      as: "FollowerLinks",
+      foreignKey: "followerUserId",
+    });
+    Relationship.belongsTo(models.User, {
+      as: "FollowingLinks",
+      foreignKey: "followingUserId",
+    });
   };
   return Relationship;
 };
