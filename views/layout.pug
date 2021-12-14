@@ -10,7 +10,9 @@ html
     .nav
       if locals.authenticated
         p Welcome #{user.firstName}
-        button#logoutButton Log Out
+        form(action="/users/logout" method="POST")
+          input(type='hidden' name='_csrf' value=csrfToken)
+          button#logoutButton Log Out
       else
         button#loginButton Log In
         button#signupButton Sign Up
