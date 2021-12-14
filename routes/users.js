@@ -5,6 +5,7 @@ const { csrfProtection, asyncHandler } = require('../utils');
 const db = require('../db/models');
 const { User } = db;
 const bcrypt = require('bcryptjs');
+const { loginUser } = require('../auth');
 
 const userValidator = [
   check('username')
@@ -67,17 +68,15 @@ router.get('/signup', csrfProtection, asyncHandler(async (req, res, next) => {
 
 router.post('/signup', csrfProtection, userValidator, asyncHandler(async (req, res) => {
   const { username, password, firstName, lastName, email } = req.body;
-  console.log(req.body);
   const validatorErrors = validationResult(req)
   if (validatorErrors.isEmpty()) {
     const passwordHash = await bcrypt.hash(password, 4);
-    await db.User.create( { username, firstName, lastName, email, passwordHash } );
-    console.log('if')
+    const user = await db.User.create( { username, firstName, lastName, email, passwordHash } );
+    loginUser(req, res, user);
     res.redirect('/');
     return;
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
-    console.log("-----------------------------------" ,validatorErrors);
     res.render('signup', {
       title: 'Register',
       username,
@@ -89,17 +88,14 @@ router.post('/signup', csrfProtection, userValidator, asyncHandler(async (req, r
       csrfToken: req.csrfToken(),
     });
   }
-
 }));
 
 router.post('/login', csrfProtection, asyncHandler( async (req, res) => {
   const { email, password } = req.body
-  // console.log('---------------', email);
   const user = await db.User.findOne({ where: { email }})
-  // console.log('---------------', user);
   if (user) {
     if (await bcrypt.compare(password, user.passwordHash.toString())){
-      console.log('password compare');
+      loginUser(req, res, user);
       res.redirect("/");
     } else {
       //generate error
@@ -107,7 +103,5 @@ router.post('/login', csrfProtection, asyncHandler( async (req, res) => {
   }
   console.log(`sending ${email} and ${password}`)
 }));
-
-
 
 module.exports = router;
