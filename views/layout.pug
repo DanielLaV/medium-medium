@@ -13,7 +13,7 @@ html
 
     .login
       .container
-        .constents
+        .contents
           h2.heading Welcome Back.
           form(action="/users/login" method="POST")
             .data
@@ -29,7 +29,7 @@ html
     .signup
       .container
         .contents
-          h1 Sign Up
+          h1.heading Sign Up
           form(action="/users/signup" method="POST")
             .data
               input(type='hidden' name='_csrf' value=csrfToken)
