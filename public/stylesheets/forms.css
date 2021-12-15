@@ -1,3 +1,6 @@
+/* Template colors: */
+/* Hex values: 131515, 9893DA, 797A9E, 72727E, FFFFFF */
+
 *{
     box-sizing: border-box;
 }
@@ -15,12 +18,7 @@
 }
 
 .blur > :not(.open){
-    filter: blur(2px);
-}
-
-
-.noblur{
-    filter: blur(0px);
+    filter: blur(4px);
 }
 
 .signup.open body{
@@ -45,7 +43,7 @@
     text-align: center;
     font-size: 40px;
     font-weight: 50;
-    margin-top: 20px;
+    margin-top: 30%;
     color: white;
 }
 
@@ -56,39 +54,55 @@
     padding: 10px;
 }
 
-.login .data input{
-    height: 35px;
+.data input{
+    height: 40px;
+    font-size: 20px;
     width: auto;
     border: lightgray;
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.login .data input:focus{
-    outline: rgba(19,21,21, 0.5);
-    /* border: solid 1px rgb(19,21,21,0.5); */
+.data input:focus{
+    outline: black;
+    border: solid rgb(19,21,21,0.5) 2px;
+    box-shadow: 0 0 5px black;
 }
 
-.login .data label{
+.data label{
     font-size: 20px;
     margin-top: 5px;
     margin-left: 10px;
 }
-.login .data button{
+.data button{
     height: 35px;
     margin-top: 15px;
     font-size: 20px;
     margin-left: 20px;
     margin-right: 20px;
-    border-radius: 5%;
+    border-radius: 7.5%;
+    background-color: #797A9E;
+    color: white;
 }
 
-.login .data button:hover{
+.data button:hover{
     cursor: pointer;
     box-shadow: 0 0 10px rgba(19,21,21, 0.5);}
 
-.login .data .signupLink{
+.data .signupLink{
     text-align: center;
     padding-bottom: 10px;
+    text-decoration: none;
+}
+
+.data .signupLink:visited{
+    text-decoration: none;
+}
+
+.data .signupLink:hover{
+    color: #9893DA;
+}
+
+a{
     text-decoration: none;
 }
