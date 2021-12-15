@@ -2,13 +2,13 @@ extends layout
 
 append head
   //- add page specific styles by appending to the head
-  link(rel="stylesheet" href="/stylesheets/index.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
   if locals.authenticated
-    h1 #{user.firstName}'s Feed
+    h1.header #{user.firstName}'s Feed
+    a(href="stories/new") Create Story
   else
     h1.header Medium for Mediums is a place for the spiritual to write, read, and connect
 

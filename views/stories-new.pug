@@ -5,11 +5,10 @@ block content
         .data
             input(type='hidden' name='_csrf' value=csrfToken)
 
-            .buttons
-                input(type="submit" value="Submit")
-                a(href="/") Cancel
-
             label(for="title") Title
             input(type="text" required="required" name="title")
             label(for="content") Content
             textarea(name="content", cols="30", rows="40")
+            .buttons
+                button(type="submit") Submit
+                a(href="/") Cancel
