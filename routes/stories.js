@@ -13,22 +13,23 @@ router.post("/new", requireAuth, csrfProtection, asyncHandler(async (req, res, n
     const { userId } = req.session.auth;
 
     await db.Story.create({ authorId: userId, title, content })
-    res.send("added to db (seriouly though)")
+    res.render("index")
 }))
 
-router.get("/:id(\\d+)", async (req, res) => {
+router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
     const id = req.path.slice(1)
     const story = await db.Story.findByPk(id);
-    res.render('story-id', { story });
+    res.render('story-id', { story, csrfToken: req.csrfToken() });
 })
 
-router.get('/stories/:id\\d+/edit', requireAuth, asyncHandler(async (req, res) => {
-
+router.post("/:id(\\d+)", requireAuth, csrfProtection, asyncHandler( async (req, res) => {
+    const id = req.path.slice(1);
+    const story = await db.Story.findByPk(id);
+    // console.log(story);
+    await story.destroy();
+    console.log('------------------------deleted');
+    res.send('deleted');
 }));
-
-router.post('/stories/:id\\d+/edit'), (req, res) => {
-
-}
 
 module.exports = router;
 
