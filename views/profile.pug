@@ -18,8 +18,8 @@ block content
             div
                 p #{user.firstName} #{user.lastName} FOLLOWS
                 ul
-                  each followed in usersFollowing
-                    li #{followed.firstName}
+                  each followed in mappedUsersFollowing
+                    li #{followed.firstName} #{followed.lastName}
                     //- - let n = 0;
                     //- while n < 5
                     //-     //- LIST 5 PEOPLE THAT USER FOLLOWS

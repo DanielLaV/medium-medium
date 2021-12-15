@@ -23,11 +23,22 @@ router.get(
                       where: {
                         followerUserId: user.id },
                       include: 'FollowingLinks' });
+    console.log('USER FOLLOWING IS ', userFollowing)
 
-    let usersFollowing = userFollowing.map(async(user1) => {
-      return await db.User.findByPk(user1.followingUserId);
-    });
-    console.log('usersFollowing is THIS REALLY BIG', usersFollowing);
+    // let usersFollowing = userFollowing.map(async(user1) => {
+    //   return await db.User.findByPk(user1.followingUserId);
+    // });
+
+    let mappedUsersFollowing = [];
+
+    for (let idx in userFollowing) {
+      // console.log('RELATIONSHIP', relationship)
+      let relat = await db.User.findByPk(userFollowing[idx].followingUserId);
+      mappedUsersFollowing.push(relat);
+      // console.log('RELATIONSHIP FOLLOWING USER ID', );
+    }
+
+    console.log('mappedUsersFollowing is THIS REALLY BIG', mappedUsersFollowing);
     // userFollowing.forEach(async (user1) => {
     //   let num = await db.User.findByPk(user1.followingUserId);
     //   usersFollowing.push(num);
@@ -37,7 +48,7 @@ router.get(
 
     const numOfFollowing = userFollowing.length;
 
-    res.render("profile", { user, usersFollowing, numOfFollowing });
+    res.render("profile", { user, mappedUsersFollowing, numOfFollowing });
   })
 );
 
