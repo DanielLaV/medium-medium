@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Story = sequelize.define(
     "Story",
     {
-      authorId: { type: DataTypes.INTEGER, allowNull: false },
+      userId: { type: DataTypes.INTEGER, allowNull: false },
       title: { type: DataTypes.STRING(100), allowNull: false },
       content: { type: DataTypes.TEXT, allowNull: false },
     },
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   Story.associate = function (models) {
     Story.hasMany(models.Like, { foreignKey: "storyId" });
     Story.hasMany(models.Comment, { foreignKey: "storyId" });
-    Story.belongsTo(models.User, { foreignKey: "authorId" });
+    Story.belongsTo(models.User, { foreignKey: "userId" });
     const columnMapping = {
       through: "storyToTopic",
       otherKey: "topicId",
