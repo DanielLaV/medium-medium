@@ -4,27 +4,31 @@ const router = express.Router();
 const db = require("../db/models");
 const { csrfProtection, asyncHandler } = require('../utils');
 
-router.get("/new", csrfProtection, (req, res, next) => {
+router.get("/new", requireAuth, csrfProtection, (req, res, next) => {
     res.render("stories-new", { csrfToken: req.csrfToken() })
 })
 
 router.post("/new", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
-    const { title, content } = req.body
-    console.log(req)
-    // await db.Story.create(authorId, title, content)
-    res.send("added to DB (not really though)")
+    const { title, content } = req.body;
+    const { userId } = req.session.auth;
+
+    await db.Story.create({ authorId: userId, title, content })
+    res.send("added to db (seriouly though)")
 }))
 
 router.get("/:id(\\d+)", async (req, res) => {
     const id = req.path.slice(1)
-    console.log(id)
     const story = await db.Story.findByPk(id);
     res.render('story-id', { story });
 })
 
-router.get('/stories/:id/edit', (req, res) => {
+router.get('/stories/:id\\d+/edit', requireAuth, asyncHandler(async (req, res) => {
 
-})
+}));
+
+router.post('/stories/:id\\d+/edit'), (req, res) => {
+
+}
 
 module.exports = router;
 
