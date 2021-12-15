@@ -5,17 +5,21 @@ html
         title=title
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel='stylesheet' href='/stylesheets/forms.css')
+        <link rel="icon" href="./favicon.png">
         script(src="/javascripts/forms.js" type="module")
   body
     .nav
-      if locals.authenticated
-        p Welcome #{user.firstName}
-        form(action="/users/logout" method="POST")
-          input(type='hidden' name='_csrf' value=csrfToken)
-          button#logoutButton Log Out
-      else
-        button#loginButton Log In
-        button#signupButton Sign Up
+      .loginAndOut
+        if locals.authenticated
+          p Welcome #{user.firstName}
+          form(action="/users/logout" method="POST")
+            input(type='hidden' name='_csrf' value=csrfToken)
+            button#logoutButton Log Out
+        else
+          form(action="/" method="GET")
+            button#goHome(href="/") Home
+          button#loginButton Log In
+          button#signupButton Sign Up
 
     .login
       .container
