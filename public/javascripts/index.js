@@ -10,8 +10,4 @@ window.addEventListener('DOMContentLoaded', (event) => {
             location.pathname = `/stories/${id}`
         })
     })
-
-
-
-
-});
+})

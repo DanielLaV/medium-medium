@@ -13,8 +13,11 @@ router.post("/new", csrfProtection, asyncHandler(async (req, res, next) => {
     res.redirect("added to DB (not really though)")
 }))
 
-router.get("/:id(\\d+)", (req, res) => {
-    res.send("I may be working like you want")
+router.get("/:id(\\d+)", async (req, res) => {
+    const id = req.path.slice(1)
+    console.log(id)
+    const story = await db.Story.findByPk(id);
+    res.render('story-id', { story });
 })
 
 module.exports = router;
