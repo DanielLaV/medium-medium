@@ -34,6 +34,7 @@ signupButton.addEventListener("click", (e) => {
   closeLogin();
   e.stopPropagation();
   signup.classList.add("open");
+  document.body.classList.add("blur")
 });
 
 signup.addEventListener("click", (e) => {

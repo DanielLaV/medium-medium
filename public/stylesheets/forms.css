@@ -14,9 +14,10 @@
     display: flex;
 }
 
-.blur > :not(.login){
+.blur > :not(.open){
     filter: blur(2px);
 }
+
 
 .noblur{
     filter: blur(0px);
