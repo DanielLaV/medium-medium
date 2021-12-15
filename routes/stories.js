@@ -13,5 +13,8 @@ router.post("/new", csrfProtection, asyncHandler(async (req, res, next) => {
     res.redirect("added to DB (not really though)")
 }))
 
+router.get("/:id(\\d+)", (req, res) => {
+    res.send("I may be working like you want")
+})
 
 module.exports = router;

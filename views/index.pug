@@ -10,11 +10,13 @@ block content
   if locals.authenticated
     h1 #{user.firstName}'s Feed
   else
-    h1 Medium Medium
+    h1.header Medium for Mediums is a place for the spiritual to write, read, and connect
 
   .recentStories
-    ul
+    ul.listHeader Most Recent on Medium for Mediums
       for story in storyList
-        li.storyAuthor Written by: #{story.User.username}
-        li.stroryTitle=story.title
-        li.stroyContent=story.content
+        .storyDiv(value=""+ story.id href="/stories/id")
+          li.storyAuthor
+            img.titleImage(src="" + story.User.profileImage)
+            a.authorName #{story.User.username}
+          li.stroryTitle=story.title
