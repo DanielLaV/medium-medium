@@ -9,17 +9,18 @@ html
         script(src="/javascripts/forms.js" type="module")
   body
     .nav
-      .loginAndOut
+      .auth
         if locals.authenticated
           p Welcome #{user.firstName}
           form(action="/users/logout" method="POST")
             input(type='hidden' name='_csrf' value=csrfToken)
             button#logoutButton Log Out
         else
-          form(action="/" method="GET")
-            button#goHome(href="/") Home
-          button#loginButton Log In
-          button#signupButton Sign Up
+          .nav-main
+            form(action="/" method="GET")
+              button#goHome(href="/") Home
+            button#loginButton Log In
+            button#signupButton Sign Up
 
     .login
       .container

@@ -7,9 +7,14 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1 Medium Medium
+  if locals.authenticated
+    h1 #{user.firstName}'s Feed
+  else
+    h1 Medium Medium
+
   .recentStories
     ul
       for story in storyList
-        li=story.title
-        li=story.content
+        li.storyAuthor Written by: #{story.User.username}
+        li.stroryTitle=story.title
+        li.stroyContent=story.content
