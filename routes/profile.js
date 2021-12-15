@@ -12,14 +12,32 @@ router.get(
     res.render("profiles", { users });
   })
 );
+
 router.get(
   "/:username",
   asyncHandler(async (req, res) => {
     const username = req.params.username;
-
     const user = await db.User.findOne({ where: { username } });
-    console.log(user);
-    res.render("profile", { user });
+
+    const userFollowing = await db.Relationship.findAll({
+                      where: {
+                        followerUserId: user.id },
+                      include: 'FollowingLinks' });
+
+    let usersFollowing = userFollowing.map(async(user1) => {
+      return await db.User.findByPk(user1.followingUserId);
+    });
+    console.log('usersFollowing is THIS REALLY BIG', usersFollowing);
+    // userFollowing.forEach(async (user1) => {
+    //   let num = await db.User.findByPk(user1.followingUserId);
+    //   usersFollowing.push(num);
+    //
+    // })
+
+
+    const numOfFollowing = userFollowing.length;
+
+    res.render("profile", { user, usersFollowing, numOfFollowing });
   })
 );
 

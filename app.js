@@ -39,7 +39,7 @@ const store = new SequelizeStore({ db: sequelize });
 
 app.use(
   session({
-    secret: "superSecret",
+    secret: "f1f079b1-68fe-4324-8010-0a5cff63a288",
     store,
     saveUninitialized: false,
     resave: false,
