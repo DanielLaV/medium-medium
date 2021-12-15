@@ -14,6 +14,14 @@
     display: flex;
 }
 
+.blur > :not(.login){
+    filter: blur(2px);
+}
+
+.noblur{
+    filter: blur(0px);
+}
+
 .signup.open body{
     background-color: rgba(19,21,21, 0.5);
     z-index: 5;
