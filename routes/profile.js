@@ -15,43 +15,87 @@ router.get(
 
 router.get(
   "/:username",
+  requireAuth,
   asyncHandler(async (req, res) => {
+    const { userId } = req.session.auth;
     const username = req.params.username;
-    const user = await db.User.findOne({ where: { username } });
+    const profileUser = await db.User.findOne({ where: { username } });
 
-    const userFollowing = await db.Relationship.findAll({
-                      where: {
-                        followerUserId: user.id },
-                      include: 'FollowingLinks' });
-    console.log('USER FOLLOWING IS ', userFollowing)
+    const userRelationships = await db.Relationship.findAll({
+      where: {
+        followerUserId: profileUser.id,
+      },
+      include: "FollowingLinks",
+    });
 
-    // let usersFollowing = userFollowing.map(async(user1) => {
-    //   return await db.User.findByPk(user1.followingUserId);
-    // });
+    let usersFollowing = [];
 
-    let mappedUsersFollowing = [];
-
-    for (let idx in userFollowing) {
-      // console.log('RELATIONSHIP', relationship)
-      let relat = await db.User.findByPk(userFollowing[idx].followingUserId);
-      mappedUsersFollowing.push(relat);
-      // console.log('RELATIONSHIP FOLLOWING USER ID', );
+    for (let idx in userRelationships) {
+      let relat = await db.User.findByPk(
+        userRelationships[idx].followingUserId
+      );
+      usersFollowing.push(relat);
     }
 
-    console.log('mappedUsersFollowing is THIS REALLY BIG', mappedUsersFollowing);
-    // userFollowing.forEach(async (user1) => {
-    //   let num = await db.User.findByPk(user1.followingUserId);
-    //   usersFollowing.push(num);
-    //
-    // })
+    const numOfFollowing = userRelationships.length;
 
-
-    const numOfFollowing = userFollowing.length;
-
-    res.render("profile", { user, mappedUsersFollowing, numOfFollowing });
+    res.render("profile", {
+      profileUser,
+      usersFollowing,
+      userId,
+      numOfFollowing,
+    });
   })
 );
 
+router.get(
+  "/:username/about",
+  asyncHandler(async (req, res) => {
+    const username = req.params.username;
+    const profileUser = await db.User.findOne({ where: { username } });
 
+    const userRelationships = await db.Relationship.findAll({
+      where: {
+        followerUserId: profileUser.id,
+      },
+      include: "FollowingLinks",
+    });
+
+    let usersFollowing = [];
+
+    for (let idx in userRelationships) {
+      let relat = await db.User.findByPk(
+        userRelationships[idx].followingUserId
+      );
+      usersFollowing.push(relat);
+    }
+
+    const numOfFollowing = userRelationships.length;
+
+    res.render("about", {profileUser, numOfFollowing });
+  })
+);
+
+router.post(
+  "/:username/follow",
+  requireAuth,
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const { currentUserId } = req.session.auth;
+    const username = req.params.username;
+    const followedId = db.User.findOne({ where: { username } });
+    if (
+      await db.Relationship.findOne({
+        where: { followedUserId: followedId, followerUserId: currentUserId },
+      })
+    ) {
+    } else {
+      await db.Relationship.create({
+        followedUserId: followedId,
+        followerUserId: currentUserId,
+      });
+    }
+  })
+);
 
 module.exports = router;

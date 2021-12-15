@@ -1,30 +1,33 @@
 extends layout.pug
 
+append head
+    link(rel="stylesheet" href="/stylesheets/profile.css")
+
 block content
     body
     .profile-header
-        h1 #{user.firstName} #{user.lastName}
-        p #{user.about}
+        h1 #{profileUser.firstName} #{profileUser.lastName}
+        p #{profileUser.about}
     .profile-nav
-        button.followButton Follow
+        button.followButton(value="" + profileUser.id id="" + userId) Follow me!
         a #{followers}
-        a(href=`/users/:userId/about`) About
+        a(href='/profiles/' + profileUser.username + '/about') About
     .profile
         .about-sidebar
             div
-                img(src='' + user.profileImage)
-                p #{user.firstName} #{user.lastName}
+                img(src='' + profileUser.profileImage id="profileImage")
+                p #{profileUser.firstName} #{profileUser.lastName}
                 button.followButton Follow
             div
-                p #{user.firstName} #{user.lastName} FOLLOWS
+                p #{profileUser.firstName} #{profileUser.lastName} FOLLOWS
                 ul
-                  each followed in mappedUsersFollowing
-                    li #{followed.firstName} #{followed.lastName}
-                    //- - let n = 0;
-                    //- while n < 5
-                    //-     //- LIST 5 PEOPLE THAT USER FOLLOWS
+                    - let n = 0;
+                    while n < usersFollowing.length && n < 5
+                        li
+                            img(src='' + usersFollowing[n].profileImage class="followingIcon")
+                            span #{usersFollowing[n].firstName} #{usersFollowing[n].lastName}
+                        - n++
 
-                    //-     - n++
 
 
         .feed
