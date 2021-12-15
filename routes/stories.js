@@ -8,9 +8,11 @@ router.get("/new", csrfProtection, (req, res, next) => {
     res.render("stories-new", { csrfToken: req.csrfToken() })
 })
 
-router.post("/new", csrfProtection, asyncHandler(async (req, res, next) => {
+router.post("/new", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
     const { title, content } = req.body
-    res.redirect("added to DB (not really though)")
+    console.log(req)
+    // await db.Story.create(authorId, title, content)
+    res.send("added to DB (not really though)")
 }))
 
 router.get("/:id(\\d+)", async (req, res) => {
@@ -20,4 +22,17 @@ router.get("/:id(\\d+)", async (req, res) => {
     res.render('story-id', { story });
 })
 
+router.get('/stories/:id/edit', (req, res) => {
+
+})
+
 module.exports = router;
+
+
+// GET /stories/:id
+// GET /stories/:id/edit
+
+// POST /stories/:id/likes
+// DELETE /stories/:id/likes
+// POST /stories/:id/comments
+// DELETE /stories/:id/comments

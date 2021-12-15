@@ -9,21 +9,23 @@ html
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel='stylesheet' href='/stylesheets/forms.css')
         <link rel="icon" href="./favicon.png">
+          link(rel="stylesheet" href="/stylesheets/index.css")
         script(src="/javascripts/forms.js" type="module")
   body
     .nav
-      .auth
-        if locals.authenticated
+      img.mediumImg
+      if !locals.authenticated
+        //- form.noAuthMenu(action="/" method="GET")
+        .noAuthMenu
+          a#loginButton Log In
+          a#signupButton Sign Up
+      else
+        .authMenu
           p Welcome #{user.firstName}
-          form(action="/users/logout" method="POST")
-            input(type='hidden' name='_csrf' value=csrfToken)
+        form(action="/users/logout" method="POST")
+          input(type='hidden' name='_csrf' value=csrfToken)
+          .buttonLogout
             button#logoutButton Log Out
-        else
-          .nav-main
-            form(action="/" method="GET")
-              button#goHome(href="/") Home
-            button#loginButton Log In
-            button#signupButton Sign Up
 
     .login
       .container
