@@ -11,14 +11,14 @@ window.addEventListener("DOMContentLoaded", (e) => {
     }
 
     const response = await fetch("/api/follow", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(_data),
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(_data),
+    })
+      .then(data => {
+        return data.text();
       })
-     .then(data => {
-      return data.text();
-     })
-     .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
+      .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
 
     const { message } = JSON.parse(response);
 

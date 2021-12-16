@@ -4,6 +4,7 @@ const { csrfProtection, asyncHandler } = require("../utils");
 const db = require("../db/models");
 const { requireAuth } = require("../auth");
 
+console.log("inside api router-----------------------------")
 
 router.post('/follow', asyncHandler(async (req, res) => {
     const { followerUserId, followingUserId } = req.body;
@@ -25,8 +26,9 @@ router.post('/follow', asyncHandler(async (req, res) => {
     */
 }))
 
-router.post('/comments', asyncHandler(async (req, res) => {
-    res.send("i am a comment")
+router.post('/comments', csrfProtection, asyncHandler(async (req, res) => {
+    console.log("--------------------hello-------------------------")
+    res.redirect("/")
 }))
 
 
