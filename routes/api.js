@@ -3,6 +3,7 @@ const router = express.Router()
 const { csrfProtection, asyncHandler } = require("../utils");
 const db = require("../db/models");
 const { requireAuth } = require("../auth");
+const e = require('express');
 
 
 router.post('/follow', asyncHandler(async (req, res) => {
@@ -33,5 +34,27 @@ router.get('/profiles/:userId/follow', asyncHandler(async (req, res) => {
     }
 }))
 
+router.get('/stories/:storyId/like', asyncHandler( async (req, res) => {
+    const storyId = parseInt(req.params.storyId);
+    const userId = req.session.auth.userId;
+    const exists = await db.Like.findOne({ where: { storyId, userId }});
+    if (exists){
+        res.json({ message: "Liked" });
+    } else {
+        res.json({ message: "Like" })
+    }
+}));
+
+router.post('stories/:storyId/like', asyncHandler( async (req,res)=> {
+    const { userId, storyId} = req.body;
+    const exists = await db.Like.findOne({ where: { storyId, userId }});
+    if (exists){
+        await db.Like.destroy({ where: { storyId, userId }});
+        res.json({ message: "Like" });
+    } else {
+        await db.Like.create({ where: { storyId, userId }});
+        res.json( {message: "Liked" });
+    }
+}));
 
 module.exports = router
