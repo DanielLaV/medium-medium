@@ -51,7 +51,10 @@ router.get(
 router.get(
   "/:username/about",
   asyncHandler(async (req, res) => {
+    const { userId } = req.session.auth;
     const username = req.params.username;
+    console.log('REQPARAMS IS ======', req.params)
+    console.log('username IS ======', username)
     const profileUser = await db.User.findOne({ where: { username } });
 
     const userRelationships = await db.Relationship.findAll({
@@ -72,7 +75,7 @@ router.get(
 
     const numOfFollowing = userRelationships.length;
 
-    res.render("about", {profileUser, numOfFollowing });
+    res.render("about", {profileUser, numOfFollowing, userId });
   })
 );
 

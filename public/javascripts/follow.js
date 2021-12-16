@@ -1,40 +1,58 @@
-const followButton = document.querySelector(".followButton");
-const db = "./db/models";
+const followButtons = document.querySelectorAll(".followButton");
+
 
 window.addEventListener("DOMContentLoaded", (e) => {
-  followButton.addEventListener("click", async (e) => {
-    const followedUser = followButton.getAttribute("value");
+  console.log('DOMCONTENTLOADED');
+  followButtons.forEach(async(followButton) => {
+    const followingUser = followButton.getAttribute("value");
     const followerUser = followButton.getAttribute("id");
-    let _data = {
-      followerUserId: followerUser,
-      followingUserId: followedUser
+console.log('FOLLOWINGUSER IS ==============================', followingUser)
+console.log('FOLLOWERUSER IS ==============================', followerUser)
+    if (followingUser === followerUser) {
+      followButton.style.display = "none";
     }
 
-    const response = await fetch("/api/follow", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(_data),
+    let _data = {
+      followerUserId: followerUser,
+      followingUserId: followingUser
+    }
+
+    const isFollowing = await fetch(`/api/profiles/${followingUser}/follow`, {
+      method: "GET"
     })
-      .then(data => {
-        return data.text();
-      })
+      .then(data => data.text())
       .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
+    console.log('ISFOLLOWING========')
+    const followStatus = JSON.parse(isFollowing).message;
 
-    const { message } = JSON.parse(response);
-
-    followButton.innerText = message;
-
-    /*
-      -Grab data from response via .json
-      -If now following = message
-        update button to say following
-      else
-        update button to say follow
+    followButton.innerText = followStatus;
 
 
 
 
+    followButton.addEventListener("click", async (e) => {
 
-    */
-  });
+      // let _data = {
+      //     followerUserId: followerUser,
+      //     followingUserId: followedUser
+      //   }
+      const response = await fetch("/api/follow", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(_data),
+      })
+        .then(data => {
+          return data.text();
+        })
+        .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
+
+      console.log('RESPONSE IS ========', response)
+      const { message } = JSON.parse(response);
+
+      followButtons.forEach((button) => {
+        button.innerText = message;
+      })
+
+    });
+  })
 });
