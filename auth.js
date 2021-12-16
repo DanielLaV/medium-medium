@@ -28,6 +28,13 @@ const logoutUser = (req, res) => {
   delete req.session.auth;
 };
 
+const getUserId = (req, res) => {
+  if (!res.locals.authenticated) {
+    return
+  }
+  return next();
+}
+
 const requireAuth = (req, res, next) => {
   if (!res.locals.authenticated) {
     return res.redirect("/user/login");

@@ -8,12 +8,16 @@ router.get("/new", requireAuth, csrfProtection, (req, res, next) => {
     res.render("stories-new", { csrfToken: req.csrfToken() })
 })
 
-router.get("/:id(\\d+)", requireAuth, csrfProtection, async (req, res) => {
-    const { userId } = req.session.auth;
-    console.log(userId);
+router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
+    let userId;
+    if (req.session.auth){
+        userId = req.session.auth.userId;
+    } else {
+        userId = 0;
+    }
     const id = req.path.slice(1)
     const story = await db.Story.findByPk(id);
-    res.render('story-id', { story, csrfToken: req.csrfToken(), userId });
+    res.render('story-id', { story, csrfToken: req.csrfToken(), userId});
 });
 
 router.get("/:id(\\d+)/edit", requireAuth, csrfProtection, async (req, res) => {
