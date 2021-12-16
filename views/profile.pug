@@ -9,7 +9,10 @@ block content
         h1 #{profileUser.firstName} #{profileUser.lastName}
         p #{profileUser.about}
     .profile-nav
-        button.followButton(value="" + profileUser.id id="" + userId) Follow me!
+        if following
+            button.followButton(value="" + profileUser.id id="" + userId) Following
+        else
+            button.followButton(value="" + profileUser.id id="" + userId) Follow
         a #{followers}
         a(href='/profiles/' + profileUser.username + '/about') About
     .profile

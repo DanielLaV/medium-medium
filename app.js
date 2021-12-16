@@ -13,6 +13,7 @@ const storiesRouter = require("./routes/stories");
 const { sessionSecret } = require("./config");
 const { restoreUser } = require("./auth");
 const { profile } = require("console");
+const apiRouter = require('./routes/api')
 
 const app = express();
 
@@ -49,10 +50,11 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
-app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/stories", storiesRouter);
 app.use("/profiles", profileRouter);
+app.use("/api", apiRouter);
+app.use("/", indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -2,40 +2,39 @@ const followButton = document.querySelector(".followButton");
 const db = "./db/models";
 
 window.addEventListener("DOMContentLoaded", (e) => {
-  followButton.addEventListener("click", (e) => {
-    console.log(followButton.getAttribute("value"));
-    console.log(followButton.getAttribute("id"));
-    fetch("/API/profiles/:username/follow", [
-      {
+  followButton.addEventListener("click", async (e) => {
+    const followedUser = followButton.getAttribute("value");
+    const followerUser = followButton.getAttribute("id");
+    let _data = {
+      followerUserId: followerUser,
+      followingUserId: followedUser
+    }
+
+    const response = await fetch("/api/follow", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: followButton.innerText,
-      },
-    ]);
+        body: JSON.stringify(_data),
+      })
+     .then(data => {
+      return data.text();
+     })
+     .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
+
+    const { message } = JSON.parse(response);
+
+    followButton.innerText = message;
+
+    /*
+      -Grab data from response via .json
+      -If now following = message
+        update button to say following
+      else
+        update button to say follow
+
+
+
+
+
+    */
   });
 });
-
-followButton.addEventListener("click", e => {
-  const followed = followButton.getAttribute('value')
-  const follower = followButton.getAttribute('id')
-
-  if (db.Relationship.findOne({where: {followedUserId: followed, followerUserId: follower}}))
-   {
-    fetch("/profiles/:username/follow", [
-      {
-        method:"DELETE",
-        headers: {"Content-Type": "application/json"},
-        //body?
-      }
-      ])
-    }
-  else {
-    fetch("/profiles/:username/follow", [
-      {
-        method:"POST",
-        headers: {"Content-Type": "application/json"},
-        //body?
-      }
-      ])
-  }
-})
