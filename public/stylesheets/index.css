@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-h1, h2, h3{
+body{
     font-family: 'Playfair Display', serif;
 }
 
@@ -29,6 +29,7 @@ h1, h2, h3{
 
 .recentStories{
     margin: 10px;
+    width: 60%;
 }
 
 .header{
@@ -60,9 +61,15 @@ h1, h2, h3{
     align-items: center;
 }
 
+.stroryTitle{
+    font-size: 20px;
+    font-weight: 900;
+    margin-top: 10px;
+}
+
 .titleImage{
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
     text-align: center;
 }
@@ -70,4 +77,11 @@ h1, h2, h3{
 .authorName{
 
     padding-left: 20px;
+}
+
+.storyPreview{
+    line-height: 1.1;
+    height: 2.3em;
+    overflow: hidden;
+    margin-top: 10px;
 }
