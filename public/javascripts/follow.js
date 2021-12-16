@@ -1,12 +1,17 @@
 const followButtons = document.querySelectorAll(".followButton");
-const db = "./db/models";
 
 
 window.addEventListener("DOMContentLoaded", (e) => {
+  console.log('DOMCONTENTLOADED');
   followButtons.forEach(async(followButton) => {
-    console.log('FOLLLOW BUTTTON========', followButton);
     const followingUser = followButton.getAttribute("value");
     const followerUser = followButton.getAttribute("id");
+console.log('FOLLOWINGUSER IS ==============================', followingUser)
+console.log('FOLLOWERUSER IS ==============================', followerUser)
+    if (followingUser === followerUser) {
+      followButton.style.display = "none";
+    }
+
     let _data = {
       followerUserId: followerUser,
       followingUserId: followingUser
@@ -17,7 +22,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
     })
       .then(data => data.text())
       .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
-
+    console.log('ISFOLLOWING========')
     const followStatus = JSON.parse(isFollowing).message;
 
     followButton.innerText = followStatus;
@@ -41,6 +46,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
         })
         .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
 
+      console.log('RESPONSE IS ========', response)
       const { message } = JSON.parse(response);
 
       followButtons.forEach((button) => {
