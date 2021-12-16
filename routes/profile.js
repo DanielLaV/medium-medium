@@ -20,15 +20,6 @@ router.get(
     const { userId } = req.session.auth;
     const username = req.params.username;
     const profileUser = await db.User.findOne({ where: { username } });
-/*
-    Try to find relationship
-      if it doesn't exists (return null)
-        send follow
-      else
-        send following
-
-*/
-
 
     const userRelationships = await db.Relationship.findAll({
       where: {
@@ -108,3 +99,12 @@ router.post(
 );
 
 module.exports = router;
+
+/*
+    Try to find relationship
+      if it doesn't exists (return null)
+        send follow
+      else
+        send following
+
+*/
