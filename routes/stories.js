@@ -8,27 +8,45 @@ router.get("/new", requireAuth, csrfProtection, (req, res, next) => {
     res.render("stories-new", { csrfToken: req.csrfToken() })
 })
 
+router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
+    const id = req.path.slice(1)
+    const story = await db.Story.findByPk(id);
+    res.render('story-id', { story, csrfToken: req.csrfToken() });
+});
+
+router.get("/:id(\\d+)/edit", requireAuth, csrfProtection, async (req, res) => {
+    const regex = /\d+/g;
+    let  id = req.path.slice(1).match(regex).join('')
+    console.log(id);
+    const story = await db.Story.findByPk(id);
+    console.log()
+    res.render('stories-new', { story, csrfToken: req.csrfToken() });
+});
+
 router.post("/new", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
     const { title, content } = req.body;
     const { userId } = req.session.auth;
 
     await db.Story.create({ authorId: userId, title, content })
-    res.render("index")
-}))
+    res.redirect("../");
+}));
 
-router.get("/:id(\\d+)", csrfProtection, async (req, res) => {
-    const id = req.path.slice(1)
+router.post("/:id(\\d+)/edit", requireAuth, csrfProtection, async (req, res, next) => {
+    console.log('----------- hitting')
+    const { title, content } = req.body;
+    const { userId } = req.session.auth;
+    const regex = /\d+/g;
+    let  id = req.path.slice(1).match(regex).join('');
     const story = await db.Story.findByPk(id);
-    res.render('story-id', { story, csrfToken: req.csrfToken() });
-})
+    await story.update({ title, content });
+    res.send(`something`);
+});
 
 router.post("/:id(\\d+)", requireAuth, csrfProtection, asyncHandler( async (req, res) => {
     const id = req.path.slice(1);
     const story = await db.Story.findByPk(id);
-    // console.log(story);
     await story.destroy();
-    console.log('------------------------deleted');
-    res.send('deleted');
+    res.redirect('../');
 }));
 
 module.exports = router;
