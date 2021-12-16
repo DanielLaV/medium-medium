@@ -1,0 +1,24 @@
+extends layout.pug
+
+append head
+    link(rel="stylesheet" href="/stylesheets/profile.css")
+
+
+block content
+    body
+    .profile-header
+        h1 #{profileUser.firstName} #{profileUser.lastName}
+        p #{profileUser.about}
+    .profile-nav
+        button.followButton Follow
+        a #{followers}
+        a(href=`/profiles/:username/about`) About
+    .about
+        .aboutBio
+            h3 About #{profileUser.firstName} #{profileUser.lastName}
+            p #{profileUser.about}
+        .aboutProfileImage
+            img(src = '' + profileUser.profileImage)
+    .aboutFooter
+        p Medium member since #{profileUser.createdAt}
+        p #{numOfFollowing} Followers
