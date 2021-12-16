@@ -1,5 +1,7 @@
 // const { body } = require("express-validator");
 
+// const { urlencoded } = require("express");
+
 const login = document.querySelector(".login");
 const signup = document.querySelector(".signup");
 const loginButton = document.querySelector("#loginButton");
@@ -17,7 +19,7 @@ function closeLogin() {
 function closeSignup() {
   signup.classList.remove("open");
 }
-console.log(document.cookie)
+
 loginButton.addEventListener("click", (e) => {
   closeSignup();
   e.stopPropagation();
@@ -42,3 +44,8 @@ signup.addEventListener("click", (e) => {
   closeLogin();
   e.stopPropagation();
 });
+
+
+if (location.pathname == '/users/login') {
+  login.classList.add("open");
+}
