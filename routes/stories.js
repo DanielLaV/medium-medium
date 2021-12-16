@@ -24,9 +24,9 @@ router.get("/:id(\\d+)/edit", requireAuth, csrfProtection, async (req, res) => {
 });
 
 router.post("/new", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
-    const { title, content } = req.body;
+    const { title, content, storyImage } = req.body;
     const { userId } = req.session.auth;
-    await db.Story.create({ userId, title, content })
+    await db.Story.create({ userId, title, content, storyImage })
     res.redirect("/");
 }));
 
@@ -37,7 +37,7 @@ router.post("/:id(\\d+)/edit", requireAuth, csrfProtection, asyncHandler(async (
     let id = req.path.slice(1).match(regex).join('');
     const story = await db.Story.findByPk(id);
     await story.update({ title, content });
-    res.render(`story-id`, { story, csrfToken: req.csrfToken(), userId });
+    res.redirect(`/stories/${id}`);
 }));
 
 router.post("/:id(\\d+)", requireAuth, csrfProtection, asyncHandler(async (req, res) => {

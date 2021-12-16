@@ -8,6 +8,9 @@ block content
                 label(for="title") Title
                 input(type="text" required="required" name="title" value=story.title)
                 label(for="content") Content
+                if story.storyImage
+                    label(for="storyImage")
+                    input(type="url" name="storyImage")
                 textarea(name="content" cols="30" rows="40") #{story.content}
                 button(type="submit" value='Submit') Submit
     else
@@ -16,6 +19,8 @@ block content
                 input(type='hidden' name='_csrf' value=csrfToken)
                 label(for="title") Title
                 input(type="text" required="required" name="title")
+                label(for="storyImage")
+                input(type="url" name="storyImage")
                 label(for="content") Content
                 textarea(name="content" cols="30" rows="40")
                 .buttons
