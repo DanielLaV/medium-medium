@@ -17,7 +17,7 @@ function closeLogin() {
 function closeSignup() {
   signup.classList.remove("open");
 }
-
+console.log(document.cookie)
 loginButton.addEventListener("click", (e) => {
   closeSignup();
   e.stopPropagation();
@@ -38,6 +38,7 @@ signupButton.addEventListener("click", (e) => {
 });
 
 signup.addEventListener("click", (e) => {
+  console.log("hello")
   closeLogin();
   e.stopPropagation();
 });

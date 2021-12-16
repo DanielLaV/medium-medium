@@ -127,6 +127,7 @@ router.post(
         res.redirect("/");
       } else {
         //generate error
+        console.log("error")
       }
     }
     console.log(`sending ${email} and ${password}`);
