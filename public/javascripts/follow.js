@@ -29,7 +29,6 @@ console.log('FOLLOWERUSER IS ==============================', followerUser)
 
 
 
-
     followButton.addEventListener("click", async (e) => {
 
       // let _data = {
