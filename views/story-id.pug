@@ -4,9 +4,10 @@ block content
     h1= story.title
     .story
         p= story.content
-        form(action="/stories/"+ story.id + "/edit" method='GET')
-            input(type='hidden' name='_csrf' value=csrfToken)
-            input(type='submit' value='Edit')
-        form(action="/stories/"+ story.id method='POST')
-            input(type='hidden' name='_csrf' value=csrfToken)
-            input(type='submit' value='Delete')
+        if user.id == story.authorId
+            form(action="/stories/"+ story.id + "/edit" method='GET')
+                input(type='hidden' name='_csrf' value=csrfToken)
+                input(type='submit' value='Edit')
+            form(action="/stories/"+ story.id method='POST')
+                input(type='hidden' name='_csrf' value=csrfToken)
+                input(type='submit' value='Delete')
