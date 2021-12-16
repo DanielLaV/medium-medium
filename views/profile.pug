@@ -9,10 +9,7 @@ block content
         h1 #{profileUser.firstName} #{profileUser.lastName}
         p #{profileUser.about}
     .profile-nav
-        if following
-            button.followButton(value="" + profileUser.id id="" + userId) Following
-        else
-            button.followButton(value="" + profileUser.id id="" + userId) Follow
+        include follow-button.pug
         a #{followers}
         a(href='/profiles/' + profileUser.username + '/about') About
     .profile
@@ -20,7 +17,7 @@ block content
             div
                 img(src='' + profileUser.profileImage id="profileImage")
                 p #{profileUser.firstName} #{profileUser.lastName}
-                button.followButton Follow
+                include follow-button.pug
             div
                 p #{profileUser.firstName} #{profileUser.lastName} FOLLOWS
                 ul

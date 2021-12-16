@@ -1,40 +1,52 @@
-const followButton = document.querySelector(".followButton");
+const followButtons = document.querySelectorAll(".followButton");
 const db = "./db/models";
 
+
 window.addEventListener("DOMContentLoaded", (e) => {
-  followButton.addEventListener("click", async (e) => {
-    const followedUser = followButton.getAttribute("value");
+  followButtons.forEach(async(followButton) => {
+    console.log('FOLLLOW BUTTTON========', followButton);
+    const followingUser = followButton.getAttribute("value");
     const followerUser = followButton.getAttribute("id");
     let _data = {
       followerUserId: followerUser,
-      followingUserId: followedUser
+      followingUserId: followingUser
     }
 
-    const response = await fetch("/api/follow", {
+    const isFollowing = await fetch(`/api/profiles/${followingUser}/follow`, {
+      method: "GET"
+    })
+      .then(data => data.text())
+      .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
+
+    const followStatus = JSON.parse(isFollowing).message;
+
+    followButton.innerText = followStatus;
+
+
+
+
+    followButton.addEventListener("click", async (e) => {
+
+      // let _data = {
+      //     followerUserId: followerUser,
+      //     followingUserId: followedUser
+      //   }
+      const response = await fetch("/api/follow", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(_data),
       })
-     .then(data => {
-      return data.text();
-     })
-     .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
+        .then(data => {
+          return data.text();
+        })
+        .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
 
-    const { message } = JSON.parse(response);
+      const { message } = JSON.parse(response);
 
-    followButton.innerText = message;
+      followButtons.forEach((button) => {
+        button.innerText = message;
+      })
 
-    /*
-      -Grab data from response via .json
-      -If now following = message
-        update button to say following
-      else
-        update button to say follow
-
-
-
-
-
-    */
-  });
+    });
+  })
 });

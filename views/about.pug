@@ -10,7 +10,7 @@ block content
         h1 #{profileUser.firstName} #{profileUser.lastName}
         p #{profileUser.about}
     .profile-nav
-        button.followButton Follow
+        include follow-button.pug
         a #{followers}
         a(href=`/profiles/:username/about`) About
     .about
