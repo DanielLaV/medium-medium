@@ -3,23 +3,29 @@ html
   head
       block head
         title=title
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel='stylesheet' href='/stylesheets/forms.css')
         <link rel="icon" href="./favicon.png">
+          link(rel="stylesheet" href="/stylesheets/index.css")
         script(src="/javascripts/forms.js" type="module")
   body
     .nav
-      .loginAndOut
-        if locals.authenticated
+      a.mediumImg(href="/")
+      if !locals.authenticated
+        //- form.noAuthMenu(action="/" method="GET")
+        .noAuthMenu
+          a#loginButton Log In
+          a#signupButton Sign Up
+      else
+        .authMenu
           p Welcome #{user.firstName}
-          form(action="/users/logout" method="POST")
-            input(type='hidden' name='_csrf' value=csrfToken)
+        form(action="/users/logout" method="POST")
+          input(type='hidden' name='_csrf' value=csrfToken)
+          .buttonLogout
             button#logoutButton Log Out
-        else
-          form(action="/" method="GET")
-            button#goHome(href="/") Home
-          button#loginButton Log In
-          button#signupButton Sign Up
 
     .login
       .container
@@ -32,8 +38,8 @@ html
               input(type="email" required="required" name="email")
               label(for="password") Password
               input(type="password" required="required" name="password")
-              button(type="submit") Log In
-              p.signupLink don't have an account?
+              input.button(type="submit" value="Login")
+              p.signupLink No account?
                 a(href="#") Sign Up
 
     .signup
@@ -55,8 +61,8 @@ html
               input(type="password" required="required" name="password")
               label(for="confirmPassword") Confirm Password
               input(type="password" required="required" name="confirmPassword")
-              .buttons
-                  input(type="submit" value="Submit")
-                  input(type="reset" value="Clear")
+              button(type="submit") Sign Up
+              p.signupLink Already have an account?
+                a(href="#") Log In
 
 block content

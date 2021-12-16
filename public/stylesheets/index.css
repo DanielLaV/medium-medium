@@ -1,3 +1,73 @@
-h1 {
-    color: #555555;
+*{
+    box-sizing: border-box;
+}
+
+h1, h2, h3{
+    font-family: 'Playfair Display', serif;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid black;
+    font-size: 14;
+}
+
+
+.nav a{
+    padding-right: 15px;
+}
+
+.noAuthMenu{
+    margin-left: auto;
+}
+
+#buttonLogOut{
+    float: right;
+}
+
+.recentStories{
+    margin: 10px;
+}
+
+.header{
+    width: 50%;
+    overflow: wrap;
+    text-align: left;
+    margin-left: 25px;
+    font-size: 50px;
+    border-bottom: 1px solid black;
+}
+
+.listHeader{
+    margin-left: 25px;
+}
+
+.mediumImg{
+    content:url(/images/resizedHeader.png) ;
+}
+
+.storyDiv{
+    height: 10row;
+    overflow: hidden;
+    padding-top: 25px;
+    margin-left: 25px;
+}
+
+.storyAuthor{
+    display: flex;
+    align-items: center;
+}
+
+.titleImage{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.authorName{
+
+    padding-left: 20px;
 }

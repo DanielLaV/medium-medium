@@ -80,7 +80,12 @@ router.post(
   csrfProtection,
   userValidator,
   asyncHandler(async (req, res) => {
-    const { username, password, firstName, lastName, email } = req.body;
+    const { username, password, lastName, email } = req.body;
+    let { firstName } = req.body
+    capitalizeFirstName = firstName[0].toUpperCase() + firstName.slice(1)
+
+    firstName = capitalizeFirstName;
+    console.log('-----------------', firstName)
     const validatorErrors = validationResult(req);
     if (validatorErrors.isEmpty()) {
       const passwordHash = await bcrypt.hash(password, 4);

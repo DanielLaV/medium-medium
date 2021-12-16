@@ -4,26 +4,57 @@ const router = express.Router();
 const db = require("../db/models");
 const { csrfProtection, asyncHandler } = require('../utils');
 
-
-router.get("/", csrfProtection, async (req, res, next) => {
-    const stories = await db.Story.findAll(
-        { order: createdAt },
-        { limit: 5 }
-    )
-    console.log(stories)
-    res.render("stories", { stories, csrfToken: req.csrfToken() })
-})
-
-router.get("/new", csrfProtection, (req, res, next) => {
+router.get("/new", requireAuth, csrfProtection, (req, res, next) => {
     res.render("stories-new", { csrfToken: req.csrfToken() })
 })
 
+router.get("/:id(\\d+)", requireAuth, csrfProtection, async (req, res) => {
+    const { userId } = req.session.auth;
+    console.log(userId);
+    const id = req.path.slice(1)
+    const story = await db.Story.findByPk(id);
+    res.render('story-id', { story, csrfToken: req.csrfToken(), userId });
+});
+
+router.get("/:id(\\d+)/edit", requireAuth, csrfProtection, async (req, res) => {
+    const regex = /\d+/g;
+    let  id = req.path.slice(1).match(regex).join('')
+    const story = await db.Story.findByPk(id);
+    res.render('stories-new', { story, csrfToken: req.csrfToken() });
+});
+
 router.post("/new", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
-    //destructure fields
-    //add to db
-    res.render("stories-new")
+    const { title, content } = req.body;
+    const { userId } = req.session.auth;
+    await db.Story.create({ authorId: userId, title, content })
+    res.redirect("../");
+}));
 
-}))
+router.post("/:id(\\d+)/edit", requireAuth, csrfProtection, async (req, res, next) => {
+    console.log('----------- hitting')
+    const { title, content } = req.body;
+    const { userId } = req.session.auth;
+    const regex = /\d+/g;
+    let  id = req.path.slice(1).match(regex).join('');
+    const story = await db.Story.findByPk(id);
+    await story.update({ title, content });
+    res.send(`something`);
+});
 
+router.post("/:id(\\d+)", requireAuth, csrfProtection, asyncHandler( async (req, res) => {
+    const id = req.path.slice(1);
+    const story = await db.Story.findByPk(id);
+    await story.destroy();
+    res.redirect('../');
+}));
 
 module.exports = router;
+
+
+// GET /stories/:id
+// GET /stories/:id/edit
+
+// POST /stories/:id/likes
+// DELETE /stories/:id/likes
+// POST /stories/:id/comments
+// DELETE /stories/:id/comments
