@@ -1,0 +1,36 @@
+extends layout.pug
+
+append head
+    link(rel="stylesheet" href="/stylesheets/profile.css")
+
+block content
+    body
+    .profile-header
+        h1 #{profileUser.firstName} #{profileUser.lastName}
+        p #{profileUser.about}
+    .profile-nav
+        include follow-button.pug
+        a #{followers}
+        a(href='/profiles/' + profileUser.username + '/about') About
+    .profile
+        .about-sidebar
+            div
+                img(src='' + profileUser.profileImage id="profileImage")
+                p #{profileUser.firstName} #{profileUser.lastName}
+                include follow-button.pug
+            div
+                p #{profileUser.firstName} #{profileUser.lastName} FOLLOWS
+                ul
+                    - let n = 0;
+                    while n < usersFollowing.length && n < 5
+                        li
+                            img(src='' + usersFollowing[n].profileImage class="followingIcon")
+                            span #{usersFollowing[n].firstName} #{usersFollowing[n].lastName}
+                        - n++
+
+
+
+        .feed
+
+    footer
+                script(src="/javascripts/follow.js" type="module")

@@ -90,7 +90,7 @@ router.post(
     if (validatorErrors.isEmpty()) {
       const passwordHash = await bcrypt.hash(password, 4);
       const user = await db.User.create({
-        username,
+        username: username.toLowerCase(),
         firstName,
         lastName,
         email,
@@ -127,6 +127,7 @@ router.post(
         res.redirect("/");
       } else {
         //generate error
+        console.log("error")
       }
     }
     console.log(`sending ${email} and ${password}`);

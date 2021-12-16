@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      authorId: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: "Users" },
@@ -18,6 +18,9 @@ module.exports = {
       },
       content: {
         type: Sequelize.TEXT,
+      },
+      storyImage: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

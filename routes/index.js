@@ -11,7 +11,9 @@ router.use(csrfProtection);
 
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
   const storyList = await db.Story.findAll({ include: db.User });
+  console.log('=====storyList======', storyList);
   res.render('index', { csrfToken: req.csrfToken(), storyList });
+  return
 }))
 
 module.exports = router;
