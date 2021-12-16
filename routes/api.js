@@ -11,7 +11,7 @@ router.post('/follow', asyncHandler(async (req, res) => {
     const exists = await db.Relationship.findOne({ where: { followingUserId, followerUserId } });
     console.log('=======EXISTS IS=====', exists);
     if (exists) {
-        await db.Relationship.destroy({ where: { followingUserId, followerUserId }});
+        await db.Relationship.destroy({ where: { followingUserId, followerUserId } });
         res.json({ message: 'Follow' });
     } else {
         await db.Relationship.create({ followingUserId, followerUserId });
@@ -23,6 +23,10 @@ router.post('/follow', asyncHandler(async (req, res) => {
         else
             send back following
     */
+}))
+
+router.post('/comments', asyncHandler(async (req, res) => {
+    res.send("i am a comment")
 }))
 
 
