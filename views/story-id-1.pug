@@ -13,3 +13,5 @@ block content
             form(action="/stories/"+ story.id method='POST')
                 input(type='hidden' name='_csrf' value=csrfToken)
                 input(type='submit' value='Delete')
+    footer
+                script(src="/javascripts/like.js" type="module")

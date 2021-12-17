@@ -1,4 +1,4 @@
 if liked
-    button.likeButton(value="" + story.userId id="" + userId class='following') should unlike
+    button.likeButton(value="" + story.userId id="" + userId) should say liked
 else
-    button.likeButton(value="" + story.userId id="" + userId class='follow') should like
+    button.likeButton(value="" + story.userId id="" + userId) should say like

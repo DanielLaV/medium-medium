@@ -46,15 +46,17 @@ router.get('/stories/:storyId/like', asyncHandler( async (req, res) => {
     }
 }));
 
-router.post('stories/:storyId/like', asyncHandler( async (req,res)=> {
+router.post('/stories/:storyId/like', asyncHandler( async (req,res)=> {
     const { userId, storyId} = req.body;
     const exists = await db.Like.findOne({ where: { storyId, userId }});
     if (exists){
+        console.log('unlike successfull')
         await db.Like.destroy({ where: { storyId, userId }});
         res.json({ message: "Like" });
     } else {
-        await db.Like.create({ where: { storyId, userId }});
-        res.json( {message: "Liked" });
+        console.log('like successfull')
+        await db.Like.create({ storyId, userId });
+        res.json({ message: "Liked" });
     }
 }));
 router.post('/comments', csrfProtection, asyncHandler(async (req, res) => {

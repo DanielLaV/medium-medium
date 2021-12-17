@@ -8,12 +8,22 @@ router.get("/new", requireAuth, csrfProtection, (req, res, next) => {
     res.render("stories-new", { csrfToken: req.csrfToken() })
 })
 
+//real get route
+// router.get("/:id(\\d+)", requireAuth, csrfProtection, async (req, res) => {
+//     const { userId } = req.session.auth;
+//     console.log(userId);
+//     const id = req.path.slice(1)
+//     const story = await db.Story.findByPk(id);
+//     res.render('story-id', { story, csrfToken: req.csrfToken(), userId });
+// });
+
+//temp get route
 router.get("/:id(\\d+)", requireAuth, csrfProtection, async (req, res) => {
     const { userId } = req.session.auth;
     console.log(userId);
     const id = req.path.slice(1)
     const story = await db.Story.findByPk(id);
-    res.render('story-id', { story, csrfToken: req.csrfToken(), userId });
+    res.render('story-id-1', { story, csrfToken: req.csrfToken(), userId });
 });
 
 router.get("/:id(\\d+)/edit", requireAuth, csrfProtection, async (req, res) => {
