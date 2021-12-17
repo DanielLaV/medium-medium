@@ -8,8 +8,8 @@ const loginButton = document.querySelector("#loginButton");
 const signupButton = document.querySelector("#signupButton");
 const logoutButton = document.querySelector("#logoutButton");
 
-document.body.addEventListener("click", closeLogin);
-document.body.addEventListener("click", closeSignup);
+document.body.addEventListener("click", closeLogin, false);
+document.body.addEventListener("click", closeSignup, false);
 
 function closeLogin() {
   login.classList.remove("open");

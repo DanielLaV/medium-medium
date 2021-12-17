@@ -39,9 +39,8 @@ router.post('/comments', asyncHandler(async (req, res) => {
 
     try {
         const comment = await db.Comment.create({ userId, storyId, content })
-        // console.log('COMMENT IS =====', comment);
         res.json({ message: comment, userId });
-    } catch(err) {
+    } catch (err) {
         // console.log('===========API ERROR HANDLER', err);
     }
 }));
