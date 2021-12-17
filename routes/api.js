@@ -35,16 +35,16 @@ router.get('/profiles/:userId/follow', asyncHandler(async (req, res) => {
     }
 }))
 
-router.get('/stories/:storyId/like', asyncHandler( async (req, res) => {
-    const storyId = parseInt(req.params.storyId);
-    const userId = req.session.auth.userId;
-    const exists = await db.Like.findOne({ where: { storyId, userId }});
-    if (exists){
-        res.json({ message: "Liked" });
-    } else {
-        res.json({ message: "Like" })
-    }
-}));
+// router.get('/stories/:storyId/like', asyncHandler( async (req, res) => {
+//     const storyId = parseInt(req.params.storyId);
+//     const userId = req.session.auth.userId;
+//     const exists = await db.Like.findOne({ where: { storyId, userId }});
+//     if (exists){
+//         res.json({ message: "liked" });
+//     } else {
+//         res.json({ message: "not-liked" })
+//     }
+// }));
 
 router.post('/stories/:storyId/like', asyncHandler( async (req,res)=> {
     const { userId, storyId} = req.body;
@@ -52,17 +52,16 @@ router.post('/stories/:storyId/like', asyncHandler( async (req,res)=> {
     if (exists){
         console.log('unlike successfull')
         await db.Like.destroy({ where: { storyId, userId }});
-        res.json({ message: "Like" });
+        res.json({ message: "black" });
     } else {
         console.log('like successfull')
         await db.Like.create({ storyId, userId });
-        res.json({ message: "Liked" });
+        res.json({ message: "red" });
     }
 }));
 router.post('/comments', csrfProtection, asyncHandler(async (req, res) => {
     console.log("--------------------hello-------------------------")
     res.redirect("/")
 }))
-
 
 module.exports = router

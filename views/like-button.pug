@@ -1,4 +1,11 @@
-if liked
-    button.likeButton(value="" + story.userId id="" + userId) should say liked
+if story.Likes && story.Likes.filter(like => like.userId === userId).length
+    button.likeButton(class=`${userId} liked` id=`${story.id}`)
+        <i class="fas fa-hand-sparkles"></i>
+        span #{story.Likes.length} Likes
+else if story.Likes
+    button.likeButton(class=`${userId} not-liked` id=`${story.id}`)
+        <i class="fas fa-hand-sparkles"></i>
+        span #{story.Likes.length} Likes
 else
-    button.likeButton(value="" + story.userId id="" + userId) should say like
+    button.likeButton(class=`${userId} not-liked` id=`${story.id}`)
+        <i class="fas fa-hand-sparkles"></i>

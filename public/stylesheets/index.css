@@ -85,3 +85,15 @@ body{
     overflow: hidden;
     margin-top: 10px;
 }
+
+/* .likeButton.liked {
+    color: red;
+}
+
+.likeButton.not-liked {
+    color: black;
+} */
+
+.likeButton {
+    font-size: 12.5px;
+}
