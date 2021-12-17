@@ -2,12 +2,13 @@ const followButtons = document.querySelectorAll(".followButton");
 
 
 window.addEventListener("DOMContentLoaded", (e) => {
+  e.stopPropagation();
   console.log('DOMCONTENTLOADED');
-  followButtons.forEach(async(followButton) => {
+  followButtons.forEach(async (followButton) => {
     const followingUser = followButton.getAttribute("value");
     const followerUser = followButton.getAttribute("id");
-console.log('FOLLOWINGUSER IS ==============================', followingUser)
-console.log('FOLLOWERUSER IS ==============================', followerUser)
+    console.log('FOLLOWINGUSER IS ==============================', followingUser)
+    console.log('FOLLOWERUSER IS ==============================', followerUser)
     if (followingUser === followerUser) {
       followButton.style.display = "none";
     }
@@ -31,7 +32,7 @@ console.log('FOLLOWERUSER IS ==============================', followerUser)
 
 
     followButton.addEventListener("click", async (e) => {
-
+      e.stopPropagation();
       // let _data = {
       //     followerUserId: followerUser,
       //     followingUserId: followedUser

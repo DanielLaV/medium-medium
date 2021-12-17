@@ -39,9 +39,8 @@ router.post('/comments', asyncHandler(async (req, res) => {
 
     try {
         const comment = await db.Comment.create({ userId, storyId, content })
-        // console.log('COMMENT IS =====', comment);
         res.json({ message: comment, userId });
-    } catch(err) {
+    } catch (err) {
         // console.log('===========API ERROR HANDLER', err);
     }
 }));
@@ -50,7 +49,8 @@ router.get('/:storyId(\\d+)/comments', asyncHandler(async (req, res) => {
     const storyId = parseInt(req.params.storyId);
     const { userId } = req.session.auth;
 
-    const foundComments = await db.Comment.findAll({ where: { storyId } })
+    const foundComments = await db.Comment.findAll(
+        { where: { storyId } })
 
     if (foundComments) {
         res.json({ foundComments, userId })
@@ -60,5 +60,6 @@ router.get('/:storyId(\\d+)/comments', asyncHandler(async (req, res) => {
 
 }))
 
+router.get('/comments',)
 
 module.exports = router

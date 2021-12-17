@@ -3,45 +3,60 @@ const storyId = submitComment.getAttribute('value')
 
 
 
-async function getComments(sI) {
-
-    console.log('in comments', sI)
+async function getComments(postData) {
 
     const comments = await fetch(`/api/${storyId}/comments`, {
         method: "GET"
-    })  .then(data => data.text())
-        .then(dat => console.log(dat, 'DAT FILE!!!!!!!'))
+    }).then(data => data.text())
         .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
-    console.log("==============================================")
     const parsedComments = JSON.parse(comments);
     const commentStatus = parsedComments.foundComments;
     const userId = parsedComments.userId;
-    // console.log('COMMENT STATUS ==========', commentStatus)
-    console.log('USER ID AFTER FETCH ==========', userId)
-
-    commentStatus.forEach(comment => {
-
-        const commentDiv = document.querySelector('#commentsDiv')
+    const commentDiv = document.querySelector('#commentsDiv')
+    if (postData != 0) {
+        console.log('if')
         const content = document.createElement('p')
         const editButton = document.createElement('button');
+
         editButton.innerText = "Edit";
-        editButton.setAttribute('value', comment.id)
+        editButton.setAttribute('value', postData.message.id)
         editButton.setAttribute('class', 'editCommentButtons');
-        content.innerText = comment.content;
+        content.innerText = postData.message.content;
+
         commentDiv.appendChild(content)
         commentDiv.appendChild(editButton);
+    } else {
+        console.log('else')
+        commentStatus.forEach(comment => {
+
+            const content = document.createElement('p')
+            const editButton = document.createElement('button');
+
+            editButton.innerText = "Edit";
+            editButton.setAttribute('value', comment.id)
+            editButton.setAttribute('class', 'editCommentButtons');
+            content.innerText = comment.content;
+
+            commentDiv.appendChild(content)
+            commentDiv.appendChild(editButton);
+        })
+
+        const editButtons = document.querySelectorAll('.editCommentButtons');
+        editButtons.forEach(editButton => {
+            editButton.addEventListener('click', e => {
+                e.stopPropagation();
+                console.log('VALUE IS ===================', editButton.getAttribute('value'));
+            })
+
+        })
 
 
-    })
-    // const { allComments } = JSON.parse(comments)
-    // console.log(allComments)
-
+    }
 }
 
-window.addEventListener('DOMContentLoaded', async e => {
-
-    await getComments(storyId);
+function addComment() {
     submitComment.addEventListener("click", async e => {
+        e.stopPropagation();
         let contentDiv = document.querySelector('#commentContent')
         let content = contentDiv.value;
 
@@ -51,46 +66,22 @@ window.addEventListener('DOMContentLoaded', async e => {
         }
 
         contentDiv.value = "";
-
-        try {
-
-            await fetch(`/api/comments`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(_data),
-            })
-                .then(res => res.text())
-                .then(text => JSON.parse(text))
-                .then(data => {
-                    console.log('DATA IS ======================================', data);
-                    const commentDiv = document.querySelector('#commentsDiv');
-                    const content = document.createElement('p');
-                    const editButton = document.createElement('button');
-                    editButton.innerText = "Edit";
-                    content.innerText = data.message.content;
-                    editButton.name = data.userId;
-                    commentDiv.appendChild(content);
-                    commentDiv.appendChild(editButton);
-                    getComments(data);
-
-                })
-            // .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
-        } catch (err) {
-            console.log('THIS IS YOUR ERROR', err);
-        }
-
-        // getComments();
-        // console.log("=============+TEST====")
-    })
-
-    const editButtons = document.querySelectorAll('.editCommentButtons');
-    console.log('EDIT BUTTONs', editButtons);
-    editButtons.forEach(editButton => {
-        editButton.addEventListener('click', e => {
-            console.log('VALUE IS ===================', editButton.getAttribute('value'));
+        await fetch(`/api/comments`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(_data),
         })
+            .then(res => res.text())
+            .then(text => JSON.parse(text))
+            .then(postData => {
+                getComments(postData)
+                const editButtons = document.querySelectorAll('.editCommentButtons').reset();
+            })
+            .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
 
     })
+}
 
 
-})
+getComments(0);
+addComment();
