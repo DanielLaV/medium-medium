@@ -106,4 +106,20 @@ i {
     font-size: 18px;
 }
 
+.authorName {
+    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.storyTitle {
+    font-size: 22px;
+    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+.storyDiv li {
+    padding-bottom: 8px;
+}
+
 /* font-family: family-name|generic-family|initial|inherit; */

@@ -8,7 +8,7 @@ append head
 block content
   if locals.authenticated
     h1.header #{user.firstName}'s Feed
-    a(href="stories/new") Create Story
+    a.home-page-create(href="stories/new") Create Story
   else
     h1.header Medium for Mediums is a place for the spiritual to write, read, and connect
 
