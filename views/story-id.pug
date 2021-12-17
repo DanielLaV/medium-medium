@@ -15,6 +15,7 @@ block content
 
 
 
+
         if user.id == story.userId
             form(action="/stories/"+ story.id + "/edit" method='GET')
                 input(type='hidden' name='_csrf' value=csrfToken)

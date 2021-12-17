@@ -22,7 +22,7 @@ console.log('FOLLOWERUSER IS ==============================', followerUser)
     })
       .then(data => data.text())
       .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
-    console.log('ISFOLLOWING========')
+
     const followStatus = JSON.parse(isFollowing).message;
 
     followButton.innerText = followStatus;
@@ -46,7 +46,7 @@ console.log('FOLLOWERUSER IS ==============================', followerUser)
         })
         .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
 
-      console.log('RESPONSE IS ========', response)
+
       const { message } = JSON.parse(response);
 
       followButtons.forEach((button) => {
