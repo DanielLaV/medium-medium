@@ -146,4 +146,8 @@ router.post('/demo', csrfProtection, asyncHandler(async (req, res) => {
   res.redirect("/")
 }))
 
+router.post("/", (req, res) => {
+  console.log(req.params)
+})
+
 module.exports = router;

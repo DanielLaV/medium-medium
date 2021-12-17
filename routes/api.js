@@ -34,10 +34,14 @@ router.get('/profiles/:userId/follow', asyncHandler(async (req, res) => {
     }
 }))
 
-router.post('/comments', csrfProtection, asyncHandler(async (req, res) => {
-    console.log("--------------------hello-------------------------")
-    res.redirect("/")
-}))
+router.post('/comments', asyncHandler(async (req, res) => {
 
+    const { content, storyId } = req.body;
+    const { userId } = req.session.auth;
+    await db.Comment.create({ userId, storyId, content })
+    console.log("check your DB")
+}));
+
+router.get('/comments',)
 
 module.exports = router
