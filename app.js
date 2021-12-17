@@ -49,20 +49,11 @@ app.use(
 
 // create Session table if it doesn't already exist
 store.sync();
-console.log('1')
 app.use("/users", usersRouter);
-console.log('2')
 app.use("/stories", storiesRouter);
-console.log('3')
-
 app.use("/profiles", profileRouter);
-console.log('4')
-
 app.use("/api", apiRouter);
-console.log('5')
-
 app.use("/", indexRouter);
-console.log('6')
 
 
 // catch 404 and forward to error handler

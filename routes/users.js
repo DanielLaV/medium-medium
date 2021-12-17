@@ -85,7 +85,6 @@ router.post(
     capitalizeFirstName = firstName[0].toUpperCase() + firstName.slice(1)
 
     firstName = capitalizeFirstName;
-    console.log('-----------------', firstName)
     const validatorErrors = validationResult(req);
     if (validatorErrors.isEmpty()) {
       const passwordHash = await bcrypt.hash(password, 4);
@@ -141,7 +140,6 @@ router.post("/logout", csrfProtection, (req, res, next) => {
 
 router.post('/demo', csrfProtection, asyncHandler(async (req, res) => {
   const user = await db.User.findByPk(1);
-  console.log(user)
   loginUser(req, res, user);
   res.redirect("/")
 }))

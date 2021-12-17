@@ -10,7 +10,6 @@ router.get("/new", requireAuth, csrfProtection, (req, res, next) => {
 
 router.get("/:id(\\d+)", requireAuth, csrfProtection, async (req, res) => {
     const { userId } = req.session.auth;
-    console.log(userId);
     const id = req.path.slice(1)
     const story = await db.Story.findByPk(id);
     res.render('story-id', { story, csrfToken: req.csrfToken(), userId });
