@@ -24,4 +24,10 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
   }
 }))
 
+router.get('/splash', csrfProtection, asyncHandler(async (req, res) => {
+      const storyList = await db.Story.findAll({ include: db.User });
+      res.render('index1', { csrfToken: req.csrfToken(), storyList });
+      return
+}));
+
 module.exports = router;
