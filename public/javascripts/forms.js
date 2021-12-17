@@ -1,51 +1,48 @@
-// // const { body } = require("express-validator");
+const login = document.querySelector(".login");
+const signup = document.querySelector(".signup");
+const loginButton = document.querySelector("#loginButton");
+const signupButton = document.querySelector("#signupButton");
+const logoutButton = document.querySelector("#logoutButton");
 
-// // const { urlencoded } = require("express");
+document.body.addEventListener("click", closeLogin, false);
+document.body.addEventListener("click", closeSignup, false);
 
-// const login = document.querySelector(".login");
-// const signup = document.querySelector(".signup");
-// const loginButton = document.querySelector("#loginButton");
-// const signupButton = document.querySelector("#signupButton");
-// const logoutButton = document.querySelector("#logoutButton");
+function closeLogin() {
+  login.classList.remove("open");
+  document.body.classList.remove("blur")
+}
 
-// document.body.addEventListener("click", closeLogin);
-// document.body.addEventListener("click", closeSignup);
+function closeSignup() {
+  signup.classList.remove("open");
+}
 
-// function closeLogin() {
-//   login.classList.remove("open");
-//   document.body.classList.remove("blur")
-// }
+loginButton.addEventListener("click", (e) => {
+  closeSignup();
+  e.stopPropagation();
+  login.classList.add("open");
+  document.body.classList.add("blur")
+});
 
-// function closeSignup() {
-//   signup.classList.remove("open");
-// }
+login.addEventListener("click", (e) => {
+  closeSignup();
+  e.stopPropagation();
+});
 
-// loginButton.addEventListener("click", (e) => {
-//   closeSignup();
-//   e.stopPropagation();
-//   login.classList.add("open");
-//   document.body.classList.add("blur")
-// });
+signupButton.addEventListener("click", (e) => {
+  closeLogin();
+  e.stopPropagation();
+  signup.classList.add("open");
+  document.body.classList.add("blur")
+});
 
-// login.addEventListener("click", (e) => {
-//   closeSignup();
-//   e.stopPropagation();
-// });
-
-// signupButton.addEventListener("click", (e) => {
-//   closeLogin();
-//   e.stopPropagation();
-//   signup.classList.add("open");
-//   document.body.classList.add("blur")
-// });
-
-// signup.addEventListener("click", (e) => {
-//   console.log("hello")
-//   closeLogin();
-//   e.stopPropagation();
-// });
+signup.addEventListener("click", (e) => {
+  console.log("hello")
+  closeLogin();
+  e.stopPropagation();
+});
 
 
-// if (location.pathname == '/users/login') {
-//   login.classList.add("open");
-// }
+if (location.pathname == '/users/login') {
+  login.classList.add("open");
+}
+

@@ -20,7 +20,6 @@ router.get("/new", requireAuth, csrfProtection, (req, res, next) => {
 //temp get route
 router.get("/:id(\\d+)", requireAuth, csrfProtection, async (req, res) => {
     const { userId } = req.session.auth;
-    console.log(userId);
     const id = req.path.slice(1)
     const story = await db.Story.findByPk(id, { include: [db.User, db.Like] });
     res.render('story-id-1', { story, csrfToken: req.csrfToken(), userId });
@@ -56,6 +55,13 @@ router.post("/:id(\\d+)", requireAuth, csrfProtection, asyncHandler(async (req, 
     await story.destroy();
     res.redirect('/');
 }));
+
+
+console.log('here i am-------------------------------------')
+router.post('/comments', csrfProtection, asyncHandler(async (req, res) => {
+    console.log("--------------------hello-------------------------")
+    res.redirect("/")
+}))
 
 module.exports = router;
 
