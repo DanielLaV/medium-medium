@@ -22,7 +22,7 @@ router.get("/:id(\\d+)", requireAuth, csrfProtection, async (req, res) => {
     const { userId } = req.session.auth;
     const id = req.path.slice(1)
     const story = await db.Story.findByPk(id, { include: [db.User, db.Like] });
-    res.render('story-id-1', { story, csrfToken: req.csrfToken(), userId });
+    res.render('story-id', { story, csrfToken: req.csrfToken(), userId });
 });
 
 router.get("/:id(\\d+)/edit", requireAuth, csrfProtection, async (req, res) => {
