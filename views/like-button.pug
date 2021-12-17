@@ -1,11 +1,11 @@
 if story.Likes && story.Likes.filter(like => like.userId === userId).length
     button.likeButton(class=`${userId} liked` id=`${story.id}`)
         <i class="fas fa-hand-sparkles"></i>
-        span #{story.Likes.length} Likes
-else if story.Likes
+        span #{story.Likes.length}
+else if story.Likes && story.Likes.length > 1
     button.likeButton(class=`${userId} not-liked` id=`${story.id}`)
         <i class="fas fa-hand-sparkles"></i>
-        span #{story.Likes.length} Likes
+        span #{story.Likes.length}
 else
     button.likeButton(class=`${userId} not-liked` id=`${story.id}`)
         <i class="fas fa-hand-sparkles"></i>

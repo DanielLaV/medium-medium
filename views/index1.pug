@@ -19,7 +19,7 @@ block content
           .storyDiv(value=""+ story.id href="/stories/id")
             li.storyAuthor
               img.titleImage(src="" + story.User.profileImage)
-              a.authorName #{story.User.username}
+              a.authorName #{story.User.firstName} #{story.User.lastName}
             li.storyTitle=story.title
             li
           include like-button.pug

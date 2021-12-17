@@ -95,5 +95,15 @@ body{
 } */
 
 .likeButton {
-    font-size: 12.5px;
+    font-size: 14px;
+    background-color: inherit;
+    border: none;
+    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
+
+i {
+    padding-right: 10px;
+    font-size: 18px;
+}
+
+/* font-family: family-name|generic-family|initial|inherit; */
