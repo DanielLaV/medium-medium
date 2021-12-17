@@ -11,6 +11,9 @@ block content
             label( for="newComment" name="newComment") Add your comment below
             textarea#commentContent
             button(type='submit' value=story.id)#submitComment Add Comment
+            #commentsDiv
+
+
 
         if user.id == story.userId
             form(action="/stories/"+ story.id + "/edit" method='GET')

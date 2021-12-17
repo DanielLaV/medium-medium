@@ -4,7 +4,6 @@ const { csrfProtection, asyncHandler } = require("../utils");
 const db = require("../db/models");
 const { requireAuth } = require("../auth");
 
-console.log("inside api router-----------------------------")
 
 router.post('/follow', asyncHandler(async (req, res) => {
     const { followerUserId, followingUserId } = req.body;
@@ -35,13 +34,22 @@ router.get('/profiles/:userId/follow', asyncHandler(async (req, res) => {
 }))
 
 router.post('/comments', asyncHandler(async (req, res) => {
-
     const { content, storyId } = req.body;
     const { userId } = req.session.auth;
     await db.Comment.create({ userId, storyId, content })
-    console.log("check your DB")
 }));
 
-router.get('/comments',)
+router.get('/:storyId(\\d+)/comments', asyncHandler(async (req, res) => {
+    const storyId = parseInt(req.params.storyId);
+    const foundComments = await db.Comment.findAll({ where: { storyId } })
+    console.log(foundComments)
+    if (foundComments) {
+        res.json({ foundComments })
+    } else {
+        res.json({ foundComments })
+    }
+
+}))
+
 
 module.exports = router
