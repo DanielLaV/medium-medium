@@ -57,9 +57,17 @@ router.get('/:storyId(\\d+)/comments', asyncHandler(async (req, res) => {
     } else {
         res.json({ foundComments, userId })
     }
-
 }))
 
-router.get('/comments',)
+router.get('/comments/:id(\\d+)', asyncHandler(async (req, res) => {
+    const commentId = parseInt(req.params.id);
 
+    const comment = await db.Comment.findByPk(commentId);
+    // console.log('CONTENT IS ', content);
+    res.json({ comment });
+}));
+
+router.all('/', asyncHandler((req, res) => {
+    console.log("============HELLO FROM ALL===========")
+}))
 module.exports = router
