@@ -30,7 +30,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
 
 
-
     followButton.addEventListener("click", async (e) => {
       e.stopPropagation();
       // let _data = {

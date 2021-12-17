@@ -85,3 +85,41 @@ body{
     overflow: hidden;
     margin-top: 10px;
 }
+
+/* .likeButton.liked {
+    color: red;
+}
+
+.likeButton.not-liked {
+    color: black;
+} */
+
+.likeButton {
+    font-size: 14px;
+    background-color: inherit;
+    border: none;
+    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+i {
+    padding-right: 10px;
+    font-size: 18px;
+}
+
+.authorName {
+    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.storyTitle {
+    font-size: 22px;
+    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+.storyDiv li {
+    padding-bottom: 8px;
+}
+
+/* font-family: family-name|generic-family|initial|inherit; */

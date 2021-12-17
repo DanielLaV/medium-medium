@@ -13,7 +13,7 @@ const storiesRouter = require("./routes/stories");
 const { sessionSecret } = require("./config");
 const { restoreUser } = require("./auth");
 const { profile } = require("console");
-const apiRouter = require('./routes/api')
+const apiRouter = require('./routes/api');;
 
 const app = express();
 

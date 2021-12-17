@@ -1,7 +1,3 @@
-// const { body } = require("express-validator");
-
-// const { urlencoded } = require("express");
-
 const login = document.querySelector(".login");
 const signup = document.querySelector(".signup");
 const loginButton = document.querySelector("#loginButton");
@@ -49,3 +45,4 @@ signup.addEventListener("click", (e) => {
 if (location.pathname == '/users/login') {
   login.classList.add("open");
 }
+

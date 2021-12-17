@@ -3,6 +3,7 @@ const router = express.Router()
 const { csrfProtection, asyncHandler } = require("../utils");
 const db = require("../db/models");
 const { requireAuth } = require("../auth");
+const e = require('express');
 
 
 router.post('/follow', asyncHandler(async (req, res) => {
@@ -32,6 +33,20 @@ router.get('/profiles/:userId/follow', asyncHandler(async (req, res) => {
         res.json({ message: 'Follow' });
     }
 }))
+
+router.post('/stories/:storyId/like', asyncHandler( async (req,res)=> {
+    const { userId, storyId} = req.body;
+    const exists = await db.Like.findOne({ where: { storyId, userId }});
+    if (exists){
+        console.log('unlike successfull')
+        await db.Like.destroy({ where: { storyId, userId }});
+        res.json({ message: "black" });
+    } else {
+        console.log('like successfull')
+        await db.Like.create({ storyId, userId });
+        res.json({ message: "red" });
+    }
+}));
 
 router.post('/comments', asyncHandler(async (req, res) => {
     const { content, storyId } = req.body;
@@ -67,7 +82,4 @@ router.get('/comments/:id(\\d+)', asyncHandler(async (req, res) => {
     res.json({ comment });
 }));
 
-router.all('/', asyncHandler((req, res) => {
-    console.log("============HELLO FROM ALL===========")
-}))
 module.exports = router
