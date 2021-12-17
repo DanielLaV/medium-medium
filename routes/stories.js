@@ -47,6 +47,13 @@ router.post("/:id(\\d+)", requireAuth, csrfProtection, asyncHandler(async (req, 
     res.redirect('/');
 }));
 
+
+console.log('here i am-------------------------------------')
+router.post('/comments', csrfProtection, asyncHandler(async (req, res) => {
+    console.log("--------------------hello-------------------------")
+    res.redirect("/")
+}))
+
 module.exports = router;
 
 
