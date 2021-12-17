@@ -9,7 +9,7 @@ block content
         p= story.content
         .comments
             label( for="newComment" name="newComment") Add your comment below
-            textarea#commentContent
+            textarea#commentContent(required="required")
             button(type='submit' value=story.id)#submitComment Add Comment
             #commentsDiv
 
