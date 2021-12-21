@@ -23,11 +23,11 @@ html
           a#signupButton Sign Up
           form(action="/users/demo" method="POST")
             input(type='hidden' name='_csrf' value=csrfToken)
-            input.button(type="submit" value="DEMO")
+            input#demoButton.button(type="submit" value="Demo User")
       else
         .authMenu
           p Welcome #{user.firstName}
-        form(action="/users/logout" method="POST")
+        form#logoutDiv(action="/users/logout" method="POST")
           input(type='hidden' name='_csrf' value=csrfToken)
           .buttonLogout
             button#logoutButton Log Out
@@ -45,7 +45,7 @@ html
               input(type="password" required="required" name="password")
               input.button(type="submit" value="Login")
               p.signupLink No account?
-                a(href="#") Sign Up
+                a(href="/users/signup") Sign Up
 
     .signup
       .container
@@ -66,8 +66,8 @@ html
               input(type="password" required="required" name="password")
               label(for="confirmPassword") Confirm Password
               input(type="password" required="required" name="confirmPassword")
-              button(type="submit") Sign Up
+              input.button(type="submit" value="Sign Up")
               p.signupLink Already have an account?
-                a(href="#") Log In
+                a(href="/users/login") Log In
 
 block content
