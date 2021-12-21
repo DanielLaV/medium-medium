@@ -10,10 +10,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
       followButton.style.display = "none";
     }
 
-    let _data = {
-      followerUserId: followerUser,
-      followingUserId: followingUser,
-    };
+
 
     // const isFollowing = await fetch(`/api/profiles/${followingUser}/follow`, {
     //   method: "GET",
@@ -28,12 +25,18 @@ window.addEventListener("DOMContentLoaded", (e) => {
     followButton.addEventListener("click", async (e) => {
       e.stopPropagation();
 
+      let _data = {
+        followerUserId: followerUser,
+        followingUserId: followingUser,
+      };
+
       const response = await fetch("/api/follow", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(_data),
       });
       const JSONresponse = await response.json();
+      console.log('THIS IS JSONRESPONSE==========', JSONresponse);
       const message = JSONresponse.message;
 
       followButtons.forEach((button) => {

@@ -8,6 +8,7 @@ const e = require("express");
 router.post(
   "/follow",
   asyncHandler(async (req, res) => {
+    console.log('INSIDE API/FOLLOW');
     const { followerUserId, followingUserId } = req.body;
 
     const exists = await db.Relationship.findOne({
@@ -15,11 +16,15 @@ router.post(
     });
 
     if (exists) {
+      console.log('DESTROY ===============')
       await db.Relationship.destroy({
         where: { followingUserId, followerUserId },
       });
       res.json({ message: "Follow" });
+
     } else {
+      console.log('CREATE ===============')
+
       await db.Relationship.create({ followingUserId, followerUserId });
       res.json({ message: "Following" });
     }

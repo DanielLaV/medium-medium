@@ -20,6 +20,7 @@ router.get(
       include: "FollowingLinks",
     });
 
+
     let usersFollowing = []; //list of who the profile user follows
 
     for (let idx in userRelationships) {
@@ -34,25 +35,20 @@ router.get(
 
     const activeUserRelationships = await db.Relationship.findAll({
       where: {
-        followingUserId: userId,
+        followingUserId: profileUser.id,
+        followerUserId: userId
       },
-      include: "FollowerLinks",
     });
 
-    const followingBinary = activeUserRelationships.filter((relat) => {
-      return (
-        relat.followingUserId === userId &&
-        relat.followerUserId === profileUser.id
-      );
-    }).length;
+    const followingBinary = activeUserRelationships.length;
 
     res.render("profile", {
-      profileUser,
-      usersFollowing,
-      userId,
-      numOfFollowing,
-      followingBinary,
-    });
+    profileUser,
+    usersFollowing,
+    userId,
+    numOfFollowing,
+    followingBinary,
+  });
   })
 );
 
@@ -110,12 +106,3 @@ router.post(
 );
 
 module.exports = router;
-
-/*
-    Try to find relationship
-      if it doesn't exists (return null)
-        send follow
-      else
-        send following
-
-*/
