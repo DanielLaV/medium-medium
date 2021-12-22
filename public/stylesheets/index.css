@@ -17,6 +17,7 @@ body{
 
 #storyImage{
     border-radius: 5px;
+    box-shadow: 5px 5px 5px lightgray;
 }
 
 .nav{
@@ -39,6 +40,7 @@ body{
     background-color: goldenrod;
     width: 100%;
     border-bottom: 1px black solid;
+    justify-content: center;
 }
 
 .noAuthMenu{
@@ -57,6 +59,10 @@ body{
     align-items: center;
     font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-weight: 400;
+}
+
+.noAuthMenu:hover{
+    cursor: pointer;
 }
 
 #demoButton, #logoutButton{
@@ -103,6 +109,10 @@ body{
     overflow: hidden;
     padding-top: 25px;
     margin-left: 25px;
+}
+
+.storyDiv:hover{
+    cursor: pointer;
 }
 
 .storyAuthor{
@@ -192,4 +202,7 @@ i {
     width: 20%;
     font-size: 20px;
 }
+
+
+
 /* font-family: family-name|generic-family|initial|inherit; */
