@@ -7,6 +7,7 @@ align-items: center;
 .storyContent{
     width: 70%;
     align-self: center;
+    margin-top: 20px;
 }
 
 .comments{
