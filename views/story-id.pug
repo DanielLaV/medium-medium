@@ -1,29 +1,40 @@
 extends layout.pug
 
 append head
-    script(src="../javascripts/comments.js" type="module")
+    script(src="/javascripts/comments.js" type="module")
     script(src="/javascripts/like.js" type="module")
+    link(rel="stylesheet" href="/stylesheets/stroyId.css")
 
 
 block content
-    h1= story.title
+
+    if user.id == story.userId
+        .editDeleteButtons
+            form#editStoryButton(action="/stories/"+ story.id + "/edit" method='GET')
+                input(type='hidden' name='_csrf' value=csrfToken)
+                input(type='submit' value='Edit')
+            form#deleteStoryButton(action="/stories/"+ story.id method='POST')
+                input(type='hidden' name='_csrf' value=csrfToken)
+                input(type='submit' value='Delete')
+
     .story
-        p= story.content
+        h1= story.title
+        p.storyContent= story.content
         div
             include like-button.pug
         .comments
-            label( for="newComment" name="newComment") Add your comment below
-            textarea#commentContent(required="required")
-            button(type='submit' value=story.id)#submitComment Add Comment
+            label( for="newComment" name="newComment")
+            textarea#newComment(name="newComment", cols="30", rows="10", placeholder="What are your thoughts?")
+            button#submitCommentButton(type='submit' value=story.id ) Respond
             #commentsDiv
-
-
-
-
-        if user.id == story.userId
-            form(action="/stories/"+ story.id + "/edit" method='GET')
-                input(type='hidden' name='_csrf' value=csrfToken)
-                input(type='submit' value='Edit')
-            form(action="/stories/"+ story.id method='POST')
-                input(type='hidden' name='_csrf' value=csrfToken)
-                input(type='submit' value='Delete')
+                for comment in story.Comments
+                    .thisComment(id='thisComment'+comment.id)
+                        p(id= 'comment'+comment.id)= comment.content
+                        .editText(id= "editController"+comment.id value=comment.id)
+                            textarea(id="textArea"+comment.id)= comment.content
+                            button.submitEdit(id= "submitEdit"+comment.id) Submit
+                            button.cancelEdit(id= "cancelEdit"+comment.id) Cancel
+                        if user.id == comment.userId
+                            .editDeleteButtons
+                                button.editCommentButtons(value= comment.id) Edit
+                                button.deleteCommentButtons(value= comment.id) Delete

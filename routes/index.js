@@ -18,7 +18,6 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 
 
     let usersFollowing = [];
-
     for (let idx in follow) {
       let relat = await db.User.findByPk(
         follow[idx].followingUserId

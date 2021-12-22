@@ -1,73 +1,13 @@
-const submitComment = document.querySelector('#submitComment')
+const submitComment = document.querySelector('#submitCommentButton')
 const storyId = submitComment.getAttribute('value')
 
-
-
-async function getComments(postData) {
-
-    const comments = await fetch(`/api/${storyId}/comments`, {
-        method: "GET"
-    })  .then(data => data.text())
-        .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
-    const parsedComments = JSON.parse(comments);
-    const commentStatus = parsedComments.foundComments;
-    const userId = parsedComments.userId;
-    const commentDiv = document.querySelector('#commentsDiv')
-    if (postData != 0) {
-        console.log('if')
-        const content = document.createElement('p');
-
-        content.innerText = postData.message.content;
-        commentDiv.appendChild(content);
-
-        if (userId === postData.message.userId) {
-            const editButton = document.createElement('button');
-
-            editButton.innerText = "Edit";
-            editButton.setAttribute('value', postData.message.id)
-            editButton.setAttribute('class', 'editCommentButtons');
-            content.setAttribute('value', postData.message.id);
-            commentDiv.appendChild(editButton);
-        }
-
-
-    } else {
-        console.log('else')
-        commentStatus.forEach(comment => {
-
-            const content = document.createElement('p')
-            const editButton = document.createElement('button');
-
-            content.innerText = comment.content;
-            commentDiv.appendChild(content)
-
-            if (userId === comment.userId) {
-                editButton.innerText = "Edit";
-                editButton.setAttribute('value', comment.id)
-                editButton.setAttribute('class', 'editCommentButtons');
-                content.setAttribute('value', comment.id);
-                commentDiv.appendChild(editButton);
-            }
-
-        })
-
-        // const editButtons = document.querySelectorAll('.editCommentButtons');
-        // editButtons.forEach(editButton => {
-        //     editButton.addEventListener('click', e => {
-        //         e.stopPropagation();
-        //     })
-
-        // })
-
-    }
-    editComment()
-}
 
 function addComment() {
     submitComment.addEventListener("click", async e => {
         e.stopPropagation();
-        let contentDiv = document.querySelector('#commentContent')
-        let content = contentDiv.value;
+        const newComment = document.querySelector('#newComment')
+        const content = newComment.value;
+        const commentsDiv = document.querySelector('#commentsDiv')
 
         if (content === '') {
             alert('Comment can not be empty');
@@ -79,44 +19,114 @@ function addComment() {
             storyId,
         }
 
-        contentDiv.value = "";
+        newComment.value = "";
         await fetch(`/api/comments`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(_data),
         })
-            .then(res => res.text())
-            .then(text => JSON.parse(text))
-            .then(postData => {
-                getComments(postData)
-            })
+            .then(res => res.json())
             .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
+
+        const thisComment = document.createElement('div')
+        thisComment.classList.add(`thisComment`)
+
+        const commentContent = document.createElement('p')
+        commentContent.innerText = content
+
+        const editDeleteButtons = document.createElement('div')
+        editDeleteButtons.classList.add('editDeleteButtons')
+
+        const editButton = document.createElement('button')
+        editButton.innerText = 'Edit'
+
+        const deleteButton = document.createElement('button')
+        deleteButton.innerText = 'Delete'
+
+        thisComment.appendChild(commentContent)
+        editDeleteButtons.appendChild(editButton)
+        editDeleteButtons.appendChild(deleteButton)
+        thisComment.appendChild(editDeleteButtons)
+        commentsDiv.appendChild(thisComment)
+
 
     })
 }
-function editComment() {
-    const editButtons = document.querySelectorAll('.editCommentButtons');
 
-    editButtons.forEach(async button => {
-        button.addEventListener('click', async e => {
+function editComment() {
+    const editButtons = document.querySelectorAll('.editCommentButtons')
+    editButtons.forEach(button => {
+        button.addEventListener('click', e => {
             e.stopPropagation();
             const commentId = button.getAttribute('value');
+            const editTextArea = document.querySelector(`#textArea${commentId}`)
+            const control = document.querySelector(`#editController${commentId}`)
+            control.classList.add('open')
+            const editCommentAction = document.querySelector(`#submitEdit${commentId}`)
+            cancelEdit();
+            editCommentAction.addEventListener('click', async e => {
+                e.stopPropagation();
+                const content = editTextArea.value
+                let _data = {
+                    content,
+                    commentId,
+                }
+                await fetch(`/api/comments/${commentId}`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(_data),
+                })
+                    .then(res => res.json())
+                    .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
 
-            const commentObj = await fetch(`/api/comments/${commentId}`, {
-                method: "GET"
-            })  .then(data => data.text())
-                .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
+                //find p tag
+                const comment = document.querySelector(`#comment${commentId}`)
+                //set innerText to the new comment info
+                comment.innerText = editTextArea.value
+                //close edit box (remove class open)
+                control.classList.remove('open')
+                //event listener for cancel buttons that will close box (remove class open)
 
-            const comment = JSON.parse(commentObj).comment.content;
-
-
-
-            console.log('Comment ID ', comment)
-
-
+            })
         })
     });
-};
-// console.log('THIS IS CONTENT ========', content)
-getComments(0);
-addComment();
+}
+
+function deleteComment() {
+    const deleteButtons = document.querySelectorAll('.deleteCommentButtons')
+    deleteButtons.forEach(button => {
+        const commentId = button.getAttribute('value');
+        button.addEventListener('click', async e => {
+            e.stopPropagation();
+            await fetch(`/api/comments/${commentId}`, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
+
+            const thisComment = document.querySelector(`#thisComment${commentId}`)
+            thisComment.remove();
+        })
+    })
+}
+
+function cancelEdit() {
+    const controls = document.querySelectorAll('.editText')
+    controls.forEach(control => {
+        if (control.classList.contains('open')) {
+            const commentId = control.getAttribute('value')
+            const cancel = document.querySelector(`#cancelEdit${commentId}`)
+            cancel.addEventListener("click", e => {
+                e.stopPropagation();
+                control.classList.remove('open')
+            })
+        }
+    })
+}
+
+
+window.addEventListener('DOMContentLoaded', e => {
+    addComment();
+    editComment();
+    deleteComment();
+})
