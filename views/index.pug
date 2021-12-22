@@ -8,7 +8,7 @@ append head
 block content
   .callToAction
     if locals.authenticated
-      button#createStoryButton(href="stories/new") + Create Story
+      a#createStoryButton(href="stories/new") + Create Story
       #imgContainer
       for thing in usersFollowing
         img#followingImages(src=thing.profileImage)
