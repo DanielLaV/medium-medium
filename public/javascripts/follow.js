@@ -36,7 +36,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
         body: JSON.stringify(_data),
       });
       const JSONresponse = await response.json();
-      console.log('THIS IS JSONRESPONSE==========', JSONresponse);
       const message = JSONresponse.message;
 
       followButtons.forEach((button) => {

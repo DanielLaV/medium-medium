@@ -1,7 +1,5 @@
 const likeButtons = document.querySelectorAll(".likeButton");
-console.log(likeButtons);
 window.addEventListener("DOMContentLoaded", (e) => {
-  console.log("--------test-");
   let message;
 
   likeButtons.forEach((likeButton) => {
@@ -12,7 +10,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
     };
 
     likeButton.addEventListener("click", async (e) => {
-      console.log("---------like button clicked");
       const isLiked = await fetch(`/api/stories/${storyId}/like`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -21,8 +18,7 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
       const JSONmessage = await isLiked.json();
       const message = JSONmessage.message;
-      console.log(message);
-  
+
       try {
         const likeCount = document.querySelector(`#likeCount-${storyId}`);
         if (message === "unlike") {

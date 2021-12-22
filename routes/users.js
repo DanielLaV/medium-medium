@@ -126,10 +126,8 @@ router.post(
         res.redirect("/");
       } else {
         //generate error
-        console.log("error")
       }
     }
-    console.log(`sending ${email} and ${password}`);
   })
 );
 
@@ -144,8 +142,5 @@ router.post('/demo', csrfProtection, asyncHandler(async (req, res) => {
   res.redirect("/")
 }))
 
-router.post("/", (req, res) => {
-  console.log(req.params)
-})
 
 module.exports = router;
