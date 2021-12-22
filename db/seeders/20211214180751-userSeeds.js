@@ -7,7 +7,7 @@ module.exports = {
       "Users",
       [
         {
-          username: 'Demo', passwordHash: 'password', firstName: 'Demo', lastName: 'User', about: "I'm a demo user", profileImage: 'https://demos.lucentinian.com/usersdemo/api/user/pic', email: "demo@demo.com", createdAt: new Date(), updatedAt: new Date()
+          username: 'Demo', passwordHash: 'password', firstName: 'Demo', lastName: 'User', about: "I'm a demo user", profileImage: '', email: "demo@demo.com", createdAt: new Date(), updatedAt: new Date()
         },
         { username: 'ImFromSixthSense', passwordHash: 'password', firstName: 'Dr. Malcolm', lastName: 'Crowe', about: 'I know a kid. He sees dead people. That probably should have been my first clue.', profileImage: 'https://i.pinimg.com/originals/d5/9c/9c/d59c9c118230c366bceb74a2bb58c240.jpg', email: "sixthsense@six.com", createdAt: new Date(), updatedAt: new Date() },
         { username: 'FriendlyGhost', passwordHash: 'password', firstName: 'Casper', lastName: 'N/A', about: "I'm basically a super hero.", profileImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFgZDRm-s6bY5qVCHSB9HhpxX3wvFctGtRuw&usqp=CAU', email: "casper@friendly.com", createdAt: new Date(), updatedAt: new Date() },

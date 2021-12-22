@@ -1,0 +1,61 @@
+.story{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.storyContent{
+    width: 70%;
+    align-self: center;
+}
+
+.comments{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px;
+}
+
+#commentContent{
+    width: 80%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .2);
+    margin-bottom: 5px;
+    border: lightgray;
+    font-weight: bold;
+}
+
+#commentContent::placeholder{
+    color: rgb(220, 220, 220);
+}
+
+.editDeleteButtons{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    margin-left: auto;
+}
+
+#deleteStoryButton input[type=submit]{
+    background-color: red;
+    color: white;
+}
+
+#editStoryButton input[type=submit]{
+    background-color: green;
+    margin-right: 10px;
+    color: white;
+}
+
+#submitCommentButton{
+    background-color: green;
+    border-radius: 15px;
+    color: white;
+}
+
+.editText{
+    display: none;
+}
+
+.editText.open{
+    display: flex;
+}

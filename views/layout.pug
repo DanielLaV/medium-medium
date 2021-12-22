@@ -4,9 +4,9 @@ html
       block head
         title=title
         <style>@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');</style>
-        <script src="https://kit.fontawesome.com/e2eb58d7ee.js" crossorigin="anonymous"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        script(src="https://kit.fontawesome.com/e2eb58d7ee.js" crossorigin="anonymous")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com")
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel='stylesheet' href='/stylesheets/forms.css')
@@ -23,11 +23,11 @@ html
           a#signupButton Sign Up
           form(action="/users/demo" method="POST")
             input(type='hidden' name='_csrf' value=csrfToken)
-            input.button(type="submit" value="DEMO")
+            input#demoButton.button(type="submit" value="Demo User")
       else
         .authMenu
           p Welcome #{user.firstName}
-        form(action="/users/logout" method="POST")
+        form#logoutDiv(action="/users/logout" method="POST")
           input(type='hidden' name='_csrf' value=csrfToken)
           .buttonLogout
             button#logoutButton Log Out
@@ -45,7 +45,7 @@ html
               input(type="password" required="required" name="password")
               input.button(type="submit" value="Login")
               p.signupLink No account?
-                a(href="#") Sign Up
+                a(href="/users/signup") Sign Up
 
     .signup
       .container
@@ -66,8 +66,11 @@ html
               input(type="password" required="required" name="password")
               label(for="confirmPassword") Confirm Password
               input(type="password" required="required" name="confirmPassword")
-              button(type="submit") Sign Up
+              input.button(type="submit" value="Sign Up")
               p.signupLink Already have an account?
-                a(href="#") Log In
+                a(href="/users/login") Log In
 
 block content
+
+
+  .footer

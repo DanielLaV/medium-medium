@@ -54,41 +54,31 @@ router.post(
   asyncHandler(async (req, res) => {
     const { content, storyId } = req.body;
     const { userId } = req.session.auth;
-
     try {
-      const comment = await db.Comment.create({ userId, storyId, content });
-      res.json({ message: comment, userId });
+        const comment = await db.Comment.create({ userId, storyId, content })
+        console.log('searching...')
+        const commentId = await db.Comment.max('id')
+        console.log('CommentId:=======', commentId)
+        res.json({ message: comment, userId });
     } catch (err) {
       // console.log('===========API ERROR HANDLER', err);
     }
   })
 );
 
-router.get(
-  "/:storyId(\\d+)/comments",
-  asyncHandler(async (req, res) => {
-    const storyId = parseInt(req.params.storyId);
-    const { userId } = req.session.auth;
 
-    const foundComments = await db.Comment.findAll({ where: { storyId } });
+router.post('/comments/:id(\\d+)', asyncHandler(async (req, res) => {
+    const { content, commentId } = req.body;
+    const data = db.Comment.update({ content }, { where: { id: commentId } })
+    res.json({ data });
+}));
 
-    if (foundComments) {
-      res.json({ foundComments, userId });
-    } else {
-      res.json({ foundComments, userId });
-    }
-  })
-);
+router.delete('/comments/:id(\\d+)', asyncHandler(async (req, res) => {
+    const commentId = req.params.id
+    await db.Comment.destroy({ where: { id: commentId } })
+    res.json({});
+}));
 
-router.get(
-  "/comments/:id(\\d+)",
-  asyncHandler(async (req, res) => {
-    const commentId = parseInt(req.params.id);
 
-    const comment = await db.Comment.findByPk(commentId);
-    // console.log('CONTENT IS ', content);
-    res.json({ comment });
-  })
-);
 
 module.exports = router;
