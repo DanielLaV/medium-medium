@@ -8,7 +8,7 @@ const e = require("express");
 router.post(
   "/follow",
   asyncHandler(async (req, res) => {
-    console.log('INSIDE API/FOLLOW');
+    console.log("INSIDE API/FOLLOW");
     const { followerUserId, followingUserId } = req.body;
 
     const exists = await db.Relationship.findOne({
@@ -16,38 +16,19 @@ router.post(
     });
 
     if (exists) {
-      console.log('DESTROY ===============')
+      console.log("DESTROY ===============");
       await db.Relationship.destroy({
         where: { followingUserId, followerUserId },
       });
       res.json({ message: "Follow" });
-
     } else {
-      console.log('CREATE ===============')
+      console.log("CREATE ===============");
 
       await db.Relationship.create({ followingUserId, followerUserId });
       res.json({ message: "Following" });
     }
   })
 );
-
-// router.get(
-//   "/profiles/:userId/follow",
-//   asyncHandler(async (req, res) => {
-//     const followingUserId = parseInt(req.params.userId);
-//     const followerUserId = parseInt(req.session.auth.userId);
-
-//     const exists = await db.Relationship.findOne({
-//       where: { followingUserId, followerUserId },
-//     });
-
-//     if (exists) {
-//       res.json({ message: "Following" });
-//     } else {
-//       res.json({ message: "Follow" });
-//     }
-//   })
-// );
 
 router.post(
   "/stories/:storyId/like",
