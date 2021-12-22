@@ -57,8 +57,6 @@ const userValidator = [
     .withMessage("Name must not be more than 50 characters"),
 ];
 
-/* GET users listing. */
-
 router.get(
   "/login",
   csrfProtection,

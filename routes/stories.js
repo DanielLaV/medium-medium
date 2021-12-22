@@ -1,4 +1,5 @@
-const { requireAuth } = require("../auth"); //pass this as misddleware for anything that requires auth
+//pass requireAuth as misddleware for anything that requires auth
+const { requireAuth } = require("../auth");
 const express = require("express");
 const router = express.Router();
 const db = require("../db/models");
@@ -45,8 +46,5 @@ router.post("/:id(\\d+)", requireAuth, csrfProtection, asyncHandler(async (req, 
     await story.destroy();
     res.redirect('/');
 }));
-
-
-
 
 module.exports = router;

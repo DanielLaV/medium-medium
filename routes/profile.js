@@ -14,24 +14,21 @@ router.get(
 
     // find who a profile is following
     const userRelationships = await db.Relationship.findAll({
-      where: {
-        followerUserId: profileUser.id,
-      },
-      include: "FollowingLinks",
+      where: { followerUserId: profileUser.id },
+      include: "FollowingLinks"
     });
 
-
-    let usersFollowing = []; //list of who the profile user follows
+    //list of who the profile user follows
+    let usersFollowing = [];
 
     for (let idx in userRelationships) {
       let relat = await db.User.findByPk(
         userRelationships[idx].followingUserId
       );
-      usersFollowing.push(relat);
+      usersFollowing.push(relat)
     }
 
-    const numOfFollowing = userRelationships.length;
-    //////////////////////////////////////////////////////////////
+    const numOfFollowing = userRelationships.length
 
     const activeUserRelationships = await db.Relationship.findAll({
       where: {
@@ -43,12 +40,12 @@ router.get(
     const followingBinary = activeUserRelationships.length;
 
     res.render("profile", {
-    profileUser,
-    usersFollowing,
-    userId,
-    numOfFollowing,
-    followingBinary,
-  });
+      profileUser,
+      usersFollowing,
+      userId,
+      numOfFollowing,
+      followingBinary,
+    });
   })
 );
 
@@ -57,8 +54,6 @@ router.get(
   asyncHandler(async (req, res) => {
     const { userId } = req.session.auth;
     const username = req.params.username;
-    console.log("REQPARAMS IS ======", req.params);
-    console.log("username IS ======", username);
     const profileUser = await db.User.findOne({ where: { username } });
 
     const userRelationships = await db.Relationship.findAll({
