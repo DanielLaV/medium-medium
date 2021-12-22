@@ -21,7 +21,7 @@ router.get("/new", requireAuth, csrfProtection, (req, res, next) => {
 router.get("/:id(\\d+)", requireAuth, csrfProtection, async (req, res) => {
     const { userId } = req.session.auth;
     const id = req.path.slice(1)
-    const story = await db.Story.findByPk(id, { include: [db.User, db.Like] });
+    const story = await db.Story.findByPk(id, { include: [db.User, db.Like, db.Comment] });
     res.render('story-id', { story, csrfToken: req.csrfToken(), userId });
 });
 
@@ -57,19 +57,6 @@ router.post("/:id(\\d+)", requireAuth, csrfProtection, asyncHandler(async (req, 
 }));
 
 
-console.log('here i am-------------------------------------')
-router.post('/comments', csrfProtection, asyncHandler(async (req, res) => {
-    console.log("--------------------hello-------------------------")
-    res.redirect("/")
-}))
+
 
 module.exports = router;
-
-
-// GET /stories/:id
-// GET /stories/:id/edit
-
-// POST /stories/:id/likes
-// DELETE /stories/:id/likes
-// POST /stories/:id/comments
-// DELETE /stories/:id/comments

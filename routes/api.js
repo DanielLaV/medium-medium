@@ -34,12 +34,12 @@ router.get('/profiles/:userId/follow', asyncHandler(async (req, res) => {
     }
 }))
 
-router.post('/stories/:storyId/like', asyncHandler( async (req,res)=> {
-    const { userId, storyId} = req.body;
-    const exists = await db.Like.findOne({ where: { storyId, userId }});
-    if (exists){
+router.post('/stories/:storyId/like', asyncHandler(async (req, res) => {
+    const { userId, storyId } = req.body;
+    const exists = await db.Like.findOne({ where: { storyId, userId } });
+    if (exists) {
         console.log('unlike successfull')
-        await db.Like.destroy({ where: { storyId, userId }});
+        await db.Like.destroy({ where: { storyId, userId } });
         res.json({ message: "black" });
     } else {
         console.log('like successfull')
@@ -54,32 +54,29 @@ router.post('/comments', asyncHandler(async (req, res) => {
 
     try {
         const comment = await db.Comment.create({ userId, storyId, content })
+        console.log('searching...')
+        const commentId = await db.Comment.max('id')
+        console.log('CommentId:=======', commentId)
         res.json({ message: comment, userId });
     } catch (err) {
         // console.log('===========API ERROR HANDLER', err);
     }
 }));
 
-router.get('/:storyId(\\d+)/comments', asyncHandler(async (req, res) => {
-    const storyId = parseInt(req.params.storyId);
-    const { userId } = req.session.auth;
-
-    const foundComments = await db.Comment.findAll(
-        { where: { storyId } })
-
-    if (foundComments) {
-        res.json({ foundComments, userId })
-    } else {
-        res.json({ foundComments, userId })
-    }
-}))
-
-router.get('/comments/:id(\\d+)', asyncHandler(async (req, res) => {
-    const commentId = parseInt(req.params.id);
-
-    const comment = await db.Comment.findByPk(commentId);
-    // console.log('CONTENT IS ', content);
-    res.json({ comment });
+router.post('/comments/:id(\\d+)', asyncHandler(async (req, res) => {
+    const { content, commentId } = req.body;
+    console.log('CONTENT:=======', content)
+    const data = db.Comment.update({ content }, { where: { id: commentId } })
+    res.json({ data });
 }));
+
+router.delete('/comments/:id(\\d+)', asyncHandler(async (req, res) => {
+    const commentId = req.params.id
+    await db.Comment.destroy({ where: { id: commentId } })
+    console.log('DESTROYED')
+    res.json({});
+}));
+
+
 
 module.exports = router
