@@ -1,3 +1,4 @@
+
 *{
     box-sizing: border-box;
 
@@ -30,10 +31,10 @@ body{
     width: 100%;
 }
 
-
-.nav a{
-    padding-right: 15px;
+.nav a {
+  padding-right: 15px;
 }
+
 
 .callToAction{
     display: flex;
@@ -78,38 +79,40 @@ body{
     padding-right: 15px;
 }
 
-#buttonLogOut{
-    float: right;
+#buttonLogOut {
+  float: right;
 }
 
-.recentStories{
-    margin: 10px;
-    width: 60%;
+.recentStories {
+  margin: 10px;
+  width: 60%;
 }
 
-.header{
-    width: 50%;
-    overflow: wrap;
-    text-align: left;
-    margin-left: 25px;
-    font-size: 50px;
+.header {
+  width: 50%;
+  overflow: wrap;
+  text-align: left;
+  margin-left: 25px;
+  font-size: 50px;
+  border-bottom: 1px solid black;
+
 }
 
-.listHeader{
-    margin-left: 25px;
+.listHeader {
+  margin-left: 25px;
 }
 
-.mediumImg{
-    content:url(/images/resizedHeader.png);
-    padding: 0px;
+.mediumImg {
+  content: url(/images/resizedHeader.png);
 }
 
-.storyDiv{
-    height: 10row;
-    overflow: hidden;
-    padding-top: 25px;
-    margin-left: 25px;
+.storyDiv {
+  height: 10row;
+  overflow: hidden;
+  padding-top: 25px;
+  margin-left: 25px;
 }
+
 
 .storyDiv:hover{
     cursor: pointer;
@@ -118,60 +121,64 @@ body{
 .storyAuthor{
     display: flex;
     align-items: center;
+
 }
 
-.stroryTitle{
-    font-size: 20px;
-    font-weight: 900;
-    margin-top: 10px;
+.stroryTitle {
+  font-size: 20px;
+  font-weight: 900;
+  margin-top: 10px;
 }
 
-.titleImage{
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    text-align: center;
-}
-
-.authorName{
-
-    padding-left: 20px;
-}
-
-.storyPreview{
-    line-height: 1.1;
-    height: 2.3em;
-    overflow: hidden;
-    margin-top: 10px;
-    display: flex;
-}
-
-.likeButton {
-    font-size: 14px;
-    background-color: inherit;
-    border: none;
-    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
-}
-
-i {
-    padding-right: 10px;
-    font-size: 18px;
+.titleImage {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  text-align: center;
 }
 
 .authorName {
-    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
-    font-size: 13px;
-    font-weight: 700;
+  padding-left: 20px;
+}
+
+.storyPreview {
+  line-height: 1.1;
+  height: 2.3em;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.liked {
+  color: red;
+}
+
+
+.likeButton {
+  font-size: 14px;
+  background-color: inherit;
+  border: none;
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+i {
+  padding-right: 10px;
+  font-size: 18px;
+}
+
+.authorName {
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .storyTitle {
-    font-size: 22px;
-    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
-    font-weight: 700;
+  font-size: 22px;
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 700;
 }
 
 .storyDiv li {
-    padding-bottom: 8px;
+  padding-bottom: 8px;
 }
 
 .footer{

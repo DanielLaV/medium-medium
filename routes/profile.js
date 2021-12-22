@@ -4,15 +4,6 @@ const { csrfProtection, asyncHandler } = require("../utils");
 const db = require("../db/models");
 const { requireAuth } = require("../auth");
 
-//gets all users and renders at profiles.pug
-router.get(
-  "/",
-  asyncHandler(async (req, res) => {
-    const users = await db.User.findAll();
-    res.render("profiles", { users });
-  })
-);
-
 router.get(
   "/:username",
   requireAuth,
@@ -21,6 +12,7 @@ router.get(
     const username = req.params.username;
     const profileUser = await db.User.findOne({ where: { username } });
 
+    // find who a profile is following
     const userRelationships = await db.Relationship.findAll({
       where: {
         followerUserId: profileUser.id,
@@ -28,7 +20,8 @@ router.get(
       include: "FollowingLinks",
     });
 
-    let usersFollowing = [];
+
+    let usersFollowing = []; //list of who the profile user follows
 
     for (let idx in userRelationships) {
       let relat = await db.User.findByPk(
@@ -38,13 +31,24 @@ router.get(
     }
 
     const numOfFollowing = userRelationships.length;
+    //////////////////////////////////////////////////////////////
+
+    const activeUserRelationships = await db.Relationship.findAll({
+      where: {
+        followingUserId: profileUser.id,
+        followerUserId: userId
+      },
+    });
+
+    const followingBinary = activeUserRelationships.length;
 
     res.render("profile", {
-      profileUser,
-      usersFollowing,
-      userId,
-      numOfFollowing,
-    });
+    profileUser,
+    usersFollowing,
+    userId,
+    numOfFollowing,
+    followingBinary,
+  });
   })
 );
 
@@ -53,8 +57,8 @@ router.get(
   asyncHandler(async (req, res) => {
     const { userId } = req.session.auth;
     const username = req.params.username;
-    console.log('REQPARAMS IS ======', req.params)
-    console.log('username IS ======', username)
+    console.log("REQPARAMS IS ======", req.params);
+    console.log("username IS ======", username);
     const profileUser = await db.User.findOne({ where: { username } });
 
     const userRelationships = await db.Relationship.findAll({
@@ -75,7 +79,7 @@ router.get(
 
     const numOfFollowing = userRelationships.length;
 
-    res.render("about", {profileUser, numOfFollowing, userId });
+    res.render("about", { profileUser, numOfFollowing, userId });
   })
 );
 
@@ -86,7 +90,7 @@ router.post(
   asyncHandler(async (req, res) => {
     const { currentUserId } = req.session.auth;
     const username = req.params.username;
-    const followedId = db.User.findOne({ where: { username } });
+    const followedId = await db.User.findOne({ where: { username } });
     if (
       await db.Relationship.findOne({
         where: { followedUserId: followedId, followerUserId: currentUserId },
@@ -102,12 +106,3 @@ router.post(
 );
 
 module.exports = router;
-
-/*
-    Try to find relationship
-      if it doesn't exists (return null)
-        send follow
-      else
-        send following
-
-*/
