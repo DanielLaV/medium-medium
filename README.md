@@ -8,4 +8,4 @@ You can find the creators' information below:
 Christopher Breen: https://github.com/breencf   https://www.linkedin.com/in/breencf/
 Jesse Brooks: https://github.com/Josso7
 Daniel LaVergne: https://www.linkedin.com/in/daniel-lavergne-137772206/
-Nathan Treadaway: 
+Nathan Treadaway: https://github.com/ta-cos
