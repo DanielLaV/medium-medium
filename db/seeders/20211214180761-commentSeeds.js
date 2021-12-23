@@ -6,14 +6,14 @@ module.exports = {
       "Comments",
       [
         {
-          userId: 1,
+          userId: 11,
           storyId: 2,
           content: `I think that in a past life, I was Sweet Baby Jesus, no lie.`,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          userId: 1,
+          userId: 11,
           storyId: 1,
           content: `Get a real job, ya filthy animal!!!!! Professional psychic? Fat chance.`,
           createdAt: new Date(),
