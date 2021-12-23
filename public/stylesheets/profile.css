@@ -19,15 +19,17 @@ li {
 }
 
 .profile-header {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  background: linear-gradient(#704c5e, white);
 }
 .profile-nav {
   display: flex;
-  flex: row;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   height: 75px;
@@ -35,11 +37,9 @@ li {
 }
 .profile-nav span {
   margin-left: 20px;
-  margin-right: 20px;
 }
 .profile-header h1 {
   font-size: 84px;
-  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
   text-align: center;
 }
 
@@ -49,7 +49,7 @@ hr {
 }
 
 .about-sidebar {
-  background-color: #bebebe;
+  background-color: #704c5e;
   border-radius: 10px;
   padding: 30px;
   margin: 10px;
@@ -66,9 +66,13 @@ hr {
   justify-content: center;
 }
 
-
 .profile {
   display: flex;
+  width: 100%;
+}
+
+.about-sidebar > div > * {
+  margin-bottom: 10px;
 }
 
 .listHeader h4 {
@@ -76,4 +80,22 @@ hr {
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.followButton {
+  width: 105px;
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.follow {
+  background-color: white;
+  border: 1px solid #f1c8db;
+}
+
+.following {
+  background-color: #f1c8db;
+  border: 1px solid #f1c8db;
 }

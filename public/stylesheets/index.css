@@ -8,8 +8,14 @@ h3 {
   font-family: "Playfair Display", serif;
 }
 
+h4 {
+  font-weight: 700;
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
 #fixedFixer {
-  height: 100px;
+  height: 33px;
+  background-color: #704c5e;
 }
 
 body {
@@ -35,7 +41,7 @@ body:nth-child(4) {
   align-items: center;
   border-bottom: 1px solid black;
   font-size: 14;
-  background-color: goldenrod;
+  background-color: #704c5e;
   width: 100%;
   position: fixed;
   top: 0%;
@@ -43,14 +49,6 @@ body:nth-child(4) {
 
 .nav a {
   padding-right: 15px;
-}
-
-.callToAction {
-  display: flex;
-  background-color: goldenrod;
-  width: 100%;
-  border-bottom: 1px black solid;
-  justify-content: center;
 }
 
 .noAuthMenu {
@@ -136,6 +134,38 @@ body:nth-child(4) {
   margin-left: 15px;
 }
 
+.CTAimage {
+  content: url(/images/quotes.png);
+  max-height: 300px;
+  z-index: 0;
+  position: absolute;
+  right: 0%;
+  opacity: 50%;
+}
+
+#CTA {
+  z-index: 1;
+  width: 70%;
+  position: absolute;
+  max-height: 300px;
+  left: 10%;
+}
+
+.callToAction {
+  display: flex;
+  background-color: #704c5e;
+  width: 100%;
+  border-bottom: 1px black solid;
+  align-items: center;
+  position: relative;
+  height: 300px;
+}
+
+.callToAction h1 {
+  font-size: 2.3em;
+  font-weight: 700;
+}
+
 .storyDiv {
   height: 10row;
   overflow: hidden;
@@ -178,7 +208,7 @@ body:nth-child(4) {
 }
 
 .liked {
-  color: red;
+  color: #ff0035;
 }
 
 .likeButton {
@@ -242,11 +272,10 @@ i {
 } */
 
 .followingUsersIcons {
-  margin-top: 100px;
   height: 175px;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: column;
   width: 80%;
 }

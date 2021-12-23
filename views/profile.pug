@@ -5,17 +5,18 @@ append head
 
 block content
     body
-    .profile-header
-        h1 #{profileUser.firstName} #{profileUser.lastName}
-        h3 #{profileUser.about}
-    .profile-nav
-        div
-            include follow-button.pug
-        div
-            span #{userRelationships.length} following
-        div
-            span#followerCount #{userFollowerRelationships.length}
-            span followers
+        .profile-header
+            h1 #{profileUser.firstName} #{profileUser.lastName}
+            h3 #{profileUser.about}
+            .profile-nav
+                div
+                    include follow-button.pug
+                div
+                    span #{userRelationships.length}
+                    span following
+                div
+                    span#followerCount #{userFollowerRelationships.length}
+                    span followers
     hr
     .profile
         .about-sidebar

@@ -46,6 +46,14 @@ window.addEventListener("DOMContentLoaded", (e) => {
 
       followButtons.forEach((button) => {
         button.innerText = message;
+        if (message === "Follow") {
+          button.classList.add('follow')
+          button.classList.remove('following')
+        }
+        else {
+          button.classList.add('following')
+          button.classList.remove('follow')
+        }
       });
     });
   });
