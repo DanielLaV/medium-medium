@@ -22,7 +22,6 @@
 }
 
 .signup.open body{
-    background-color: rgba(19,21,21, 0.5);
     z-index: 5;
 }
 
@@ -31,12 +30,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(122,128,152,0.95);
-    color: white;
+    color: black;
     box-shadow: 0 0 10px rgba(152,147,218, 0.5);
     width: 50%;
     height: 80%;
     z-index: 10;
+    background-color: white;
 }
 
 .heading{
@@ -85,10 +84,10 @@
     font-size: 20px;
     margin-top: 20px;
     border-radius: 15px;
-    background-color: #797A9E;
     color: white;
     width: 200px;
-    margin: auto;
+    margin-top: 20px;
+    background-color: black;
 }
 
 .data button:hover{
