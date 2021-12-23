@@ -20,7 +20,6 @@ router.get(
       include: "FollowingLinks",
     });
 
-
     let usersFollowing = []; //list of who the profile user follows
 
     for (let idx in userRelationships) {
@@ -30,25 +29,38 @@ router.get(
       usersFollowing.push(relat);
     }
 
-    const numOfFollowing = userRelationships.length;
-    //////////////////////////////////////////////////////////////
-
-    const activeUserRelationships = await db.Relationship.findAll({
+    const userFollowerRelationships = await db.Relationship.findAll({
       where: {
         followingUserId: profileUser.id,
-        followerUserId: userId
+      },
+      include: "FollowingLinks",
+    });
+    //////////////////////////////////////////////////////////////
+
+    const activeUserRelationship = await db.Relationship.findAll({
+      where: {
+        followingUserId: profileUser.id,
+        followerUserId: userId,
       },
     });
 
-    const followingBinary = activeUserRelationships.length;
+    const followingBinary = activeUserRelationship.length;
+
+    const storyList = await db.Story.findAll({
+      include: [db.User, db.Like],
+      where: { userId: profileUser.id },
+      order: [["id", "DESC"]],
+    });
 
     res.render("profile", {
-    profileUser,
-    usersFollowing,
-    userId,
-    numOfFollowing,
-    followingBinary,
-  });
+      profileUser,
+      usersFollowing,
+      userId,
+      followingBinary,
+      userRelationships,
+      userFollowerRelationships,
+      storyList,
+    });
   })
 );
 

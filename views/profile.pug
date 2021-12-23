@@ -7,17 +7,23 @@ block content
     body
     .profile-header
         h1 #{profileUser.firstName} #{profileUser.lastName}
-        p #{profileUser.about}
+        h3 #{profileUser.about}
     .profile-nav
-        include follow-button.pug
-        a #{followers}
-        a(href='/profiles/' + profileUser.username + '/about') About
+        div
+            include follow-button.pug
+        div
+            span #{userRelationships.length} following
+        div
+            span#followerCount #{userFollowerRelationships.length}
+            span followers
+    hr
     .profile
         .about-sidebar
             div
                 img(src='' + profileUser.profileImage id="profileImage")
-                p #{profileUser.firstName} #{profileUser.lastName}
+                h3 #{profileUser.firstName} #{profileUser.lastName}
                 include follow-button.pug
+            hr
             div
                 p #{profileUser.firstName} #{profileUser.lastName} FOLLOWS
                 ul
@@ -27,10 +33,26 @@ block content
                             img(src='' + usersFollowing[n].profileImage class="followingIcon")
                             span #{usersFollowing[n].firstName} #{usersFollowing[n].lastName}
                         - n++
-
-
-
         .feed
+            ul
+            .listHeader
+                h4 #{profileUser.firstName} #{profileUser.lastName}'s Stories
+            if !storyList.length
+                h3 #{profileUser.firstName} #{profileUser.lastName} hasn't written any stories yet
+            else
+                for story in storyList
+                    .storyDiv(value=""+ story.id href="/stories/id")
+                        li.storyAuthor
+                            p include the author icon image if statement
+                            a.authorName #{story.User.firstName} #{story.User.lastName}
+                        li.storyTitle= story.title
+                        li
+                            p.storyPreview= story.content
+                            if story.storyImage
+                                p story image
+                            else
+                                p default story image
+                        include like-button.pug
 
     footer
                 script(src="/javascripts/follow.js" type="module")

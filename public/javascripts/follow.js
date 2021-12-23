@@ -10,8 +10,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
       followButton.style.display = "none";
     }
 
-
-
     // const isFollowing = await fetch(`/api/profiles/${followingUser}/follow`, {
     //   method: "GET",
     // })
@@ -36,8 +34,15 @@ window.addEventListener("DOMContentLoaded", (e) => {
         body: JSON.stringify(_data),
       });
       const JSONresponse = await response.json();
-      console.log('THIS IS JSONRESPONSE==========', JSONresponse);
+      console.log("THIS IS JSONRESPONSE==========", JSONresponse);
       const message = JSONresponse.message;
+
+      const followCount = document.querySelector("#followerCount");
+      if (message === "Follow") {
+        followCount.innerHTML = --followCount.innerHTML;
+      } else {
+        followCount.innerHTML = ++followCount.innerHTML;
+      }
 
       followButtons.forEach((button) => {
         button.innerText = message;
