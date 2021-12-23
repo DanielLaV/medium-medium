@@ -1,4 +1,4 @@
-This website is a spin-off of Medium.com. Medium for Mediums is a site for mediums (psychics) to get together and mingle with other mediums and anyone else who might appear. 
+Medium for Mediums is a clone of Medium.com. It is a site for mediums (psychics) to get together and mingle with other mediums and anyone else who might appear. 
 
 This project was created by Christopher Breen, Nathan Treadaway, Jesse Brooks and myself. 
 
