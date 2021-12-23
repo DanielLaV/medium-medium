@@ -60,40 +60,11 @@ router.get(
       userRelationships,
       userFollowerRelationships,
       storyList,
+      title: `Medium Medium: ${username}`,
     });
   })
 );
 
-router.get(
-  "/:username/about",
-  asyncHandler(async (req, res) => {
-    const { userId } = req.session.auth;
-    const username = req.params.username;
-    console.log("REQPARAMS IS ======", req.params);
-    console.log("username IS ======", username);
-    const profileUser = await db.User.findOne({ where: { username } });
-
-    const userRelationships = await db.Relationship.findAll({
-      where: {
-        followerUserId: profileUser.id,
-      },
-      include: "FollowingLinks",
-    });
-
-    let usersFollowing = [];
-
-    for (let idx in userRelationships) {
-      let relat = await db.User.findByPk(
-        userRelationships[idx].followingUserId
-      );
-      usersFollowing.push(relat);
-    }
-
-    const numOfFollowing = userRelationships.length;
-
-    res.render("about", { profileUser, numOfFollowing, userId });
-  })
-);
 
 router.post(
   "/:username/follow",

@@ -14,7 +14,7 @@ h4 {
 }
 
 #fixedFixer {
-  height: 33px;
+  height: 65px;
   background-color: #704c5e;
 }
 
@@ -45,6 +45,7 @@ body:nth-child(4) {
   width: 100%;
   position: fixed;
   top: 0%;
+  height: 75px;
 }
 
 .nav a {
@@ -136,7 +137,7 @@ body:nth-child(4) {
 
 .CTAimage {
   content: url(/images/quotes.png);
-  max-height: 300px;
+  max-height: 400px;
   z-index: 0;
   position: absolute;
   right: 0%;
@@ -147,7 +148,7 @@ body:nth-child(4) {
   z-index: 1;
   width: 70%;
   position: absolute;
-  max-height: 300px;
+  max-height: 400px;
   left: 10%;
 }
 
@@ -156,13 +157,14 @@ body:nth-child(4) {
   background-color: #704c5e;
   width: 100%;
   border-bottom: 1px black solid;
+  border-top: 1px black solid;
   align-items: center;
   position: relative;
-  height: 300px;
+  height: 400px;
 }
 
 .callToAction h1 {
-  font-size: 2.3em;
+  font-size: 3em;
   font-weight: 700;
 }
 
@@ -212,7 +214,7 @@ body:nth-child(4) {
 }
 
 .likeButton {
-  font-size: 14px;
+  font-size: 40px;
   background-color: inherit;
   border: none;
   font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
