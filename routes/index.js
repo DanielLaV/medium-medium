@@ -22,18 +22,21 @@ router.get(
         include: "FollowingLinks",
         where: { followerUserId: userId },
       });
-
+      let userIdsFollowing = [];
       let usersFollowing = [];
       for (let idx in follow) {
         let relat = await db.User.findByPk(follow[idx].followingUserId);
         usersFollowing.push(relat);
+        userIdsFollowing.push(relat.id);
       }
+      console.log("------------------", userIdsFollowing);
 
       res.render("index", {
         csrfToken: req.csrfToken(),
         storyList,
         userId,
         usersFollowing,
+        userIdsFollowing,
       });
       return;
     } else {

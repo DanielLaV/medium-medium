@@ -27,10 +27,16 @@ html
       else
         .authMenu
           p Welcome #{user.firstName}
+          form(action="/stories/new" method="GET")
+            input(type="hidden" name="_csrf" value = csrfToken)
+            input#createStoryButton(type="submit" value="+ Create Story")
         form#logoutDiv(action="/users/logout" method="POST")
           input(type='hidden' name='_csrf' value=csrfToken)
           .buttonLogout
-            button#logoutButton Log Out
+            button#logoutButton
+              i(class="fas fa-sign-out-alt")
+    #fixedFixer
+
 
     .login
       .container

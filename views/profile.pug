@@ -30,8 +30,9 @@ block content
                     - let n = 0;
                     while n < usersFollowing.length && n < 5
                         li
-                            img(src='' + usersFollowing[n].profileImage class="followingIcon")
-                            span #{usersFollowing[n].firstName} #{usersFollowing[n].lastName}
+                            a(href=`/profiles/${usersFollowing[n].username}`)
+                                img(src='' + usersFollowing[n].profileImage class="followingIcon")
+                                span #{usersFollowing[n].firstName} #{usersFollowing[n].lastName}
                         - n++
         .feed
             ul
