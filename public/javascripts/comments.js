@@ -49,7 +49,8 @@ function addComment() {
         thisComment.appendChild(editDeleteButtons)
         commentsDiv.appendChild(thisComment)
 
-
+        editComment()
+        deleteComment()
     })
 }
 
