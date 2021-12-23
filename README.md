@@ -49,7 +49,11 @@ Users can view other profiles and follow them.
 This project was created by Christopher Breen, Nathan Treadaway, Jesse Brooks and myself. 
 
 You can find the creators' information below:
+
 Christopher Breen: [Github](https://github.com/breencf)   [LinkedIn](https://www.linkedin.com/in/breencf/)
+
 Jesse Brooks: [Githhub](https://github.com/Josso7)
+
 Daniel LaVergne: [Github](https://github.com/DanielLaV) [LinkedIn](https://www.linkedin.com/in/daniel-lavergne-137772206/)
+
 Nathan Treadaway: [Github](https://github.com/ta-cos)
