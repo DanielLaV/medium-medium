@@ -1,82 +1,108 @@
-
-*{
-    box-sizing: border-box;
-
+* {
+  box-sizing: border-box;
 }
 
-h1, h2, h3{
-    font-family: 'Playfair Display', serif;
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
 }
 
-body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
-
+h4 {
+  font-weight: 700;
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-#storyImage{
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px lightgray;
+#fixedFixer {
+  height: 65px;
+  background-color: #704c5e;
 }
 
-.nav{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-bottom: 1px solid black;
-    font-size: 14;
-    background-color: goldenrod;
-    width: 100%;
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+body:nth-child(4) {
+  margin-top: 100px;
+}
+
+#storyImage {
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px lightgray;
+  width: 100%;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid black;
+  font-size: 14;
+  background-color: #704c5e;
+  width: 100%;
+  position: fixed;
+  top: 0%;
+  height: 75px;
 }
 
 .nav a {
   padding-right: 15px;
 }
 
-
-.callToAction{
-    display: flex;
-    background-color: goldenrod;
-    width: 100%;
-    border-bottom: 1px black solid;
-    justify-content: center;
+.noAuthMenu {
+  display: flex;
+  margin-left: auto;
+  padding-right: 15px;
+  align-items: center;
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 400;
 }
 
-.noAuthMenu{
-    display: flex;
-    margin-left: auto;
-    padding-right: 15px;
-    align-items: center;
-    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
-    font-weight: 400;
+.authMenu {
+  display: flex;
+  margin-left: auto;
+  /* padding-right: 15px; */
+  align-items: center;
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 400;
 }
 
-.authMenu{
-    display: flex;
-    margin-left: auto;
-    padding-right: 15px;
-    align-items: center;
-    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
-    font-weight: 400;
+.authMenu > * {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.noAuthMenu:hover{
-    cursor: pointer;
+.noAuthMenu:hover {
+  cursor: pointer;
 }
 
-#demoButton, #logoutButton{
-    border-radius: 20px;
-    padding: 10px;
-    background-color: black;
-    color: white;
-    font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
-    font-weight: 400;
+#demoButton,
+#logoutButton,
+#createStoryButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  border: none;
 }
 
-#logoutDiv{
-    padding-right: 15px;
+#logoutButton i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+}
+
+#logoutDiv {
+  padding-right: 15px;
 }
 
 #buttonLogOut {
@@ -85,7 +111,7 @@ body{
 
 .recentStories {
   margin: 10px;
-  width: 60%;
+  width: 80%;
 }
 
 .header {
@@ -95,7 +121,6 @@ body{
   margin-left: 25px;
   font-size: 50px;
   border-bottom: 1px solid black;
-
 }
 
 .listHeader {
@@ -103,7 +128,44 @@ body{
 }
 
 .mediumImg {
-  content: url(/images/resizedHeader.png);
+  content: url(/images/medium-medium-header.png);
+  max-height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 15px;
+}
+
+.CTAimage {
+  content: url(/images/quotes.png);
+  max-height: 400px;
+  z-index: 0;
+  position: absolute;
+  right: 0%;
+  opacity: 50%;
+}
+
+#CTA {
+  z-index: 1;
+  width: 70%;
+  position: absolute;
+  max-height: 400px;
+  left: 10%;
+}
+
+.callToAction {
+  display: flex;
+  background-color: #704c5e;
+  width: 100%;
+  border-bottom: 1px black solid;
+  border-top: 1px black solid;
+  align-items: center;
+  position: relative;
+  height: 400px;
+}
+
+.callToAction h1 {
+  font-size: 3em;
+  font-weight: 700;
 }
 
 .storyDiv {
@@ -111,17 +173,16 @@ body{
   overflow: hidden;
   padding-top: 25px;
   margin-left: 25px;
+  margin-right: 25px;
 }
 
-
-.storyDiv:hover{
-    cursor: pointer;
+.storyDiv:hover {
+  cursor: pointer;
 }
 
-.storyAuthor{
-    display: flex;
-    align-items: center;
-
+.storyAuthor {
+  display: flex;
+  align-items: center;
 }
 
 .stroryTitle {
@@ -149,12 +210,11 @@ body{
 }
 
 .liked {
-  color: red;
+  color: #ff0035;
 }
 
-
 .likeButton {
-  font-size: 14px;
+  font-size: 40px;
   background-color: inherit;
   border: none;
   font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -181,38 +241,55 @@ i {
   padding-bottom: 8px;
 }
 
-.footer{
-    display: flex;
-    background-color: black;
-    color: white;
-    height: 75px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+.footer {
+  display: flex;
+  background-color: black;
+  color: white;
+  height: 75px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
-#followingImages{
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    margin: 10px;
+#followingImages {
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  margin: 10px;
 }
 
-#createStoryButton{
-    position:fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 30%;
-    left: 25px;
-    border-radius: 25px;
-    background-color: black;
-    color: white;
-    height: 5%;
-    width: 20%;
-    font-size: 20px;
+/* #createStoryButton {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 30%;
+  left: 25px;
+  border-radius: 25px;
+  background-color: black;
+  color: white;
+  height: 5%;
+  width: 20%;
+  font-size: 20px;
+} */
+
+.followingUsersIcons {
+  height: 175px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+  width: 80%;
 }
 
+.authorDiv * {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
 
-
+.storyContainer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 /* font-family: family-name|generic-family|initial|inherit; */

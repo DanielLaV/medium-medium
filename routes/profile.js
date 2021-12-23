@@ -20,7 +20,6 @@ router.get(
       include: "FollowingLinks",
     });
 
-
     let usersFollowing = []; //list of who the profile user follows
 
     for (let idx in userRelationships) {
@@ -30,58 +29,42 @@ router.get(
       usersFollowing.push(relat);
     }
 
-    const numOfFollowing = userRelationships.length;
-    //////////////////////////////////////////////////////////////
-
-    const activeUserRelationships = await db.Relationship.findAll({
+    const userFollowerRelationships = await db.Relationship.findAll({
       where: {
         followingUserId: profileUser.id,
-        followerUserId: userId
-      },
-    });
-
-    const followingBinary = activeUserRelationships.length;
-
-    res.render("profile", {
-    profileUser,
-    usersFollowing,
-    userId,
-    numOfFollowing,
-    followingBinary,
-  });
-  })
-);
-
-router.get(
-  "/:username/about",
-  asyncHandler(async (req, res) => {
-    const { userId } = req.session.auth;
-    const username = req.params.username;
-    console.log("REQPARAMS IS ======", req.params);
-    console.log("username IS ======", username);
-    const profileUser = await db.User.findOne({ where: { username } });
-
-    const userRelationships = await db.Relationship.findAll({
-      where: {
-        followerUserId: profileUser.id,
       },
       include: "FollowingLinks",
     });
+    //////////////////////////////////////////////////////////////
 
-    let usersFollowing = [];
+    const activeUserRelationship = await db.Relationship.findAll({
+      where: {
+        followingUserId: profileUser.id,
+        followerUserId: userId,
+      },
+    });
 
-    for (let idx in userRelationships) {
-      let relat = await db.User.findByPk(
-        userRelationships[idx].followingUserId
-      );
-      usersFollowing.push(relat);
-    }
+    const followingBinary = activeUserRelationship.length;
 
-    const numOfFollowing = userRelationships.length;
+    const storyList = await db.Story.findAll({
+      include: [db.User, db.Like],
+      where: { userId: profileUser.id },
+      order: [["id", "DESC"]],
+    });
 
-    res.render("about", { profileUser, numOfFollowing, userId });
+    res.render("profile", {
+      profileUser,
+      usersFollowing,
+      userId,
+      followingBinary,
+      userRelationships,
+      userFollowerRelationships,
+      storyList,
+      title: `Medium Medium: ${username}`,
+    });
   })
 );
+
 
 router.post(
   "/:username/follow",

@@ -7,6 +7,8 @@ module.exports = {
       [
         {
           userId: 1,
+          storyImage:
+            "https://i.guim.co.uk/img/media/944156be841bbb64fb5c1caad4d1da1cb68a490c/0_0_3000_1800/master/3000.jpg?width=1200&quality=85&auto=format&fit=max&s=502d54d867513cf33c7d3c43f0627c90",
           title: "So You Want to be a Professional Psychic",
           content: `you’ve been doing Tarot for your girlfriends and they tell you you’re great and you are feeling confident that when you throw a spread you’re seeing something
         and it is not just random stuff . . . you actually “see it”
@@ -54,6 +56,8 @@ module.exports = {
         },
         {
           userId: 2,
+          storyImage:
+            "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimgix.bustle.com%2Fuploads%2Fgetty%2F2021%2F2%2F12%2F88fb6040-5077-4690-be64-0d7f2753a4ab-getty-1300483239.jpg%3Fw%3D1200%26h%3D630%26fit%3Dcrop%26crop%3Dfaces%26fm%3Djpg&f=1&nofb=1",
           title: `7 Ways To Tell if Someone was in Your Past Life, According to Psychics`,
           content: `I got a request back in 2018 from one of the editors from Bustle for some info on past lives they published in an article entitled 7 Ways To Tell if Someone was in Your Past Life, According to Psychics and I was one of the psychics they consulted. I am re-posting my response for my particular piece of the article below.
         Here are the Questions:
@@ -68,6 +72,7 @@ module.exports = {
         },
         {
           userId: 2,
+          storyImage: "https://media.redadn.es/imagenes/pokemaster_338072.png",
           title: `Powerful: 15 Facts That Make Mew Scary AF`,
           content: `At first glance, Mew is a small, adorable Pokémon who loves to play with both trainers and other creatures. This tiny creature is a fan favorite among children who love its playful nature. Though Mew may charm you with its large eyes and cat-like aloofness, it's easy to misjudge this Psychic-type Pokémon.
 
@@ -81,6 +86,8 @@ module.exports = {
         },
         {
           userId: 4,
+          storyImage:
+            "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fd2u8r8la08imki.cloudfront.net%2Fwp-content%2Fuploads%2F2018%2F03%2F06085920%2F4679196299001_5483957855001_5483949456001-vs.jpg&f=1&nofb=1",
           title: `The Story Long Island Medium Doesn’t Want You To Know`,
           content: `Theresa Caputo has captivated audiences as the Long Island Medium since her show of the same name first began airing on TLC in 2012. According to Caputo, she has the ability to channel the spirits of those who are no longer with us, which has drawn vast audiences from all of the country in order to get a shot at some closure with their departed loved ones. When watching Caputo operate on television, she seems to have an uncanny knack for picking up little tidbits of information that would seem nearly impossible for her to know otherwise. However, behind the scenes, there’s something fishy at play.
 
@@ -103,6 +110,8 @@ module.exports = {
         },
         {
           userId: 3,
+          storyImage:
+            "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.themoviethemesong.com%2Fwp-content%2Fuploads%2F2015%2F02%2FThats-So-Raven-7.jpg&f=1&nofb=1",
           title: `How That’s So Raven Changed My Life`,
           content: `The other day as I was mindlessly scrolling through Twitter in search of funny memes, I came across a tweet that had me reflecting on the last 17 years of my life. This particular tweet was celebrating that it was the 17th anniversary of That’s So Raven premiering on Disney Channel.
         The first thing I thought? Well fuck, has it really been that long?

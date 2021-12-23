@@ -10,7 +10,7 @@ html
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel='stylesheet' href='/stylesheets/forms.css')
-        <link rel="icon" href="./favicon.png">
+        <link rel="icon" href="/images/medium-medium-icon.png">
         link(rel="stylesheet" href="/stylesheets/index.css")
         script(src="/javascripts/forms.js" type="module")
   body
@@ -26,11 +26,17 @@ html
             input#demoButton.button(type="submit" value="Demo User")
       else
         .authMenu
-          p Welcome #{user.firstName}
+          a(href=`/profiles/${user.username}`) Welcome #{user.firstName}
+          form(action="/stories/new" method="GET")
+            input(type="hidden" name="_csrf" value = csrfToken)
+            input#createStoryButton(type="submit" value="+ Create Story")
         form#logoutDiv(action="/users/logout" method="POST")
           input(type='hidden' name='_csrf' value=csrfToken)
           .buttonLogout
-            button#logoutButton Log Out
+            button#logoutButton
+              i(class="fas fa-sign-out-alt")
+    #fixedFixer
+
 
     .login
       .container
