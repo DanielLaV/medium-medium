@@ -44,14 +44,11 @@ block content
             else
                 for story in storyList
                     .storyDiv(value=""+ story.id href="/stories/id")
-                        li.storyAuthor
-                            p include the author icon image if statement
-                            a.authorName #{story.User.firstName} #{story.User.lastName}
                         li.storyTitle= story.title
                         li
                             p.storyPreview= story.content
                             if story.storyImage
-                                p story image
+                                img#storyImage(src="" + story.storyImage)
                             else
                                 p default story image
                         include like-button.pug

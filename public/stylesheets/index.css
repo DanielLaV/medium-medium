@@ -292,4 +292,11 @@ i {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+#noFollowing {
+  color: white;
+  background-color: #ff0035;
+  border-radius: 10px;
+  padding: 10px;
+}
 /* font-family: family-name|generic-family|initial|inherit; */
