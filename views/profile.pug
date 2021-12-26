@@ -43,15 +43,18 @@ block content
                 h3 #{profileUser.firstName} #{profileUser.lastName} hasn't written any stories yet
             else
                 for story in storyList
-                    .storyDiv(value=""+ story.id href="/stories/id")
+                    .storyContainer
+                        .storyDiv(value=""+ story.id href="/stories/id")
                         li.storyTitle= story.title
-                        li
+                        li.previewWithImage
                             p.storyPreview= story.content
                             if story.storyImage
                                 img#storyImage(src="" + story.storyImage)
                             else
-                                p default story image
+                                p story has no image
                         include like-button.pug
+                    hr
 
     footer
-                script(src="/javascripts/follow.js" type="module")
+        script(src="/javascripts/like.js" type="module")
+        script(src="/javascripts/follow.js" type="module")

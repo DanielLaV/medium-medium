@@ -18,6 +18,10 @@ block content
                 input(type='submit' value='Delete')
 
     .story
+        if story.storyImage
+            img#storyImage(src="" + story.storyImage)
+        else
+            p story has no image
         h1= story.title
         p.storyContent= story.content
         div
