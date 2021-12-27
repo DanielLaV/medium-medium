@@ -114,7 +114,7 @@ module.exports = {
             "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.themoviethemesong.com%2Fwp-content%2Fuploads%2F2015%2F02%2FThats-So-Raven-7.jpg&f=1&nofb=1",
           title: `How That’s So Raven Changed My Life`,
           content: `The other day as I was mindlessly scrolling through Twitter in search of funny memes, I came across a tweet that had me reflecting on the last 17 years of my life. This particular tweet was celebrating that it was the 17th anniversary of That’s So Raven premiering on Disney Channel.
-        The first thing I thought? Well fuck, has it really been that long?
+        The first thing I thought? Well f**k, has it really been that long?
         I was just a mere 6 years old in the first grade when That’s So Raven premiered. Now, I am a 23-year-old with a master’s degree in Television Production and Writing, a degree I would not have if it was not for That’s So Raven.
         I, like anyone with a sense of taste, loved That’s So Raven. From Raven’s fashion to her knack for CONSTANTLY getting into sticky situations despite her psychic abilities (or really because of her powers), Raven’s loyalty to her family and friends, and the pure joy that radiated from the screen, That’s So Raven was the highlight of my daily television viewing as a kid. Now with Disney+ I get to relive my childhood and rewatch what I consider to be one of the funniest shows to ever grace Disney Channel.
         Now, when I was a kid, I watched A LOT of television. Like an obscene amount. My days began and ended with me in front of the TV. And this is not to say I didn’t partake in other activities, because I also loved to read and play computer games, but television was my true love.

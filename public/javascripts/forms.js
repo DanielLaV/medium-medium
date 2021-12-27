@@ -16,24 +16,29 @@ function closeSignup() {
   signup.classList.remove("open");
 }
 
-loginButton.addEventListener("click", (e) => {
-  closeSignup();
-  e.stopPropagation();
-  login.classList.add("open");
-  document.body.classList.add("blur")
-});
+if (loginButton) {
+  loginButton.addEventListener("click", (e) => {
+    closeSignup();
+    e.stopPropagation();
+    login.classList.add("open");
+    document.body.classList.add("blur")
+  });
+}
+
 
 login.addEventListener("click", (e) => {
   closeSignup();
   e.stopPropagation();
 });
 
-signupButton.addEventListener("click", (e) => {
-  closeLogin();
-  e.stopPropagation();
-  signup.classList.add("open");
-  document.body.classList.add("blur")
-});
+if (signupButton) {
+  signupButton.addEventListener("click", (e) => {
+    closeLogin();
+    e.stopPropagation();
+    signup.classList.add("open");
+    document.body.classList.add("blur")
+  });
+}
 
 signup.addEventListener("click", (e) => {
   closeLogin();
