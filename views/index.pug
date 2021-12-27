@@ -6,28 +6,33 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  if locals.authenticated
+  if locals.authenticated && usersFollowing.length
     .followingUsersIcons
-      div
-        h4 Following
-      #imgContainer
-        for thing in usersFollowing
-          a(href=`/profiles/${thing.username}`)
-            img#followingImages(src=thing.profileImage)
+        div
+          h4 Following
+        #imgContainer
+          for thing in usersFollowing
+            a(href=`/profiles/${thing.username}`)
+              img#followingImages(src=thing.profileImage)
+  else if locals.authenticated && !usersFollowing.length
+    div
+      p
+      div#noFollowing
+        h3 It looks like you don't follow anyone yet! Here are some new stories we love.
   else
     .callToAction
       #CTA
         h1 Medium for Mediums is a place for the spiritual to write, read, and connect
       .CTAimage
   .recentStories
-    if locals.authenticated
-      h4 Following
+    if locals.authenticated && usersFollowing.length
+      h4 Your Feed
     else
       h4 Recent Stories
     hr
     ul
       .listHeader
-        if locals.authenticated
+        if locals.authenticated && usersFollowing.length
           for story in storyList
             if(userIdsFollowing.includes(story.userId))
               .storyContainer
@@ -71,6 +76,9 @@ block content
               include like-button.pug
             hr
   .footer
-    a copyright 2021 (to be completed later)
+    span.footerSpan
+      h4 copyright 2021
+    span.footerSpan
+      a(href="/about") About the Developers
   footer
     script(src="/javascripts/like.js" type="module")

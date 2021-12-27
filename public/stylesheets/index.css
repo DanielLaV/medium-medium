@@ -13,7 +13,7 @@ h4 {
   font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-#fixedFixer {
+.fixedFixer {
   height: 65px;
   background-color: #704c5e;
 }
@@ -39,6 +39,7 @@ body:nth-child(4) {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid black;
   font-size: 14;
   background-color: #704c5e;
@@ -292,4 +293,36 @@ i {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+#noFollowing {
+  color: white;
+  background-color: #ff0035;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.footerSpan {
+  padding: 10px;
+}
+
+.aboutTheDevs {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.aboutTheDevs * {
+  padding: 10px;
+}
+
+.githubButton,
+.linkedInButton {
+  background-color: #f1c8db;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
 /* font-family: family-name|generic-family|initial|inherit; */

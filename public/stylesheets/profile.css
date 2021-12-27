@@ -99,3 +99,7 @@ hr {
   background-color: #f1c8db;
   border: 1px solid #f1c8db;
 }
+
+.feed {
+  padding: 10px;
+}

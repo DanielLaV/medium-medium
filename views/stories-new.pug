@@ -4,29 +4,30 @@ append head
     link(rel="stylesheet" href="/stylesheets/new-story.css")
 
 block content
-    if story
-        form(action="/stories/"+ story.id + "/edit" method='POST')
-            .data
-                input(type='hidden' name='_csrf' value=csrfToken)
-                label(for="title") Title
-                input(type="text" required="required" name="title" value=story.title)
-                label(for="content") Content
-                if story.storyImage
+        .fixedFixer
+        if story
+            form(action="/stories/"+ story.id + "/edit" method='POST')
+                .data
+                    input(type='hidden' name='_csrf' value=csrfToken)
+                    label(for="title") Title
+                    input(type="text" required="required" name="title" value=story.title)
+                    label(for="content") Content
+                    if story.storyImage
+                        label(for="storyImage") Story Image
+                        input(type="text" name="storyImage")
+                    textarea(name="content" cols="30" rows="40") #{story.content}
+                    button(type="submit" value='Submit') Submit
+        else
+            form(action="/stories/new" method="POST")
+                .data
+                    input(type='hidden' name='_csrf' value=csrfToken)
+                    label(for="title") Title
+                    input(type="text" required="required" name="title" placeholder="Title your tale...")
                     label(for="storyImage") Story Image
-                    input(type="text" name="storyImage")
-                textarea(name="content" cols="30" rows="40") #{story.content}
-                button(type="submit" value='Submit') Submit
-    else
-        form(action="/stories/new" method="POST")
-            .data
-                input(type='hidden' name='_csrf' value=csrfToken)
-                label(for="title") Title
-                input(type="text" required="required" name="title" placeholder="Title your tale...")
-                label(for="storyImage") Story Image
-                input(type="url" name="storyImage" placeholder="Image url here...")
-                label(for="content") Content
-                textarea(name="content" cols="30" rows="40" placeholder="Tell your tale...")
-                .buttons
-                    button#submitStory(type="submit") Submit
-                    a#cancelStory(href="/") Cancel
-    .footer
+                    input(type="url" name="storyImage" placeholder="Image url here...")
+                    label(for="content") Content
+                    textarea(name="content" cols="30" rows="40" placeholder="Tell your tale...")
+                    .buttons
+                        button#submitStory(type="submit") Submit
+                        a#cancelStory(href="/") Cancel
+        .footer
