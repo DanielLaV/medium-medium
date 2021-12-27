@@ -6,7 +6,7 @@ module.exports = {
       "Stories",
       [
         {
-          userId: 11,
+          userId: 3,
           storyImage:
             "https://i.guim.co.uk/img/media/944156be841bbb64fb5c1caad4d1da1cb68a490c/0_0_3000_1800/master/3000.jpg?width=1200&quality=85&auto=format&fit=max&s=502d54d867513cf33c7d3c43f0627c90",
           title: "So You Want to be a Professional Psychic",
