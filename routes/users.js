@@ -81,8 +81,8 @@ router.post(
   userValidator,
   asyncHandler(async (req, res) => {
     const { username, password, lastName, email } = req.body;
-    let { firstName } = req.body
-    capitalizeFirstName = firstName[0].toUpperCase() + firstName.slice(1)
+    let { firstName } = req.body;
+    capitalizeFirstName = firstName[0].toUpperCase() + firstName.slice(1);
 
     firstName = capitalizeFirstName;
     const validatorErrors = validationResult(req);
@@ -126,10 +126,9 @@ router.post(
         res.redirect("/");
       } else {
         //generate error
-        console.log("error")
+        console.log("error");
       }
     }
-    console.log(`sending ${email} and ${password}`);
   })
 );
 
@@ -138,14 +137,14 @@ router.post("/logout", csrfProtection, (req, res, next) => {
   res.redirect("/");
 });
 
-router.post('/demo', csrfProtection, asyncHandler(async (req, res) => {
-  const user = await db.User.findByPk(1);
-  loginUser(req, res, user);
-  res.redirect("/")
-}))
-
-router.post("/", (req, res) => {
-  console.log(req.params)
-})
+router.post(
+  "/demo",
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const user = await db.User.findByPk(1);
+    loginUser(req, res, user);
+    res.redirect("/");
+  })
+);
 
 module.exports = router;

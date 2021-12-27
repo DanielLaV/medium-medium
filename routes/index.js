@@ -40,7 +40,6 @@ router.get(
         usersFollowing.push(relat);
         userIdsFollowing.push(relat.id);
       }
-      console.log("------------------", userIdsFollowing);
 
       res.render("index", {
         csrfToken: req.csrfToken(),
