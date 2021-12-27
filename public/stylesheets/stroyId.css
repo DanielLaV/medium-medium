@@ -1,62 +1,113 @@
-.story{
-display: flex;
-flex-direction: column;
-align-items: center;
+.story {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.storyContent{
-    width: 70%;
-    align-self: center;
-    margin-top: 20px;
+.storyContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.comments{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 25px;
+.comments {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 25px;
+  width: 500px;
 }
 
-#commentContent{
-    width: 80%;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, .2);
-    margin-bottom: 5px;
-    border: lightgray;
-    font-weight: bold;
+#commentContent {
+  width: 80%;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
+  border: lightgray;
+  font-weight: bold;
 }
 
-#commentContent::placeholder{
-    color: rgb(220, 220, 220);
+#commentContent::placeholder {
+  color: rgb(220, 220, 220);
 }
 
-.editDeleteButtons{
-    display: flex;
-    flex-direction: row;
-    margin: 10px;
-    margin-left: auto;
+.editDeleteButtons {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  margin-left: auto;
 }
 
-#deleteStoryButton input[type=submit]{
-    background-color: red;
-    color: white;
+#deleteStoryButton input[type="submit"],
+.deleteCommentButtons,
+.cancelEdit {
+  background-color: #ff0035;
+  opacity: 90%;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  padding: 10px;
+  color: white;
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  border: none;
 }
 
-#editStoryButton input[type=submit]{
-    background-color: green;
-    margin-right: 10px;
-    color: white;
+#editStoryButton input[type="submit"],
+.editCommentButtons,
+.submitEdit,
+#submitCommentButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  border: none;
 }
 
-#submitCommentButton{
-    background-color: green;
-    border-radius: 15px;
-    color: white;
+#submitCommentButton {
+  margin-bottom: 10px;
+}
+#newComment {
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  margin-bottom: 10px;
 }
 
-.editText{
-    display: none;
+/* #submitCommentButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  border: none;
+} */
+
+.editText {
+  display: none;
 }
 
-.editText.open{
-    display: flex;
+.editText.open {
+  display: flex;
+}
+
+.likeAndEdit {
+  display: flex;
+  width: 200px;
+  align-items: flex-end;
+  justify-content: space-between;
 }

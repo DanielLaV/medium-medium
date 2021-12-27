@@ -8,23 +8,13 @@ append head
 
 block content
 
-    if user.id == story.userId
-        .editDeleteButtons
-            form#editStoryButton(action="/stories/"+ story.id + "/edit" method='GET')
-                input(type='hidden' name='_csrf' value=csrfToken)
-                input(type='submit' value='Edit')
-            form#deleteStoryButton(action="/stories/"+ story.id method='POST')
-                input(type='hidden' name='_csrf' value=csrfToken)
-                input(type='submit' value='Delete')
-
+    .fixedFixer
     .story
         if story.storyImage
             img#storyImage(src="" + story.storyImage)
-        else
-            p story has no image
         h1= story.title
-        p.storyContent= story.content
-        div
+        .storyContent #{story.content}
+        div.likeAndEdit
             include like-button.pug
             if user.id == story.userId
                 .editDeleteButtons
@@ -39,7 +29,9 @@ block content
             textarea#newComment(name="newComment", cols="30", rows="10", placeholder="What are your thoughts?")
             button#submitCommentButton(type='submit' value=story.id ) Respond
             #commentsDiv
+                h4 Comments
                 for comment in story.Comments
+                    hr
                     .thisComment(id='thisComment'+comment.id)
                         p(id= 'comment'+comment.id)= comment.content
                         .editText(id= "editController"+comment.id value=comment.id)
