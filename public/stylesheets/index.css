@@ -23,6 +23,7 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  background: linear-gradient(#f1c8db, white);
 }
 
 body:nth-child(4) {

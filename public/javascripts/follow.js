@@ -10,16 +10,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
       followButton.style.display = "none";
     }
 
-    // const isFollowing = await fetch(`/api/profiles/${followingUser}/follow`, {
-    //   method: "GET",
-    // })
-    //   .then((data) => data.text())
-    //   .catch((e) => console.log("THIS IS AN ERROR CATCH ", e));
-
-    // const followStatus = JSON.parse(isFollowing).message;
-
-    // followButton.innerText = followStatus;
-
     followButton.addEventListener("click", async (e) => {
       e.stopPropagation();
 
@@ -34,7 +24,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
         body: JSON.stringify(_data),
       });
       const JSONresponse = await response.json();
-      console.log("THIS IS JSONRESPONSE==========", JSONresponse);
       const message = JSONresponse.message;
 
       const followCount = document.querySelector("#followerCount");
@@ -47,12 +36,11 @@ window.addEventListener("DOMContentLoaded", (e) => {
       followButtons.forEach((button) => {
         button.innerText = message;
         if (message === "Follow") {
-          button.classList.add('follow')
-          button.classList.remove('following')
-        }
-        else {
-          button.classList.add('following')
-          button.classList.remove('follow')
+          button.classList.add("follow");
+          button.classList.remove("following");
+        } else {
+          button.classList.add("following");
+          button.classList.remove("follow");
         }
       });
     });

@@ -26,6 +26,14 @@ block content
         p.storyContent= story.content
         div
             include like-button.pug
+            if user.id == story.userId
+                .editDeleteButtons
+                    form#editStoryButton(action="/stories/"+ story.id + "/edit" method='GET')
+                        input(type='hidden' name='_csrf' value=csrfToken)
+                        input(type='submit' value='Edit')
+                    form#deleteStoryButton(action="/stories/"+ story.id method='POST')
+                        input(type='hidden' name='_csrf' value=csrfToken)
+                        input(type='submit' value='Delete')
         .comments
             label( for="newComment" name="newComment")
             textarea#newComment(name="newComment", cols="30", rows="10", placeholder="What are your thoughts?")

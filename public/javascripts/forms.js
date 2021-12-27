@@ -36,7 +36,6 @@ signupButton.addEventListener("click", (e) => {
 });
 
 signup.addEventListener("click", (e) => {
-  console.log("hello")
   closeLogin();
   e.stopPropagation();
 });
@@ -45,4 +44,3 @@ signup.addEventListener("click", (e) => {
 if (location.pathname == '/users/login') {
   login.classList.add("open");
 }
-
