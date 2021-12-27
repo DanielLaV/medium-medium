@@ -15,11 +15,11 @@
 ## Structure
 #### Back end
 
-The app was built using Express with a postgreSQL database. All endpoints were built using RESTful conventions and respond with a JSON API. 
+The app was built using Express with a postgreSQL database. All endpoints were built using RESTful conventions and respond with a JSON API.
 
 #### Front end
 
-The front end was built using Pug, JavaScript and raw CSS. 
+The front end was built using Pug, JavaScript and raw CSS.
 
 ## Libraries
 - [Express](https://expressjs.com/)
@@ -34,7 +34,7 @@ The front end was built using Pug, JavaScript and raw CSS.
 
 ## Primary Components
 ### User Authorization
-Passwords are hashed before being saved in the database using Bcrypt. When a user attempts to log in, their password is hashed and compared against the hashed password saved in the database. 
+Passwords are hashed before being saved in the database using Bcrypt. When a user attempts to log in, their password is hashed and compared against the hashed password saved in the database.
 ![image](https://user-images.githubusercontent.com/58845762/147297848-799706ac-00f3-46a4-a638-308faeb90cd7.png)
 
 ### Create Story
@@ -44,6 +44,7 @@ Users can create new stories which will be associated with their accounts. Stori
 ### View Profile / Follow Users
 Users can view other profiles and follow them.
 ![image](https://user-images.githubusercontent.com/58845762/147299590-a1d8d9f8-a153-4a43-b66d-cd88d8425bb3.png)
+
 
 
 This project was created by Christopher Breen, Nathan Treadaway, Jesse Brooks and Daniel LaVergne. 
@@ -56,4 +57,4 @@ Jesse Brooks: [Githhub](https://github.com/Josso7)
 
 Daniel LaVergne: [Github](https://github.com/DanielLaV) [LinkedIn](https://www.linkedin.com/in/daniel-lavergne-137772206/)
 
-Nathan Treadaway: [Github](https://github.com/ta-cos)
+Nathan Treadaway: [Github](https://github.com/ta-cos) [LinkedIn](www.linkedin.com/in/nathan-treadaway)
