@@ -44,17 +44,19 @@ block content
             else
                 for story in storyList
                     .storyContainer
-                        .storyDiv(value=""+ story.id href="/stories/id")
-                        li.storyTitle= story.title
-                        li.previewWithImage
-                            p.storyPreview= story.content
-                            if story.storyImage
-                                img#storyImage(src="" + story.storyImage)
-                            else
-                                p story has no image
+                        a(value=""+ story.id href=`/stories/${story.id}`)
+                            .storyDiv
+                                li.storyTitle= story.title
+                                li.previewWithImage
+                                    p.storyPreview= story.content
+                                    if story.storyImage
+                                        img#storyImage(src="" + story.storyImage)
+                                    else
+                                        p story has no image
                         include like-button.pug
                     hr
 
     footer
         script(src="/javascripts/like.js" type="module")
         script(src="/javascripts/follow.js" type="module")
+          script(src="/javascripts/index.js" type="module")
