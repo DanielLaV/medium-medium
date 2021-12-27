@@ -46,7 +46,7 @@ Users can view other profiles and follow them.
 ![image](https://user-images.githubusercontent.com/58845762/147299590-a1d8d9f8-a153-4a43-b66d-cd88d8425bb3.png)
 
 
-This project was created by Christopher Breen, Nathan Treadaway, Jesse Brooks and myself. 
+This project was created by Christopher Breen, Nathan Treadaway, Jesse Brooks and Daniel LaVergne. 
 
 You can find the creators' information below:
 
