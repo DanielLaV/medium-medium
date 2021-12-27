@@ -13,7 +13,7 @@ h4 {
   font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-#fixedFixer {
+.fixedFixer {
   height: 65px;
   background-color: #704c5e;
 }

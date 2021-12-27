@@ -35,7 +35,7 @@ html
           .buttonLogout
             button#logoutButton
               i(class="fas fa-sign-out-alt")
-    #fixedFixer
+    .fixedFixer
 
 
     .login
@@ -50,8 +50,8 @@ html
               label(for="password") Password
               input(type="password" required="required" name="password")
               input.button(type="submit" value="Login")
-              p.signupLink No account?
-                a(href="/users/signup") Sign Up
+              p.signupLink
+                a(href="/users/signup") No account? Sign Up!
 
     .signup
       .container
@@ -68,13 +68,15 @@ html
               input(type="text" required="required" name="username")
               label(for="email") Email
               input(type="email" required="required" name="email")
+              label(for="profileImage") Profile Image URL
+              input(type="text" required="required" name="profileImage")
               label(for="password") Password
               input(type="password" required="required" name="password")
               label(for="confirmPassword") Confirm Password
               input(type="password" required="required" name="confirmPassword")
               input.button(type="submit" value="Sign Up")
-              p.signupLink Already have an account?
-                a(href="/users/login") Log In
+              p.signupLink
+                a(href="/users/login") Already have an account? Log In
 
 block content
 
