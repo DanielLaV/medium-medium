@@ -20,16 +20,17 @@ function addComment() {
         }
 
         newComment.value = "";
-        await fetch(`/api/comments`, {
+        const response = await fetch(`/api/comments`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(_data),
         })
-            .then(res => res.json())
-            .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
+        const JSONresponse = await response.json();
+        const message = JSONresponse.message;
 
         const thisComment = document.createElement('div')
         thisComment.classList.add(`thisComment`)
+        thisComment.setAttribute('id', `thisComment${message.comment.id}`)
 
         const commentContent = document.createElement('p')
         commentContent.innerText = content
@@ -37,20 +38,25 @@ function addComment() {
         const editDeleteButtons = document.createElement('div')
         editDeleteButtons.classList.add('editDeleteButtons')
 
-        const editButton = document.createElement('button')
-        editButton.innerText = 'Edit'
-
         const deleteButton = document.createElement('button')
+        deleteButton.classList.add('deleteCommentButtons')
+        deleteButton.addEventListener("click", async e => {
+            e.stopPropagation();
+            const res = await fetch(`/api/comments/${message.comment.id}`, {
+                method: "DELETE"
+            })
+            const response = await res.json()
+
+            const thisComment = document.querySelector(`#thisComment${message.comment.id}`)
+            thisComment.remove();
+        })
         deleteButton.innerText = 'Delete'
 
         thisComment.appendChild(commentContent)
-        editDeleteButtons.appendChild(editButton)
         editDeleteButtons.appendChild(deleteButton)
         thisComment.appendChild(editDeleteButtons)
         commentsDiv.appendChild(thisComment)
 
-        editComment()
-        deleteComment()
     })
 }
 
@@ -72,13 +78,12 @@ function editComment() {
                     content,
                     commentId,
                 }
-                await fetch(`/api/comments/${commentId}`, {
+                const res = await fetch(`/api/comments/${commentId}`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(_data),
                 })
-                    .then(res => res.json())
-                    .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
+                const response = await res.json()
 
                 //find p tag
                 const comment = document.querySelector(`#comment${commentId}`)
@@ -99,11 +104,10 @@ function deleteComment() {
         const commentId = button.getAttribute('value');
         button.addEventListener('click', async e => {
             e.stopPropagation();
-            await fetch(`/api/comments/${commentId}`, {
+            const res = await fetch(`/api/comments/${commentId}`, {
                 method: "DELETE"
             })
-                .then(res => res.json())
-                .catch(e => console.log('THIS IS AN ERROR CATCH ', e));
+            const response = await res.json()
 
             const thisComment = document.querySelector(`#thisComment${commentId}`)
             thisComment.remove();

@@ -48,8 +48,7 @@ router.post(
     const { content, storyId } = req.body;
     const { userId } = req.session.auth;
     const comment = await db.Comment.create({ userId, storyId, content });
-    const commentId = await db.Comment.max("id");
-    res.json({ message: comment, userId });
+    res.json({ message: { comment, userId } });
   })
 );
 
