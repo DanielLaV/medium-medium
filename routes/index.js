@@ -9,6 +9,17 @@ const { sequelize } = require("../db/models");
 router.use(csrfProtection);
 
 router.get(
+  "/about",
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    res.render("about", {
+      csrfToken: req.csrfToken(),
+      title: "About the Developers",
+    });
+  })
+);
+
+router.get(
   "/",
   csrfProtection,
   asyncHandler(async (req, res) => {
