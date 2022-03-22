@@ -5,52 +5,18 @@ module.exports = {
     return queryInterface.bulkInsert(
       "Stories",
       [
+
         {
-          userId: 3,
-          storyImage:
-            "https://i.guim.co.uk/img/media/944156be841bbb64fb5c1caad4d1da1cb68a490c/0_0_3000_1800/master/3000.jpg?width=1200&quality=85&auto=format&fit=max&s=502d54d867513cf33c7d3c43f0627c90",
-          title: "So You Want to be a Professional Psychic",
-          content: `you’ve been doing Tarot for your girlfriends and they tell you you’re great and you are feeling confident that when you throw a spread you’re seeing something
-        and it is not just random stuff . . . you actually “see it”
-        or you’ve been interested in the paranormal or psychic shows on TV and you’ve been reading and meditating and think this is something you might like (somehow) to do
-        or you’ve read every book you can get your hands on about astrology and are doing charts for Lady Gaga and Cardi B and Puff the Wonder Penguin and feel as if you know your stuff
-        you’re ready to put it out there, hang your shingle, start making money doing what you love
-        where oh where do you begin?
-        well, I am going to answer that . . . first off, being “good” is a prerequisite
-        when you are doing things for free for the girls in your dorm, then everything you say is exciting and earth shattering
-        when people are paying you, then it’s different
-        and you have to understand this difference, what the expectations are of the people paying you and HOW those expectations are going to mess with your mind
-        before you can get very far
-        actually, I think this is THE hurdle for most young psychics or readers; what happens when there are expectations that you’re going to deliver the goods
-        so, not only are you well advised to practice your craft, you are also well advised to look at yourself and your self-esteem
-        because issues with your self-esteem are going to get magnified, a lot and super quickly
-        once you start
-        but if this hasn’t scared you off, then hop on, Psychic World Crazy Train, all aboard !!
-        another important point: not everyone who says Namaste, Love and Light etc etc etc
-        is a “nice person” or is actually happy to see you when you show up, all fresh faced and eager
-        there is an old school Mean Girls vibe that runs wild through the psychic community and this, too, is another hurdle you have to move past
-        there are gatekeepers and my advice is to be prepared so you’re not sad when you figure this out
-        and just rock out with your chakra out anyway
-        and keep moving forward
-        sometime in the next week or so, I will get down into the weeds a bit and give you some tips and tricks about how to get clients, how to develop your “brand”, how to monetize your gifts
-        web sites, PayPal, blogtalk radio, that kind of stuff
-        but, for Day One, here is what you need to know first
-        do it because you love it, do it because you love people, do it because it is who you are
-        I have been wildly successful (at times) and a hott mess train wreck at other times . . . national TV, voted (once) the #5 Best Psychic Reader in the World, etc etc etc
-        some of this was “luck” (but, really, who is calling the shots on luck, anyway), some of it determination to understand myself, some of it a desire to test myself
-        I am guessing many of you feel the same as me
-        you get good at it because you love it and the “profession” (I promise) will make you question, from time to time, why you care and why you continue to do it
-        however, it is an amazing life and one unlike any other
-        and if you feel the call, for sure, you need to answer it !!
-        but, these first words of advice from an old man who has been there, done it all (pretty much) and lived to tell the tale
-        are, first, make sure it is something you care about
-        fakes don’t last, nor should they
-        two, make sure it is something you’re actually “good at”
-        and, three, make sure you can handle rejection and pressure
-        if I haven’t scared you off (yet), then stay tuned
-        tomorrow, we will talk about logistics
-        where to go and what to do once you get there
-        wishing you ALL love and great success ❤`,
+          userId: 2,
+          storyImage: "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2017/06/Mew-powerful.jpg?q=50&fit=contain&w=750&h=375&dpr=1.5",
+          title: `Powerful: 15 Facts That Make Mew Scary AF`,
+          content: `At first glance, Mew is a small, adorable Pokémon who loves to play with both trainers and other creatures. This tiny creature is a fan favorite among children who love its playful nature. Though Mew may charm you with its large eyes and cat-like aloofness, it's easy to misjudge this Psychic-type Pokémon.
+
+        Some may expect Mew to be cowardly since it usually stays hidden or a weakling because to most it would appear it's running away. However, Mew is an ancient Pokémon and has witnessed the evolution of its species over time and Mew enjoys observing on the sidelines. Most Pokémon are more than willing to jump into battle, even without the command of their trainer. Mew takes a more cautious approach by gauging the enemies' abilities. Mew is so powerful that it knows to take a more tactical approach to battles.
+
+        Mew is proof that powerful things can come in small packages. Most expect its clone, Mewtwo, to be more deadly, so Mew's abilities are easy to underestimate and take less seriously like other cute Pokémon. When things get serious, Mew reveals itself to be a powerful comrade or enemy. Once obtained, which isn't easy, Mew is an incredibly versatile ally to add to your Pokédex. #15: Spawned A Powerful Failed Clone: The Pokémon series has many characters that look cute, but are more powerful than expected. Though Mew is the prime example of adorable powerhouses, another Pokémon, Ditto, shares Mew's deceiving looks. Both Ditto and Mew are powerful because they have similar DNA. Ditto has the powerful ability to transform into any Pokémon. Ditto is also genderless and can also breed with any Pokémon. They also share almost identical normal and shiny variant colors, while both Pokémon share the same weight of 8.8 pounds.
+
+        Though Ditto can transform into almost any Pokémon, it has a few flaws, unlike Mew. Ditto is unable to learn any disc moves, such as TMs or HMs. The Pokémon it transforms into also shares Ditto's facial characteristics of small eyes and a wide smile.`,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -67,20 +33,6 @@ module.exports = {
         One of the biggest misconceptions about reincarnation is the notion of karma as an eye for an eye kind of payback. It is not that simplistic; we evolve emotionally and grow through seeing with new eyes but if you shot me in 1862, I am not, specifically, coming back to shoot you in 2018.
         Another misconception is the idea that we change quite drastically from one lifetime to the next. For there to be “reincarnation” there has to be some unique quality reincarnating !! Think of each incarnation as the soul’s personal expression of self, sort of like the soul’s personal art project. But each go round, we come with similar traits, talents, and quirks, as well as consistent physical qualities, regardless of race or gender — because you are going to be BOTH male and female somewhere along the way . . . that are echoes of our dominant “soul essence”.
         We can see past life connections very clearly through Astrology. There is a branch of Astrology called synastry which is the comparison of two or more birth charts, typically used when looking for the romantic possibilities between two prospective partners but, of course, most people don’t have birth charts to compare (or any idea about how to compare them !!) so a better rule of them is that people in your “soul group” will typically cause a “reaction” — doesn’t matter, so much, good or bad. But you can’t be neutral about people with past life “entanglements”. We really DO know our (past life) tribe by their vibe. So, you feel them . . . deep down.`,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          userId: 2,
-          storyImage: "https://media.redadn.es/imagenes/pokemaster_338072.png",
-          title: `Powerful: 15 Facts That Make Mew Scary AF`,
-          content: `At first glance, Mew is a small, adorable Pokémon who loves to play with both trainers and other creatures. This tiny creature is a fan favorite among children who love its playful nature. Though Mew may charm you with its large eyes and cat-like aloofness, it's easy to misjudge this Psychic-type Pokémon.
-
-        Some may expect Mew to be cowardly since it usually stays hidden or a weakling because to most it would appear it's running away. However, Mew is an ancient Pokémon and has witnessed the evolution of its species over time and Mew enjoys observing on the sidelines. Most Pokémon are more than willing to jump into battle, even without the command of their trainer. Mew takes a more cautious approach by gauging the enemies' abilities. Mew is so powerful that it knows to take a more tactical approach to battles.
-
-        Mew is proof that powerful things can come in small packages. Most expect its clone, Mewtwo, to be more deadly, so Mew's abilities are easy to underestimate and take less seriously like other cute Pokémon. When things get serious, Mew reveals itself to be a powerful comrade or enemy. Once obtained, which isn't easy, Mew is an incredibly versatile ally to add to your Pokédex. #15: Spawned A Powerful Failed Clone: The Pokémon series has many characters that look cute, but are more powerful than expected. Though Mew is the prime example of adorable powerhouses, another Pokémon, Ditto, shares Mew's deceiving looks. Both Ditto and Mew are powerful because they have similar DNA. Ditto has the powerful ability to transform into any Pokémon. Ditto is also genderless and can also breed with any Pokémon. They also share almost identical normal and shiny variant colors, while both Pokémon share the same weight of 8.8 pounds.
-
-        Though Ditto can transform into almost any Pokémon, it has a few flaws, unlike Mew. Ditto is unable to learn any disc moves, such as TMs or HMs. The Pokémon it transforms into also shares Ditto's facial characteristics of small eyes and a wide smile.`,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -132,6 +84,55 @@ module.exports = {
         I couldn’t shake off how much I loved television, and how much it meant to me. By the time I was 14, I knew I wanted to work in television in some capacity, but it would just take a few more years for me to fully decided that I wanted to be a television writer.
         This decision wasn’t solely the result of my love for writing and television but it was also driven by the idea of creating something meaningful for a new generation. I was fueled by the need to create something that would have as much of an impact on a young viewer as That’s So Raven had on me.
         With the knowledge that I now have about the television industry, socialization, and implicit bias, it’s crucial that people of all communities, but mainly those from marginalized communities not only have positive representation on television but multifaceted representation. In That’s So Raven, we had a teenage girl from San Francisco who had psychic powers, loved fashion, boy bands and was always willing to go above and beyond to help her family and friends. Raven Baxter was (and still is with Raven’s Home, the That’s So Raven spinoff) a perfect example of a multifaceted character.`,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 3,
+          storyImage:
+            "https://i.guim.co.uk/img/media/944156be841bbb64fb5c1caad4d1da1cb68a490c/0_0_3000_1800/master/3000.jpg?width=1200&quality=85&auto=format&fit=max&s=502d54d867513cf33c7d3c43f0627c90",
+          title: "So You Want to be a Professional Psychic",
+          content: `You’ve been doing Tarot for your girlfriends and they tell you you’re great and you are feeling confident that when you throw a spread you’re seeing something
+        and it is not just random stuff . . . you actually “see it”
+        or you’ve been interested in the paranormal or psychic shows on TV and you’ve been reading and meditating and think this is something you might like (somehow) to do
+        or you’ve read every book you can get your hands on about astrology and are doing charts for Lady Gaga and Cardi B and Puff the Wonder Penguin and feel as if you know your stuff
+        you’re ready to put it out there, hang your shingle, start making money doing what you love
+        where oh where do you begin?
+        well, I am going to answer that . . . first off, being “good” is a prerequisite
+        when you are doing things for free for the girls in your dorm, then everything you say is exciting and earth shattering
+        when people are paying you, then it’s different
+        and you have to understand this difference, what the expectations are of the people paying you and HOW those expectations are going to mess with your mind
+        before you can get very far
+        actually, I think this is THE hurdle for most young psychics or readers; what happens when there are expectations that you’re going to deliver the goods
+        so, not only are you well advised to practice your craft, you are also well advised to look at yourself and your self-esteem
+        because issues with your self-esteem are going to get magnified, a lot and super quickly
+        once you start
+        but if this hasn’t scared you off, then hop on, Psychic World Crazy Train, all aboard !!
+        another important point: not everyone who says Namaste, Love and Light etc etc etc
+        is a “nice person” or is actually happy to see you when you show up, all fresh faced and eager
+        there is an old school Mean Girls vibe that runs wild through the psychic community and this, too, is another hurdle you have to move past
+        there are gatekeepers and my advice is to be prepared so you’re not sad when you figure this out
+        and just rock out with your chakra out anyway
+        and keep moving forward
+        sometime in the next week or so, I will get down into the weeds a bit and give you some tips and tricks about how to get clients, how to develop your “brand”, how to monetize your gifts
+        web sites, PayPal, blogtalk radio, that kind of stuff
+        but, for Day One, here is what you need to know first
+        do it because you love it, do it because you love people, do it because it is who you are
+        I have been wildly successful (at times) and a hott mess train wreck at other times . . . national TV, voted (once) the #5 Best Psychic Reader in the World, etc etc etc
+        some of this was “luck” (but, really, who is calling the shots on luck, anyway), some of it determination to understand myself, some of it a desire to test myself
+        I am guessing many of you feel the same as me
+        you get good at it because you love it and the “profession” (I promise) will make you question, from time to time, why you care and why you continue to do it
+        however, it is an amazing life and one unlike any other
+        and if you feel the call, for sure, you need to answer it !!
+        but, these first words of advice from an old man who has been there, done it all (pretty much) and lived to tell the tale
+        are, first, make sure it is something you care about
+        fakes don’t last, nor should they
+        two, make sure it is something you’re actually “good at”
+        and, three, make sure you can handle rejection and pressure
+        if I haven’t scared you off (yet), then stay tuned
+        tomorrow, we will talk about logistics
+        where to go and what to do once you get there
+        wishing you ALL love and great success ❤`,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

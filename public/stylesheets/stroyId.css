@@ -10,6 +10,9 @@
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  width: 80%;
+  text-align: justify;
+  text-align-last: justify;
 }
 
 .comments {
@@ -78,7 +81,7 @@
 }
 #newComment {
   font-family: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
-  width: 200px;
+  width: 40vw;
   height: 50px;
   background-color: white;
   margin-bottom: 10px;
